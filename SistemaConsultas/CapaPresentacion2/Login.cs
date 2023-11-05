@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using CapaBiblia;
+using CapaEntidad;
+
 namespace CapaPresentacion2
 {
     public partial class Login : Form
@@ -34,15 +37,26 @@ namespace CapaPresentacion2
 
         private void iconButton1_Click(object sender, EventArgs e)
         {
-            inicio form = new inicio();
+            List<Usuario_registros> TEST = new CB_Usuario_registro().Listar();
 
-            form.Show();
-            this.Hide();
+            Usuario_registros ousuario = new CB_Usuario_registro().Listar().Where(u => u.Correo == txtCorreo.Text && u.Clave == txtContraseña.Text).FirstOrDefault();
+            
+            if(ousuario != null)
+            {
+                inicio form = new inicio();
 
-            form.FormClosing += frm_closing;
+                form.Show();
+                this.Hide();
 
-            textoUsuario.Text = "";
-            textoPass.Text = "";
+                form.FormClosing += frm_closing;
+
+                txtCorreo.Text = "";
+                txtContraseña.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("No se encontro el usuario", "FATAL ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 

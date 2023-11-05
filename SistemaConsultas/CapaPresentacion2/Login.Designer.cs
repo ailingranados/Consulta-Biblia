@@ -35,8 +35,8 @@
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textoUsuario = new System.Windows.Forms.TextBox();
-            this.textoPass = new System.Windows.Forms.TextBox();
+            this.txtCorreo = new System.Windows.Forms.TextBox();
+            this.txtContraseña = new System.Windows.Forms.TextBox();
             this.btn_ingresar = new FontAwesome.Sharp.IconButton();
             this.btn_cancelar = new FontAwesome.Sharp.IconButton();
             this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
@@ -106,21 +106,21 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "Contraseña";
             // 
-            // textoUsuario
+            // txtCorreo
             // 
-            this.textoUsuario.Location = new System.Drawing.Point(274, 63);
-            this.textoUsuario.Name = "textoUsuario";
-            this.textoUsuario.Size = new System.Drawing.Size(230, 20);
-            this.textoUsuario.TabIndex = 5;
-            this.textoUsuario.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.txtCorreo.Location = new System.Drawing.Point(274, 63);
+            this.txtCorreo.Name = "txtCorreo";
+            this.txtCorreo.Size = new System.Drawing.Size(230, 20);
+            this.txtCorreo.TabIndex = 5;
+            this.txtCorreo.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // textoPass
+            // txtContraseña
             // 
-            this.textoPass.Location = new System.Drawing.Point(274, 130);
-            this.textoPass.Name = "textoPass";
-            this.textoPass.PasswordChar = '*';
-            this.textoPass.Size = new System.Drawing.Size(230, 20);
-            this.textoPass.TabIndex = 6;
+            this.txtContraseña.Location = new System.Drawing.Point(274, 130);
+            this.txtContraseña.Name = "txtContraseña";
+            this.txtContraseña.PasswordChar = '*';
+            this.txtContraseña.Size = new System.Drawing.Size(230, 20);
+            this.txtContraseña.TabIndex = 6;
             // 
             // btn_ingresar
             // 
@@ -238,8 +238,8 @@
             this.Controls.Add(this.iconPictureBox2);
             this.Controls.Add(this.btn_cancelar);
             this.Controls.Add(this.btn_ingresar);
-            this.Controls.Add(this.textoPass);
-            this.Controls.Add(this.textoUsuario);
+            this.Controls.Add(this.txtContraseña);
+            this.Controls.Add(this.txtCorreo);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.iconPictureBox1);
@@ -266,8 +266,8 @@
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textoUsuario;
-        private System.Windows.Forms.TextBox textoPass;
+        private System.Windows.Forms.TextBox txtCorreo;
+        private System.Windows.Forms.TextBox txtContraseña;
         private FontAwesome.Sharp.IconButton btn_ingresar;
         private FontAwesome.Sharp.IconButton btn_cancelar;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox2;

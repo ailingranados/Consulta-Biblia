@@ -91,7 +91,7 @@ namespace CapaPresentacion2
                 }
 
             }
-            catch(SqlException e)
+            catch(SqlException  e)
             {
                 isValid = false;
             }
