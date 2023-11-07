@@ -29,3 +29,14 @@ ALTER TABLE Usuario.UsuarioRegistros
 
 
    DROP TABLE Usuario.Contraseña
+GO
+
+ALTER TABLE Usuario.Contraseña
+ADD ConNueva VARCHAR(10) NOT NULL
+GO
+
+ALTER TABLE Usuario.Contraseña
+	ADD Id_usuario	SMALLINT,
+	CONSTRAINT FK_usuario
+	FOREIGN KEY (Id_usuario) 
+    REFERENCES Usuario.UsuarioRegistros(Id_usuario)

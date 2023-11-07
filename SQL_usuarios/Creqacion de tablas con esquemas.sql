@@ -38,7 +38,6 @@ PRIMARY KEY		(Id_referencia),
 SELECT * FROM Biblia.ReferenciaBiblia
 
 --********************************************************GENERO********************************************************
-
 CREATE TABLE Usuario.Genero (
 
 Id_genero		TINYINT			NOT NULL		IDENTITY(1,1),
