@@ -71,6 +71,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(248, 26);
             this.textBox1.TabIndex = 1;
+            this.textBox1.Tag = "R_CorreoElectronico";
             // 
             // label2
             // 
@@ -88,6 +89,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(248, 26);
             this.textBox2.TabIndex = 4;
+            this.textBox2.Tag = "R_Contrasena";
             // 
             // label3
             // 
@@ -156,10 +158,16 @@
             // 
             this.comboBox1.AllowDrop = true;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(312, 344);
+            this.comboBox1.Items.AddRange(new object[] {
+            "Femenino",
+            "Masculino",
+            "Sin Especificar"});
+            this.comboBox1.Location = new System.Drawing.Point(316, 343);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(248, 21);
             this.comboBox1.TabIndex = 13;
+            this.comboBox1.Tag = "R_Genero";
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // textBox3
             // 
@@ -169,6 +177,7 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(248, 26);
             this.textBox3.TabIndex = 18;
+            this.textBox3.Tag = "R_ApellidoP";
             // 
             // label9
             // 
@@ -197,6 +206,8 @@
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(248, 26);
             this.textBox4.TabIndex = 15;
+            this.textBox4.Tag = "R_Nombre";
+            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // label11
             // 
@@ -225,6 +236,7 @@
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(248, 26);
             this.textBox5.TabIndex = 21;
+            this.textBox5.Tag = "R_ApellidoM";
             // 
             // label13
             // 
@@ -257,10 +269,12 @@
             this.iconButton1.Name = "iconButton1";
             this.iconButton1.Size = new System.Drawing.Size(272, 32);
             this.iconButton1.TabIndex = 46;
+            this.iconButton1.Tag = "Aceptar_registro";
             this.iconButton1.Text = "Aceptar";
             this.iconButton1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton1.UseVisualStyleBackColor = false;
+            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
             // Registrarse
             // 
@@ -291,6 +305,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Name = "Registrarse";
+            this.Tag = "Registro_usuario";
             this.Text = "Registrarse";
             this.ResumeLayout(false);
             this.PerformLayout();

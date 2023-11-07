@@ -9,15 +9,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using CapaEntidad;
+
+
 namespace CapaPresentacion2
 {
     public partial class inicio : Form
     {
+        private static Usuario_registros usuarioActual;
         private static IconMenuItem MenuActivo = null;
         private static Form FormularioActivo = null;
 
-        public inicio()
+
+        public inicio(Usuario_registros objUsuario)
         {
+            usuarioActual = objUsuario;
+
             InitializeComponent();
         }
 
@@ -59,7 +66,32 @@ namespace CapaPresentacion2
 
         private void inicio_Load(object sender, EventArgs e)
         {
+            labelUsuario.Text = usuarioActual.Nombre;
+        }
 
+        private void menuFavorito_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario((IconMenuItem)sender, new Favoritos());
+        }
+
+        private void menuHistorial_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario((IconMenuItem)sender, new Historial());
+        }
+
+        private void menuConsulta_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario((IconMenuItem)sender, new Consulta());
+        }
+
+        private void iconMenuItem2_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario((IconMenuItem)sender, new Busqueda());
+        }
+
+        private void menuAcercaDe_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario((IconMenuItem)sender, new AcercaDe());
         }
     }
 }
