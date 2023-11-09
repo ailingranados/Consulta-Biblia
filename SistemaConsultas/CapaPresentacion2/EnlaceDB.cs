@@ -213,5 +213,59 @@ namespace CapaPresentacion2
             return add;
         }
 
+        public bool Agregar_usuario(int genero, string correo, string fecha_nac, string nombre, string apellidoM, string apellidoP, string clave)
+        {
+            var msg = "";
+            var add = true;
+            try
+            {
+                conectar();
+                string qry = "SP_InsertarNuevoUsuario";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@Id_Genero", SqlDbType.Int);
+                parametro1.Value = genero;
+
+                var parametro2 = _comandosql.Parameters.Add("@Correo", SqlDbType.VarChar, 20);
+                parametro2.Value = correo;
+
+                var parametro3 = _comandosql.Parameters.AddWithValue("@Fecha_nac", Convert.ToDateTime(fecha_nac));
+                parametro3.Value = fecha_nac;
+
+                var parametro4 = _comandosql.Parameters.Add("@Nombre", SqlDbType.VarChar, 10);
+                parametro4.Value = nombre;
+
+                var parametro5 = _comandosql.Parameters.Add("@ApellidoM", SqlDbType.VarChar, 10);
+                parametro5.Value = apellidoM;
+
+                var parametro6 = _comandosql.Parameters.Add("@ApellidoP", SqlDbType.VarChar, 10);
+                parametro6.Value = apellidoP;
+
+                var parametro7 = _comandosql.Parameters.Add("@Clave", SqlDbType.VarChar, 10);
+                parametro7.Value = clave;
+
+                _adaptador.InsertCommand = _comandosql;
+                // También se tienen las propiedades del adaptador: UpdateCommand  y DeleteCommand
+
+                _comandosql.ExecuteNonQuery();
+
+            }
+            catch (SqlException e)
+            {
+                add = false;
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+            return add;
+        }
+
     }
 }

@@ -11,6 +11,8 @@ SELECT * FROM Relaciones.UsuarioEstatus
 SELECT * FROM Usuario.Contraseña
 
 SELECT * FROM Consultas.Historial
+
+SELECT * FROM Usuario.Genero
 GO
 --***********************************************Usuarios
 
@@ -37,6 +39,8 @@ SET NOCOUNT ON;
 
 END
 GO
+
+EXEC SP_InsertarNuevoUsuario 1, 'jesus@uanl', '2001-04-26', 'jesus', 'galvez', 'osorio', '456'
 
 --el segundo activa el usuario
 CREATE PROCEDURE SP_ActivarUsuario
@@ -146,3 +150,21 @@ SET NOCOUNT ON;
 END
 GO
 
+
+CREATE PROCEDURE SP_LeerUsRegistrados
+AS
+BEGIN
+SET NOCOUNT ON
+	SELECT 
+	Id_usuario, Id_Genero, Correo, Fecha_nac,
+	Nombre, ApellidoM, ApellidoP, Clave
+
+		FROM Usuario.UsuarioRegistros
+END
+GO
+
+--DROP PROCEDURE SP_LeerUsRegistrados
+--GO
+
+EXEC SP_LeerUsRegistrados
+GO

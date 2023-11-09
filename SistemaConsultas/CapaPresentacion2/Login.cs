@@ -33,6 +33,7 @@ namespace CapaPresentacion2
         private void iconButton2_Click(object sender, EventArgs e)
         {
             this.Close();
+            
         }
 
         private void iconButton1_Click(object sender, EventArgs e)
@@ -70,6 +71,16 @@ namespace CapaPresentacion2
         private void Login_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void iconButton1_Click_1(object sender, EventArgs e)
+        {
+            Registrarse form = new Registrarse();
+
+            form.Show();
+            this.Hide();
+
+            form.FormClosing += frm_closing;
         }
     }
 }

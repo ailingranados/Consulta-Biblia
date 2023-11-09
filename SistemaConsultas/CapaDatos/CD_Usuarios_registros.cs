@@ -22,10 +22,10 @@ namespace CapaDatos
 
                 try
                 {
-                    string query = "select Id_usuario,Correo ,Fecha_nac, Nombre, ApellidoM, ApellidoP, Clave from Usuario.UsuarioRegistros";
+                    string query = "SP_LeerUsRegistrados";
 
                     SqlCommand cmd = new SqlCommand(query, oConexion);
-                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandType = CommandType.StoredProcedure;
 
                     oConexion.Open();
 
@@ -36,7 +36,6 @@ namespace CapaDatos
                             lista.Add(new Usuario_registros()
                             {
                                 Id_usuario = Convert.ToInt32(dr["Id_usuario"]),
-                             
                                 Correo = dr["Correo"].ToString(),
                                 Fecha_nac = dr["Fecha_nac"].ToString(),
                                 Nombre = dr["Nombre"].ToString(),
