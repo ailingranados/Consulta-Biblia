@@ -72,6 +72,12 @@
     <Compile Include="Busqueda.Designer.cs">
       <DependentUpon>Busqueda.cs</DependentUpon>
     </Compile>
+    <Compile Include="CambioContrasena.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CambioContrasena.Designer.cs">
+      <DependentUpon>CambioContrasena.cs</DependentUpon>
+    </Compile>
     <Compile Include="Consulta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,6 +134,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Busqueda.resx">
       <DependentUpon>Busqueda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CambioContrasena.resx">
+      <DependentUpon>CambioContrasena.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Consulta.resx">
       <DependentUpon>Consulta.cs</DependentUpon>

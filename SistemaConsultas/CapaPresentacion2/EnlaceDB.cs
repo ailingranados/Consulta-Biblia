@@ -267,5 +267,212 @@ namespace CapaPresentacion2
             return add;
         }
 
+        public bool Activar_con(string clave, int id_usuario)
+        {
+            var msg = "";
+            var add = true;
+            try
+            {
+                conectar();
+                string qry = "SP_ActivarContraseña";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@id_usuario", SqlDbType.Int);
+                parametro1.Value = id_usuario;
+
+                var parametro2 = _comandosql.Parameters.Add("@clave", SqlDbType.VarChar, 10);
+                parametro2.Value = clave;
+
+                _adaptador.InsertCommand = _comandosql;
+                // También se tienen las propiedades del adaptador: UpdateCommand  y DeleteCommand
+
+                _comandosql.ExecuteNonQuery();
+
+            }
+            catch (SqlException e)
+            {
+                add = false;
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+            return add;
+        }
+
+        public DataTable Logear(string usuario, string clave)
+        {
+            var msg = "";
+            DataTable tabla = new DataTable();
+
+            try
+            {
+
+                conectar();
+                string qry = "SP_IniciarSesion";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@correo", SqlDbType.VarChar, 20);
+                parametro1.Value = usuario;
+
+                var parametro2 = _comandosql.Parameters.Add("@clave", SqlDbType.VarChar, 10);
+                parametro2.Value = clave;
+
+
+                _adaptador.SelectCommand = _comandosql;
+                _adaptador.Fill(tabla);
+                // la ejecución del SP espera que regrese datos en formato tabla
+
+
+            }
+            catch (SqlException e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+            return tabla;
+        }
+
+        public DataTable Buscar_usu(int Id_usuario)
+        {
+            var msg = "";
+            DataTable tabla = new DataTable();
+
+            try
+            {
+
+                conectar();
+                string qry = "SP_BuscarUsuario";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@Id_usuario", SqlDbType.VarChar, 20);
+                parametro1.Value = Id_usuario;
+
+
+                _adaptador.SelectCommand = _comandosql;
+                _adaptador.Fill(tabla);
+                // la ejecución del SP espera que regrese datos en formato tabla
+
+
+            }
+            catch (SqlException e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+            return tabla;
+        }
+
+        public bool Editar_usuario(int id_usuario, string nombre, string apellidoM, string apellidoP)
+        {
+            var msg = "";
+            var add = true;
+            try
+            {
+                conectar();
+                string qry = "SP_ActualizarUsuario";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro3 = _comandosql.Parameters.Add("@Id_usuario", SqlDbType.Int);
+                parametro3.Value = id_usuario; 
+
+                var parametro4 = _comandosql.Parameters.Add("@Nombre", SqlDbType.VarChar, 10);
+                parametro4.Value = nombre;
+
+                var parametro5 = _comandosql.Parameters.Add("@ApellidoM", SqlDbType.VarChar, 10);
+                parametro5.Value = apellidoM;
+
+                var parametro6 = _comandosql.Parameters.Add("@ApellidoP", SqlDbType.VarChar, 10);
+                parametro6.Value = apellidoP;
+
+
+                _adaptador.InsertCommand = _comandosql;
+                // También se tienen las propiedades del adaptador: UpdateCommand  y DeleteCommand
+
+                _comandosql.ExecuteNonQuery();
+
+            }
+            catch (SqlException e)
+            {
+                add = false;
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+            return add;
+        }
+
+        public bool Editar_clave(int Id_usuario, string nueva, string vieja)
+        {
+            var msg = "";
+            var add = true;
+            try
+            {
+                conectar();
+                string qry = "SP_CambioContraseña";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro4 = _comandosql.Parameters.Add("@Id_usuario", SqlDbType.VarChar, 10);
+                parametro4.Value = Id_usuario;
+
+                var parametro5 = _comandosql.Parameters.Add("@ConNueva", SqlDbType.VarChar, 10);
+                parametro5.Value = nueva;
+
+                var parametro6 = _comandosql.Parameters.Add("@ConVieja", SqlDbType.VarChar, 10);
+                parametro6.Value = vieja;
+
+
+                _adaptador.InsertCommand = _comandosql;
+                // También se tienen las propiedades del adaptador: UpdateCommand  y DeleteCommand
+
+                _comandosql.ExecuteNonQuery();
+
+            }
+            catch (SqlException e)
+            {
+                add = false;
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+            return add;
+        }
+
     }
 }

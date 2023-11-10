@@ -73,3 +73,4 @@ C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion
 C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\obj\Debug\CapaPresentacion2.csproj.CopyComplete
 C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\obj\Debug\CapaPresentacion2.exe
 C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\obj\Debug\CapaPresentacion2.pdb
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\obj\Debug\CapaPresentacion2.CambioContrasena.resources

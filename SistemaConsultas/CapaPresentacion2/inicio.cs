@@ -16,14 +16,15 @@ namespace CapaPresentacion2
 {
     public partial class inicio : Form
     {
-        private static Usuario_registros usuarioActual;
+        private static DataTable usuarioActual;
+        private static int usuarioActualId;
         private static IconMenuItem MenuActivo = null;
         private static Form FormularioActivo = null;
 
 
-        public inicio(Usuario_registros objUsuario)
+        public inicio(int id_usu)
         {
-            usuarioActual = objUsuario;
+            usuarioActualId = id_usu;
 
             InitializeComponent();
         }
@@ -56,7 +57,7 @@ namespace CapaPresentacion2
         private void menuUsuario_Click(object sender, EventArgs e)
         {
 
-            AbrirFormulario((IconMenuItem)sender, new Usuario());
+            AbrirFormulario((IconMenuItem)sender, new Usuario(usuarioActualId));
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -66,7 +67,11 @@ namespace CapaPresentacion2
 
         private void inicio_Load(object sender, EventArgs e)
         {
-            labelUsuario.Text = usuarioActual.Nombre;
+            EnlaceDB BuscarUsu = new EnlaceDB();
+            usuarioActual = BuscarUsu.Buscar_usu(usuarioActualId);
+
+            labelUsuario.Text = usuarioActual.Rows[0]["Nombre"].ToString();
+
         }
 
         private void menuFavorito_Click(object sender, EventArgs e)

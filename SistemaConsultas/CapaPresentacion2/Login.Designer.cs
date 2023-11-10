@@ -35,8 +35,8 @@
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtCorreo = new System.Windows.Forms.TextBox();
-            this.txtContraseña = new System.Windows.Forms.TextBox();
+            this.L_Correo = new System.Windows.Forms.TextBox();
+            this.L_clave = new System.Windows.Forms.TextBox();
             this.btn_ingresar = new FontAwesome.Sharp.IconButton();
             this.btn_cancelar = new FontAwesome.Sharp.IconButton();
             this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
@@ -106,21 +106,21 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "Contraseña";
             // 
-            // txtCorreo
+            // L_Correo
             // 
-            this.txtCorreo.Location = new System.Drawing.Point(274, 63);
-            this.txtCorreo.Name = "txtCorreo";
-            this.txtCorreo.Size = new System.Drawing.Size(230, 20);
-            this.txtCorreo.TabIndex = 5;
-            this.txtCorreo.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.L_Correo.Location = new System.Drawing.Point(274, 63);
+            this.L_Correo.Name = "L_Correo";
+            this.L_Correo.Size = new System.Drawing.Size(230, 20);
+            this.L_Correo.TabIndex = 5;
+            this.L_Correo.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // txtContraseña
+            // L_clave
             // 
-            this.txtContraseña.Location = new System.Drawing.Point(274, 130);
-            this.txtContraseña.Name = "txtContraseña";
-            this.txtContraseña.PasswordChar = '*';
-            this.txtContraseña.Size = new System.Drawing.Size(230, 20);
-            this.txtContraseña.TabIndex = 6;
+            this.L_clave.Location = new System.Drawing.Point(274, 130);
+            this.L_clave.Name = "L_clave";
+            this.L_clave.PasswordChar = '*';
+            this.L_clave.Size = new System.Drawing.Size(230, 20);
+            this.L_clave.TabIndex = 6;
             // 
             // btn_ingresar
             // 
@@ -239,8 +239,8 @@
             this.Controls.Add(this.iconPictureBox2);
             this.Controls.Add(this.btn_cancelar);
             this.Controls.Add(this.btn_ingresar);
-            this.Controls.Add(this.txtContraseña);
-            this.Controls.Add(this.txtCorreo);
+            this.Controls.Add(this.L_clave);
+            this.Controls.Add(this.L_Correo);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.iconPictureBox1);
@@ -267,8 +267,8 @@
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtCorreo;
-        private System.Windows.Forms.TextBox txtContraseña;
+        private System.Windows.Forms.TextBox L_Correo;
+        private System.Windows.Forms.TextBox L_clave;
         private FontAwesome.Sharp.IconButton btn_ingresar;
         private FontAwesome.Sharp.IconButton btn_cancelar;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox2;

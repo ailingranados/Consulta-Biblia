@@ -50,7 +50,7 @@
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(320, 24);
+            this.dataGridView1.Location = new System.Drawing.Point(308, 250);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(616, 384);
             this.dataGridView1.TabIndex = 85;
@@ -58,7 +58,7 @@
             // label2
             // 
             this.label2.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.label2.Location = new System.Drawing.Point(24, 24);
+            this.label2.Location = new System.Drawing.Point(12, 250);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(280, 144);
             this.label2.TabIndex = 84;
@@ -67,7 +67,7 @@
             // 
             this.comboBox2.AllowDrop = true;
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(64, 120);
+            this.comboBox2.Location = new System.Drawing.Point(52, 346);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(208, 21);
             this.comboBox2.TabIndex = 103;
@@ -76,7 +76,7 @@
             // 
             this.comboBox1.AllowDrop = true;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(64, 56);
+            this.comboBox1.Location = new System.Drawing.Point(52, 282);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(208, 21);
             this.comboBox1.TabIndex = 102;
@@ -89,7 +89,7 @@
             this.iconPictureBox3.IconColor = System.Drawing.Color.DarkSeaGreen;
             this.iconPictureBox3.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconPictureBox3.IconSize = 24;
-            this.iconPictureBox3.Location = new System.Drawing.Point(32, 99);
+            this.iconPictureBox3.Location = new System.Drawing.Point(20, 325);
             this.iconPictureBox3.Name = "iconPictureBox3";
             this.iconPictureBox3.Size = new System.Drawing.Size(24, 24);
             this.iconPictureBox3.TabIndex = 101;
@@ -103,7 +103,7 @@
             this.iconPictureBox1.IconColor = System.Drawing.Color.DarkSeaGreen;
             this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconPictureBox1.IconSize = 24;
-            this.iconPictureBox1.Location = new System.Drawing.Point(32, 32);
+            this.iconPictureBox1.Location = new System.Drawing.Point(20, 258);
             this.iconPictureBox1.Name = "iconPictureBox1";
             this.iconPictureBox1.Size = new System.Drawing.Size(24, 24);
             this.iconPictureBox1.TabIndex = 100;
@@ -112,7 +112,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(65, 104);
+            this.label7.Location = new System.Drawing.Point(53, 330);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(42, 13);
             this.label7.TabIndex = 99;
@@ -121,7 +121,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(65, 37);
+            this.label8.Location = new System.Drawing.Point(53, 263);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(38, 13);
             this.label8.TabIndex = 98;
@@ -129,7 +129,7 @@
             // 
             // monthCalendar1
             // 
-            this.monthCalendar1.Location = new System.Drawing.Point(40, 224);
+            this.monthCalendar1.Location = new System.Drawing.Point(28, 450);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 106;
             // 
@@ -138,7 +138,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(96, 200);
+            this.label5.Location = new System.Drawing.Point(84, 426);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(130, 20);
             this.label5.TabIndex = 104;
@@ -147,7 +147,7 @@
             // label6
             // 
             this.label6.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.label6.Location = new System.Drawing.Point(24, 184);
+            this.label6.Location = new System.Drawing.Point(12, 410);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(280, 224);
             this.label6.TabIndex = 105;
@@ -160,7 +160,7 @@
             this.iconButton1.IconColor = System.Drawing.Color.LightPink;
             this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton1.IconSize = 30;
-            this.iconButton1.Location = new System.Drawing.Point(24, 424);
+            this.iconButton1.Location = new System.Drawing.Point(12, 650);
             this.iconButton1.Name = "iconButton1";
             this.iconButton1.Size = new System.Drawing.Size(280, 40);
             this.iconButton1.TabIndex = 107;
@@ -172,7 +172,7 @@
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(328, 384);
+            this.radioButton1.Location = new System.Drawing.Point(316, 610);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(105, 17);
             this.radioButton1.TabIndex = 108;
@@ -185,7 +185,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.ClientSize = new System.Drawing.Size(960, 473);
+            this.ClientSize = new System.Drawing.Size(960, 704);
             this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.iconButton1);
             this.Controls.Add(this.monthCalendar1);

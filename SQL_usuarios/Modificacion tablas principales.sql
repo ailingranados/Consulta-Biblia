@@ -40,3 +40,7 @@ ALTER TABLE Usuario.Contraseña
 	CONSTRAINT FK_usuario
 	FOREIGN KEY (Id_usuario) 
     REFERENCES Usuario.UsuarioRegistros(Id_usuario)
+GO
+
+ALTER TABLE Usuario.UsuarioRegistros ALTER COLUMN Correo VARCHAR(40);  
+GO  

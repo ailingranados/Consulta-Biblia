@@ -38,25 +38,31 @@ namespace CapaPresentacion2
 
         private void iconButton1_Click(object sender, EventArgs e)
         {
-            List<Usuario_registros> TEST = new CB_Usuario_registro().Listar();
+            EnlaceDB InicioSesion = new EnlaceDB();
 
-            Usuario_registros ousuario = new CB_Usuario_registro().Listar().Where(u => u.Correo == txtCorreo.Text && u.Clave == txtContraseña.Text).FirstOrDefault();
-            
-            if(ousuario != null)
+            DataTable SesionUsu = new DataTable();
+
+            SesionUsu = InicioSesion.Logear(L_Correo.Text, L_clave.Text);
+
+            if(SesionUsu.Rows.Count == 1)
             {
-                inicio form = new inicio(ousuario);
+                int id_usu;
+                int.TryParse(SesionUsu.Rows[0]["Id_usuario"].ToString(), out id_usu);
+
+                inicio form = new inicio(id_usu);
 
                 form.Show();
                 this.Hide();
 
                 form.FormClosing += frm_closing;
 
-                txtCorreo.Text = "";
-                txtContraseña.Text = "";
+                L_Correo.Text = "";
+                L_clave.Text = "";
             }
+            
             else
             {
-                MessageBox.Show("No se encontro el usuario", "FATAL ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Usuario/contraseña incorrectos", "FATAL ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
