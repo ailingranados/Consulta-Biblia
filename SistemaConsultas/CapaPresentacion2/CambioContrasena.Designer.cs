@@ -131,6 +131,7 @@
             this.cancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.cancelar.UseVisualStyleBackColor = false;
+            this.cancelar.Click += new System.EventHandler(this.cancelar_Click);
             // 
             // errorProvider1
             // 
@@ -140,7 +141,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(518, 349);
             this.Controls.Add(this.cancelar);
             this.Controls.Add(this.Aceptar);

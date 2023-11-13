@@ -2,24 +2,17 @@
 --07/11/23
 --Store Procedures para esquema Usuarios
 
-
---DELETE FROM Usuario.UsuarioRegistros WHERE Id_usuario = 5;
---EXEC SP_InsertarNuevoUsuario 1, 'ELI@uanl', '2001-04-25', 'ELI', 'CAN', 'TU', '123'
---EXEC SP_EliminarUsuario @Id_UsEst = 1
---DROP PROCEDURE SP_InsertarNuevoUsuario
-
-
 USE DB_Usuarios
 
+--DELETE FROM Usuario.UsuarioRegistros WHERE Id_usuario = 5;
+--EXEC SP_InsertarNuevoUsuario 1, 'ailin@uanl', '2001-04-25', 'ai', 'li', 'n', '5'
+--EXEC SP_CambioContraseña 12, '456', '123'
+--DROP PROCEDURE SP_InsertarNuevoUsuario
+--DROP PROCEDURE SP_SegundoCambioContraseña
+--DROP PROCEDURE Biblia.SP_GuardarRef
 --SELECT * FROM Usuario.UsuarioRegistros
 
---SELECT * FROM Relaciones.UsuarioEstatus
 
---SELECT * FROM Usuario.Contraseña
-
---SELECT * FROM Consultas.Historial
-
-SELECT * FROM Usuario.UsuarioRegistros
 GO
 --***********************************************Usuarios
 
@@ -36,6 +29,8 @@ CREATE PROCEDURE SP_InsertarNuevoUsuario
 AS
 BEGIN
 SET NOCOUNT ON;
+
+
 	INSERT INTO Usuario.UsuarioRegistros(
 		Id_Genero, Correo, Fecha_nac, Nombre, 
 		ApellidoM, ApellidoP, Clave)
@@ -44,42 +39,61 @@ SET NOCOUNT ON;
 		@Id_Genero, @Correo, @Fecha_nac, @Nombre, 
 		@ApellidoM, @ApellidoP, @Clave);
 
-	EXEC SP_ActivarUsuario @Clave
+DECLARE @ID SMALLINT
+SET @ID = (select max(Id_usuario) as id from Usuario.UsuarioRegistros)
 
+	EXEC SP_ActivarUsuario @Clave, @ID
 END
 GO
 
 
 --activa el usuario
 CREATE PROCEDURE SP_ActivarUsuario
-@clave		VARCHAR(10)
+@clave		VARCHAR(10),
+@ID			SMALLINT
 
 AS
 BEGIN
 SET NOCOUNT ON;
+
+
+	INSERT INTO Usuario.Contraseña
+	(ConNueva, Id_usuario)
+
+		VALUES
+		(@clave, @ID)
+
 	INSERT INTO Relaciones.UsuarioEstatus
 		(FechaReg, 
 		Id_estatus, 
 		Id_usuario)
 
 		VALUES
-		(GETDATE(),
-		'1', 
-		(select max(Id_usuario) as id from Usuario.UsuarioRegistros))
+		(GETDATE(),'1', @ID)
 
-	INSERT INTO Usuario.Contraseña
-	(ConNueva, Id_usuario)
+	UPDATE Usuario.UsuarioRegistros
+		SET
+			Contraseñas = (select max(Id_contraseña) as id from Usuario.Contraseña)
+		WHERE
+			Id_usuario = @ID
+			
+END
+GO
 
-		VALUES
-		(@clave, 
-		(select max(Id_usuario) as id from Usuario.UsuarioRegistros))
+CREATE FUNCTION Usuario.UltimoId ()
+RETURNS INT 
+BEGIN
+		DECLARE @Id INT
+		SET @Id = (select max(Id_usuario) as id from Usuario.UsuarioRegistros)
+		RETURN @Id
 
 END
 GO
 
-CREATE PROCEDURE SP_ActivarContraseña
-@clave	VARCHAR(10),
 
+CREATE PROCEDURE SP_ActivarContraseña
+@clave			VARCHAR(10),
+@id_usuario		INT
 AS
 BEGIN
 SET NOCOUNT ON;
@@ -138,12 +152,18 @@ BEGIN
 SET NOCOUNT ON;
 
 	UPDATE	Usuario.Contraseña
-	SET
+		SET
 		ConVieja1	=	@ConVieja,
 		ConNueva	=	@ConNueva
 
-	WHERE	
-	Id_usuario	=	@Id_usuario;
+			WHERE	
+			Id_usuario	=	@Id_usuario;
+
+	UPDATE	Usuario.UsuarioRegistros
+		SET
+		Clave	=	@ConNueva
+			WHERE	
+			Id_usuario	=	@Id_usuario;
 
 END
 GO
@@ -157,15 +177,23 @@ BEGIN
 SET NOCOUNT ON;
 
 	UPDATE	Usuario.Contraseña
-	SET
+		SET
 		ConVieja2	=	@ConVieja,
 		ConNueva	=	@ConNueva
 
-	WHERE	
-	Id_usuario	=	@Id_usuario;
+			WHERE	
+			Id_usuario	=	@Id_usuario;
+
+	UPDATE	Usuario.UsuarioRegistros
+		SET
+		Clave	=	@ConNueva
+			WHERE	
+			Id_usuario	=	@Id_usuario;
 
 END
 GO
+
+
 
 CREATE PROCEDURE SP_InsertarHistorial
 @Texto			VARCHAR(20),
@@ -228,6 +256,21 @@ SET NOCOUNT ON
 END
 GO
 
+CREATE PROCEDURE SP_LeerContraseñaUsu
+@Id_usuario	SMALLINT
+AS
+BEGIN
+SET NOCOUNT ON
+	SELECT 
+	ConVieja1, ConVieja2, ConNueva
+		FROM 
+		Usuario.Contraseña
+			WHERE
+			Id_usuario = @Id_usuario
+				
+END
+GO
+
 CREATE PROCEDURE SP_IniciarSesion
 @correo			VARCHAR(20),
 @clave			VARCHAR(10)
@@ -270,15 +313,79 @@ SET NOCOUNT ON;
 END
 GO
 
+CREATE PROCEDURE SP_ContraseñasNuevas
+@ClaveVieja	VARCHAR(10),
+@ClaveNueva	VARCHAR(10),
+@Id_usu		SMALLINT
+AS
+BEGIN
+SET NOCOUNT ON;
+
+DECLARE @CON1	VARCHAR(10)
+DECLARE @CON2	VARCHAR(10)
+
+SET @CON1 = (SELECT Usuario.BuscarContraseña1(@Id_usu))
+SET @CON2 = (SELECT Usuario.BuscarContraseña2(@Id_usu))
+
+--IF((@CON1 != @ClaveNueva) AND (@CON2 != @ClaveNueva) AND (@ClaveVieja != @ClaveNueva))
+
+
+		IF(@CON1 IS NULL)
+			BEGIN
+				EXEC SP_CambioContraseña @Id_usu, @ClaveNueva, @ClaveVieja
+			END
+
+		ELSE IF (@CON2 IS NULL)
+			BEGIN
+				EXEC SP_SegundoCambioContraseña @Id_usu, @ClaveNueva, @ClaveVieja
+			END
+
+		IF((@CON2 IS NOT NULL) AND (@CON1 IS NOT NULL))
+			BEGIN
+				EXEC SP_CambioContraseña @Id_usu, @ClaveNueva, @ClaveVieja
+			END
+
+		UPDATE Usuario.UsuarioRegistros
+			SET
+				Clave		=	@ClaveNueva
+			WHERE
+				Id_usuario	= @Id_usu;
+
+
+	
+END
+GO
+
+CREATE FUNCTION Usuario.BuscarContraseña1(@Id_usu INT)
+RETURNS VARCHAR(10)
+BEGIN
+
+	DECLARE @CON1	VARCHAR(10)
+	SET @CON1 = (SELECT ConVieja1 FROM Usuario.Contraseña WHERE Id_usuario = @Id_usu)
+	RETURN @CON1
+
+END
+GO
+
+CREATE FUNCTION Usuario.BuscarContraseña2(@Id_usu INT)
+RETURNS VARCHAR(10)
+BEGIN
+
+	DECLARE @CON1	VARCHAR(10)
+	SET @CON1 = (SELECT ConVieja2 FROM Usuario.Contraseña WHERE Id_usuario = @Id_usu)
+	RETURN @CON1
+
+END
+GO
+
+
+
 --EXEC SP_LeerUsRegistrados
 GO
 
 --EXEC SP_LeerEstatusUsu
 GO
 
---EXEC SP_ActivarUsuario
-GO
-
---EXEC SP_IniciarSesion '@gmail','jesus123'
+--EXEC SP_ContraseñasNuevas nueva, a, 9
 GO
 

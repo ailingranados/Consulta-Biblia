@@ -13,6 +13,7 @@ namespace CapaPresentacion2
     public partial class CambioContrasena : Form
     {
         private static DataTable usuarioActual;
+        private static DataTable contraseñasActuales;
         private static int usuarioActualId;
         public CambioContrasena(int id_usu)
         {
@@ -33,34 +34,71 @@ namespace CapaPresentacion2
             EnlaceDB CambioCon = new EnlaceDB();
             usuarioActual = CambioCon.Buscar_usu(usuarioActualId);
 
+            EnlaceDB ConViejas = new EnlaceDB();
+            contraseñasActuales = ConViejas.Buscar_ContraseñasViejas(usuarioActualId);
+
             bool Contraseña_cambiada = false;
 
             if(ValidarCampos())
             {
+                bool SonIguales = false;
+                string conAntigua1;
+                string conAntigua2;
+                string conVieja;
+                string conNueva;
                 int id_usu;
+
                 int.TryParse(usuarioActual.Rows[0]["Id_usuario"].ToString(), out id_usu);
 
-                string conVieja;
                 conVieja = usuarioActual.Rows[0]["Clave"].ToString();
 
-                Contraseña_cambiada = CambioCon.Editar_clave(id_usu, CC_con1.Text, conVieja);
+                conNueva = CC_con1.Text;
 
-                if (Contraseña_cambiada)
+                conAntigua1 = contraseñasActuales.Rows[0]["ConVieja1"].ToString();
+
+                conAntigua2 = contraseñasActuales.Rows[0]["ConVieja2"].ToString();
+
+                if (Equals(conAntigua1, conNueva))
                 {
-                    MessageBox.Show("El usuario ha sido editado con exito", ":)", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    SonIguales = true;
+                }
+                if (Equals(conAntigua2, conNueva))
+                {
+                    SonIguales = true;
+                }
+                if (Equals(conVieja, conNueva))
+                {
+                    SonIguales = true;
+                }
 
-                    this.Close();
+                if (SonIguales)
+                {
+                    MessageBox.Show("La nueva contraseña coincide con otra contraseña utilizada anteriormente", "FATAL ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    MessageBox.Show("No se pudo editar el usuario", "FATAL ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+                    Contraseña_cambiada = CambioCon.Editar_clave(id_usu, CC_con1.Text, conVieja);
+
+                    if (Contraseña_cambiada)
+                    {
+                        MessageBox.Show("La contraseña ha sido editado con exito", ":)", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("La nueva contraseña coincide con una contraseña vieja", "FATAL ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
                 }
+
+                
 
             }
             else
             {
-                MessageBox.Show("No se pudo cambiar la contraseña, intentelo de nuevo", "FATAL ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No se pudo cambiar la contraseña, cheque los campos", "FATAL ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
 
@@ -94,5 +132,9 @@ namespace CapaPresentacion2
             return ok;
         }
 
+        private void cancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -98,5 +98,35 @@ namespace CapaPresentacion2
             this.Hide();
 
         }
+
+        private void U_baja_Click(object sender, EventArgs e)
+        {
+            DialogResult salienda = MessageBox.Show("¿desea desactivar su usuario?" , ":((((((((", MessageBoxButtons.YesNoCancel);
+            
+            if (salienda == DialogResult.Yes)
+            {
+                EnlaceDB EDB_BAJA = new EnlaceDB();
+
+                bool Baja = false;
+
+                Baja = EDB_BAJA.Editar_estadoBAJA(usuarioActualId);
+
+                if (Baja)
+                {
+                    MessageBox.Show("El usuario ha sido dado de baja con exito", ":)", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo dar de baja al usuario", "FATAL ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+
+            }
+
+          
+
+        }
     }
 }

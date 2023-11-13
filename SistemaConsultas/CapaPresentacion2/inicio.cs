@@ -29,7 +29,7 @@ namespace CapaPresentacion2
             InitializeComponent();
         }
 
-        private void AbrirFormulario(IconMenuItem menu, Form formulario)
+        public void AbrirFormulario(IconMenuItem menu, Form formulario)
         {
             if (MenuActivo != null) 
             { 
@@ -48,7 +48,7 @@ namespace CapaPresentacion2
             formulario.TopLevel = false;
             formulario.FormBorderStyle = FormBorderStyle.None;
             formulario.Dock = DockStyle.Fill;
-            formulario.BackColor = Color.RosyBrown;
+            //formulario.BackColor = Color.Transparent;
 
             panel1.Controls.Add(formulario);
             formulario.Show();
@@ -76,7 +76,7 @@ namespace CapaPresentacion2
 
         private void menuFavorito_Click(object sender, EventArgs e)
         {
-            AbrirFormulario((IconMenuItem)sender, new Favoritos());
+            AbrirFormulario((IconMenuItem)sender, new Favoritos(usuarioActualId));
         }
 
         private void menuHistorial_Click(object sender, EventArgs e)
@@ -86,7 +86,8 @@ namespace CapaPresentacion2
 
         private void menuConsulta_Click(object sender, EventArgs e)
         {
-            AbrirFormulario((IconMenuItem)sender, new Consulta());
+
+            AbrirFormulario((IconMenuItem)sender, new Consulta_IdiomaVersion(usuarioActualId));
         }
 
         private void iconMenuItem2_Click(object sender, EventArgs e)

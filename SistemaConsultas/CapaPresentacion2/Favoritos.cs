@@ -12,9 +12,26 @@ namespace CapaPresentacion2
 {
     public partial class Favoritos : Form
     {
-        public Favoritos()
+        private static int usuarioActualId;
+        private static DataTable DT_favoritos;
+        private static DataTable DT_biblia;
+        
+        public Favoritos(int id_usu)
         {
+            usuarioActualId = id_usu;
             InitializeComponent();
+        }
+
+        private void Favoritos_Load(object sender, EventArgs e)
+        {
+            EnlaceDB EDB_Favoritos = new EnlaceDB();
+            int INT_referencia;
+
+
+            DT_favoritos = EDB_Favoritos.tabla_favoritos(usuarioActualId);
+
+            DGV_Favoritos.DataSource = DT_favoritos;
+
         }
     }
 }
