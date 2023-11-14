@@ -36,11 +36,11 @@
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.NACIMIENTO = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
@@ -127,12 +127,6 @@
             this.label8.TabIndex = 98;
             this.label8.Text = "Idioma";
             // 
-            // monthCalendar1
-            // 
-            this.monthCalendar1.Location = new System.Drawing.Point(28, 450);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 106;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -180,15 +174,27 @@
             this.radioButton1.Text = "Seleccionar todo";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
+            // NACIMIENTO
+            // 
+            this.NACIMIENTO.CustomFormat = "yyyy.MM.dd";
+            this.NACIMIENTO.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.NACIMIENTO.Location = new System.Drawing.Point(29, 461);
+            this.NACIMIENTO.MaxDate = new System.DateTime(2023, 1, 1, 0, 0, 0, 0);
+            this.NACIMIENTO.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.NACIMIENTO.Name = "NACIMIENTO";
+            this.NACIMIENTO.Size = new System.Drawing.Size(248, 20);
+            this.NACIMIENTO.TabIndex = 109;
+            this.NACIMIENTO.Value = new System.DateTime(2023, 1, 1, 0, 0, 0, 0);
+            // 
             // Historial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.ClientSize = new System.Drawing.Size(960, 704);
+            this.Controls.Add(this.NACIMIENTO);
             this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.iconButton1);
-            this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.comboBox2);
@@ -218,10 +224,10 @@
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.MonthCalendar monthCalendar1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private FontAwesome.Sharp.IconButton iconButton1;
         private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.DateTimePicker NACIMIENTO;
     }
 }

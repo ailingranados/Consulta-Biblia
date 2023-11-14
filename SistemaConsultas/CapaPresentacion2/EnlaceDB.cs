@@ -56,8 +56,8 @@ namespace CapaPresentacion2
 			
 			tal como lo vimos en clase.
 			*/
-            string cnn = ConfigurationManager.ConnectionStrings["DB_Usuarios"].ToString(); 
-			// Cambiar Grupo01 por el que ustedes hayan definido en el App.Confif
+            string cnn = ConfigurationManager.ConnectionStrings["DB_Usuarios"].ToString();
+            // Cambiar Grupo01 por el que ustedes hayan definido en el App.Confif
             _conexion = new SqlConnection(cnn);
             _conexion.Open();
         }
@@ -85,13 +85,13 @@ namespace CapaPresentacion2
                 _adaptador.SelectCommand = _comandosql;
                 _adaptador.Fill(_tabla);
 
-                if(_tabla.Rows.Count > 0)
+                if (_tabla.Rows.Count > 0)
                 {
                     isValid = true;
                 }
 
             }
-            catch(SqlException  e)
+            catch (SqlException e)
             {
                 isValid = false;
             }
@@ -110,12 +110,12 @@ namespace CapaPresentacion2
             try
             {
                 conectar();
-				// Ejemplo de cómo ejecutar un query, 
-				// PERO lo correcto es siempre usar SP para cualquier consulta a la base de datos
+                // Ejemplo de cómo ejecutar un query, 
+                // PERO lo correcto es siempre usar SP para cualquier consulta a la base de datos
                 string qry = "Select Nombre, email, Fecha_modif from Usuarios where Activo = 0;";
                 _comandosql = new SqlCommand(qry, _conexion);
                 _comandosql.CommandType = CommandType.Text;
-						// Esta opción solo la podrían utilizar si hacen un EXEC al SP concatenando los parámetros.
+                // Esta opción solo la podrían utilizar si hacen un EXEC al SP concatenando los parámetros.
                 _comandosql.CommandTimeout = 1200;
 
                 _adaptador.SelectCommand = _comandosql;
@@ -136,8 +136,8 @@ namespace CapaPresentacion2
             return tabla;
         }
 
-		// Ejemplo de método para recibir una consulta en forma de tabla
-		// Cuando el SP ejecutará un SELECT
+        // Ejemplo de método para recibir una consulta en forma de tabla
+        // Cuando el SP ejecutará un SELECT
         public DataTable get_Deptos(string opc)
         {
             var msg = "";
@@ -155,8 +155,8 @@ namespace CapaPresentacion2
 
 
                 _adaptador.SelectCommand = _comandosql;
-                _adaptador.Fill(tabla); 
-				// la ejecución del SP espera que regrese datos en formato tabla
+                _adaptador.Fill(tabla);
+                // la ejecución del SP espera que regrese datos en formato tabla
 
             }
             catch (SqlException e)
@@ -172,9 +172,9 @@ namespace CapaPresentacion2
 
             return tabla;
         }
-		
-		// Ejemplo de método para ejecutar un SP que no se espera que regrese información, 
-		// solo que ejecute ya sea un INSERT, UPDATE o DELETE
+
+        // Ejemplo de método para ejecutar un SP que no se espera que regrese información, 
+        // solo que ejecute ya sea un INSERT, UPDATE o DELETE
         //***********************************************************************************USUARIOS
         public bool Add_Deptos(string opc, string depto)
         {
@@ -194,8 +194,8 @@ namespace CapaPresentacion2
                 parametro2.Value = depto;
 
                 _adaptador.InsertCommand = _comandosql;
-				// También se tienen las propiedades del adaptador: UpdateCommand  y DeleteCommand
-                
+                // También se tienen las propiedades del adaptador: UpdateCommand  y DeleteCommand
+
                 _comandosql.ExecuteNonQuery();
 
             }
@@ -208,7 +208,7 @@ namespace CapaPresentacion2
             }
             finally
             {
-                desconectar();                
+                desconectar();
             }
 
             return add;
@@ -399,7 +399,7 @@ namespace CapaPresentacion2
                 _comandosql.CommandTimeout = 1200;
 
                 var parametro3 = _comandosql.Parameters.Add("@Id_usuario", SqlDbType.Int);
-                parametro3.Value = id_usuario; 
+                parametro3.Value = id_usuario;
 
                 var parametro4 = _comandosql.Parameters.Add("@Nombre", SqlDbType.VarChar, 10);
                 parametro4.Value = nombre;
@@ -607,7 +607,7 @@ namespace CapaPresentacion2
                 _adaptador.SelectCommand = _comandosql;
                 object result = _comandosql.ExecuteScalar();
                 id_idioma = Convert.ToInt32(result);
-                
+
 
 
             }
@@ -1122,7 +1122,7 @@ namespace CapaPresentacion2
 
         //***********************************************************************CONSULTA FAVORITO
 
-        public bool Agregar_referencia(int id_idioma, int id_version, int id_testamento, int id_libro, int id_versiculo)
+        public bool Agregar_referencia(int id_idioma, int id_version, int id_testamento, int id_libro, int capitulo, int id_versiculo)
         {
             var msg = "";
             var add = true;
@@ -1149,6 +1149,9 @@ namespace CapaPresentacion2
                 var parametro5 = _comandosql.Parameters.Add("@Id_Versiculo", SqlDbType.Int);
                 parametro5.Value = id_versiculo;
 
+                var parametro6 = _comandosql.Parameters.Add("@Id_Capitulo", SqlDbType.Int);
+                parametro6.Value = capitulo;
+
                 _adaptador.InsertCommand = _comandosql;
                 // También se tienen las propiedades del adaptador: UpdateCommand  y DeleteCommand
 
@@ -1170,7 +1173,7 @@ namespace CapaPresentacion2
             return add;
         }
 
-        public int Buscar_referencia(int id_idioma, int id_version, int id_testamento, int id_libro, int id_versiculo)
+        public int Buscar_referencia(int id_idioma, int id_version, int id_testamento, int id_libro, int capitulo, int id_versiculo)
         {
             var msg = "";
             int id_test = 0;
@@ -1199,6 +1202,9 @@ namespace CapaPresentacion2
                 var parametro5 = _comandosql.Parameters.Add("@Id_Versiculo", SqlDbType.Int);
                 parametro5.Value = id_versiculo;
 
+                var parametro6 = _comandosql.Parameters.Add("@Id_Capitulo", SqlDbType.Int);
+                parametro6.Value = capitulo;
+
                 _adaptador.SelectCommand = _comandosql;
                 object result = _comandosql.ExecuteScalar();
                 id_test = Convert.ToInt32(result);
@@ -1220,7 +1226,7 @@ namespace CapaPresentacion2
             return id_test;
         }
 
-        public bool Agregar_fav(int id_usuario, int id_referencia)
+        public bool Agregar_fav(int id_usuario, int id_referencia, string nombre)
         {
             var msg = "";
             var add = true;
@@ -1237,6 +1243,9 @@ namespace CapaPresentacion2
 
                 var parametro2 = _comandosql.Parameters.Add("@Id_referencia", SqlDbType.Int);
                 parametro2.Value = id_referencia;
+
+                var parametro3 = _comandosql.Parameters.Add("@Nombre", SqlDbType.VarChar, 15);
+                parametro3.Value = nombre;
 
                 _adaptador.InsertCommand = _comandosql;
                 // También se tienen las propiedades del adaptador: UpdateCommand  y DeleteCommand
@@ -1259,6 +1268,7 @@ namespace CapaPresentacion2
             return add;
         }
 
+        
         //no se usa
         public DataTable Buscar_favorito(int id_usuario)
         {
@@ -1376,6 +1386,123 @@ namespace CapaPresentacion2
 
             return tabla;
         }
+
+        public DataTable tabla_favoritosCapitulos(int id_usuario)
+        {
+            var msg = "";
+            DataTable tabla = new DataTable();
+
+            try
+            {
+
+                conectar();
+                string qry = "Consultas.SP_BuscarFavUsuarioCap";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@Id_usuario", SqlDbType.Int);
+                parametro1.Value = id_usuario;
+
+
+
+                _adaptador.SelectCommand = _comandosql;
+                _adaptador.Fill(tabla);
+                // la ejecución del SP espera que regrese datos en formato tabla
+
+
+            }
+            catch (SqlException e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+            return tabla;
+        }
+
+        //agregar favorito
+        public DataTable Consultar_Biblia()
+        {
+            var msg = "";
+            DataTable tabla = new DataTable();
+
+            try
+            {
+
+                conectar();
+                string qry = "Biblia.SP_ConsultarBiblia";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+
+                _adaptador.SelectCommand = _comandosql;
+                _adaptador.Fill(tabla);
+                // la ejecución del SP espera que regrese datos en formato tabla
+
+
+            }
+            catch (SqlException e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+            return tabla;
+        }
+
+        //eliminar favorito
+        public bool Eliminar_fav(int id_favorito)
+        {
+            var msg = "";
+            var add = true;
+            try
+            {
+                conectar();
+                string qry = "Consultas.SP_EliminarFav";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@Id_favorito", SqlDbType.Int);
+                parametro1.Value = id_favorito;
+
+               
+
+                _adaptador.InsertCommand = _comandosql;
+                // También se tienen las propiedades del adaptador: UpdateCommand  y DeleteCommand
+
+                _comandosql.ExecuteNonQuery();
+
+            }
+            catch (SqlException e)
+            {
+                add = false;
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+            return add;
+        }
+
+
+
 
     }
 }

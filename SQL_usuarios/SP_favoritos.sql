@@ -2,12 +2,12 @@
 --12/11/2023
 --Procedures para favoritos
 
-
 CREATE PROCEDURE Biblia.SP_GuardarRef
 @Id_Idioma	    SMALLINT,
 @Id_Version	    SMALLINT,
 @Id_Testamento	SMALLINT,
 @Id_Libro	    SMALLINT,
+@Id_Capitulo	SMALLINT,
 @Id_Versiculo	SMALLINT
 AS
 BEGIN
@@ -22,6 +22,7 @@ SET NOCOUNT ON;
 		Id_Version		=	@Id_Version		AND
 		Id_Testamento	=	@Id_Testamento	AND
 		Id_Libro		=	@Id_Libro		AND
+		Id_Capitulo		=	@Id_Capitulo	AND
 		Id_Versiculo	=	@Id_Versiculo	
     )
     BEGIN
@@ -31,6 +32,7 @@ SET NOCOUNT ON;
             Id_Version,
             Id_Testamento, 
             Id_Libro, 
+			Id_Capitulo,
             Id_Versiculo
         )
         VALUES (
@@ -38,6 +40,7 @@ SET NOCOUNT ON;
             @Id_Version,
             @Id_Testamento,
             @Id_Libro,
+			@Id_Capitulo,
             @Id_Versiculo
         )
     END
@@ -49,6 +52,7 @@ CREATE PROCEDURE Biblia.SP_BuscarRef
 @Id_Version	    SMALLINT,
 @Id_Testamento	SMALLINT,
 @Id_Libro	    SMALLINT,
+@Id_Capitulo	SMALLINT,
 @Id_Versiculo	SMALLINT
 AS 
 BEGIN
@@ -63,6 +67,7 @@ SET NOCOUNT ON;
 			Id_Version		=	@Id_Version		AND
 			Id_Testamento	=	@Id_Testamento	AND
 			Id_Libro		=	@Id_Libro		AND
+			Id_Capitulo		=	@Id_Capitulo	AND
 			Id_Versiculo	=	@Id_Versiculo
 
 END
@@ -70,8 +75,8 @@ GO
 			
 CREATE PROCEDURE Consultas.SP_GruardarFav
 @Id_usuario		SMALLINT,
-@Id_referencia	SMALLINT
-
+@Id_referencia	SMALLINT,
+@Nombre			VARCHAR(15)
 AS
 BEGIN
 SET NOCOUNT ON;
@@ -79,24 +84,44 @@ SET NOCOUNT ON;
 	INSERT INTO Consultas.Favorito 
 	(Id_usuario, 
 	 FechaFav, 
-	 Id_referencia)
+	 Id_referencia,
+	 NombreFav)
 			VALUES
 			(@Id_usuario,
 			GETDATE(),
-			@Id_referencia)
+			@Id_referencia,
+			@Nombre)
 
 END
 GO
 
-CREATE PROCEDURE Consultas.SP_BuscarFavUsuario
+ALTER PROCEDURE Consultas.SP_BuscarFavUsuario
+@Id_usuario	INT
+AS
+BEGIN
+SET NOCOUNT ON
+	SELECT NombreFav AS NOMBRE, FechaFav AS FECHA,
+		IDIOMA, VERSIONES, TESTAMENTOS, LIBRO, NumeroCap AS CAPITULO, 
+		VERSICULO, Id_favorito
+
+		FROM 
+		Biblia.V_FavoritosBiblia
+			WHERE 
+			Id_usuario = @Id_usuario
+END
+GO
+
+ALTER PROCEDURE Consultas.SP_BuscarFavUsuarioCap
 @Id_usuario	INT
 AS
 BEGIN
 SET NOCOUNT ON
 	SELECT 
-	FechaFav, Id_referencia
+		NombreFav, FechaFav, IDIOMA, VERSIONES, TESTAMENTOS, 
+		LIBRO, CAPITULO, VERSICULO, id_favorito
+		
 		FROM 
-		Consultas.Favorito
+		Biblia.V_FavoritosBibliaCapitulos
 			WHERE 
 			Id_usuario = @Id_usuario
 END
@@ -122,10 +147,44 @@ SET NOCOUNT ON;
 END
 GO
 
+ALTER PROCEDURE Biblia.SP_ConsultarBiblia
+AS
+BEGIN
+SET NOCOUNT ON;
+	SELECT IDIOMA, VERSIONES, 
+	TESTAMENTOS, LIBRO, NumeroCap AS CAPITULO, VERSICULO, NumeroVers
+	FROM Biblia.V_TextosBiblia
+END
+GO
 
---EXEC Biblia.SP_GuardarRef 1, 2, 1, 1, 4
+CREATE PROCEDURE Consultas.SP_EliminarFav
+@Id_favorito	SMALLINT
+AS
+BEGIN
+SET NOCOUNT ON;
+
+	DELETE FROM Consultas.Favorito
+	WHERE Id_favorito = @Id_favorito
+END
+GO
+
+
+
 
 SELECT * FROM Consultas.Favorito
 SELECT * FROM Biblia.ReferenciaBiblia
 SELECT * FROM Usuario.UsuarioRegistros
+SELECT * FROM Biblia.V_FavoritosBiblia
+
+SELECT * FROM Relaciones.UsuarioEstatus
+
+EXEC Consultas.SP_BuscarFavUsuarioCap 3
+SELECT * FROM Biblia.V_FavoritosBibliaCapitulos
+
+--SELECT Id_Idioma, IDIOMA, Id_Version, VERSIONES, Id_Testamento, TESTAMENTOS, Id_Libro, LIBRO, CAPITULO, Id_referencia, Id_usuario, FechaFav, Id_favorito, NombreFav, COUNT(*)
+--FROM Biblia.V_FavoritosBibliaCapitulos
+--GROUP BY Id_Idioma, IDIOMA, Id_Version, VERSIONES, Id_Testamento, TESTAMENTOS, Id_Libro, LIBRO, CAPITULO, Id_referencia, Id_usuario, FechaFav, Id_favorito, NombreFav
+--HAVING COUNT(*) > 1;
+
+
 

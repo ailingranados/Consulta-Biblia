@@ -378,14 +378,23 @@ BEGIN
 END
 GO
 
+CREATE PROCEDURE Usuario.SP_BajaUsuario
+@Id_usuario		SMALLINT
+AS
+BEGIN
+SET NOCOUNT ON;
 
+	UPDATE Relaciones.UsuarioEstatus
+		SET
+		
+		Id_estatus	=	2,
+		FechaBaja	=	GETDATE()
 
---EXEC SP_LeerUsRegistrados
+			WHERE
+			Id_usuario	= @Id_usuario;
+END
 GO
 
---EXEC SP_LeerEstatusUsu
-GO
 
---EXEC SP_ContraseñasNuevas nueva, a, 9
-GO
+EXEC Usuario.SP_BajaUsuario 11
 

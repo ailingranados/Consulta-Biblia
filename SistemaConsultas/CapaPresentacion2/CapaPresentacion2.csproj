@@ -66,6 +66,12 @@
     <Compile Include="AcercaDe.Designer.cs">
       <DependentUpon>AcercaDe.cs</DependentUpon>
     </Compile>
+    <Compile Include="AgregarFavorito.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarFavorito.Designer.cs">
+      <DependentUpon>AgregarFavorito.cs</DependentUpon>
+    </Compile>
     <Compile Include="Busqueda.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +137,9 @@
     </Compile>
     <EmbeddedResource Include="AcercaDe.resx">
       <DependentUpon>AcercaDe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgregarFavorito.resx">
+      <DependentUpon>AgregarFavorito.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Busqueda.resx">
       <DependentUpon>Busqueda.cs</DependentUpon>

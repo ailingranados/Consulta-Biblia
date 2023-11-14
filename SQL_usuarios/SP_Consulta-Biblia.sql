@@ -6,6 +6,7 @@ USE DB_Usuarios
 GO
 
 
+
 CREATE PROCEDURE Biblia.SP_IdiomasBiblia
 AS
 BEGIN
@@ -34,7 +35,6 @@ SET NOCOUNT ON;
 
 END
 GO
-
 
 CREATE PROCEDURE Biblia.SP_VersionBiblia
 @Id_idioma	SMALLINT
@@ -173,7 +173,7 @@ AS
 BEGIN
 SET NOCOUNT ON;
 
-	SELECT I.Nombre, V.NombreVersion, T.Nombre, L.Nombre, VE.NumeroCap, VE.NumeroVers, VE.Texto
+	SELECT I.Nombre, V.NombreVersion, T.Nombre, L.Nombre, VE.NumeroVers, VE.Texto
 		FROM
 			DB_Bible.dbo.Idiomas I
 			INNER JOIN DB_Bible.dbo.Versiones V		ON	V.Id_Idioma = @Id_idioma
@@ -189,7 +189,6 @@ END
 GO
 
 
-
 CREATE PROCEDURE Biblia.SP_Consulta_IVT
 @Id_idioma		SMALLINT,
 @Id_version		SMALLINT,
@@ -198,7 +197,7 @@ AS
 BEGIN
 SET NOCOUNT ON;
 
-	SELECT I.Nombre, V.NombreVersion, T.Nombre, L.Nombre,VE.NumeroCap, VE.NumeroVers, VE.Texto
+	SELECT I.Nombre, V.NombreVersion, T.Nombre, L.Nombre, VE.NumeroVers, VE.Texto
 		FROM
 			DB_Bible.dbo.Idiomas I
 			INNER JOIN DB_Bible.dbo.Versiones V		ON	V.Id_Idioma = @Id_idioma
@@ -223,7 +222,7 @@ AS
 BEGIN
 SET NOCOUNT ON;
 
-	SELECT I.Nombre, V.NombreVersion, T.Nombre, L.Nombre, VE.NumeroCap, VE.NumeroVers, VE.Texto
+	SELECT I.Nombre, V.NombreVersion, T.Nombre, L.Nombre, VE.NumeroVers, VE.Texto
 		FROM
 			DB_Bible.dbo.Idiomas I
 			INNER JOIN DB_Bible.dbo.Versiones V		ON	V.Id_Idioma = @Id_idioma
@@ -256,7 +255,6 @@ SET NOCOUNT ON;
 	V.NombreVersion AS VERSIONES, 
 	T.Nombre AS TESTAMENTO, 
 	L.Nombre AS LIBRO, 
-	VE.NumeroCap AS CAPITULO,
 	VE.NumeroVers, 
 	VE.Texto AS VERSICULO
 		FROM

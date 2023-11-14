@@ -44,3 +44,14 @@ GO
 
 ALTER TABLE Usuario.UsuarioRegistros ALTER COLUMN Correo VARCHAR(40);  
 GO  
+
+ALTER TABLE Consultas.Favorito
+ADD NombreFav VARCHAR(15)
+GO
+
+select * from Biblia.ReferenciaBiblia
+
+ALTER TABLE Biblia.ReferenciaBiblia
+ADD Id_Capitulo SMALLINT
+GO
+

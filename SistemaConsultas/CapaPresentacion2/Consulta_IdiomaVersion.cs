@@ -26,6 +26,7 @@ namespace CapaPresentacion2
         private static int id_libro;
         private static DataTable DT_Versiculo;
         private static int id_versiculo;
+        private static int id_capitulo;
 
         private static DataTable DT_consulta;
 
@@ -36,6 +37,7 @@ namespace CapaPresentacion2
         private static string STR_Version;
         private static string STR_Testamento;
         private static string STR_Libro;
+        private static int INT_Capitulo;
         private static int INT_Versiculo;
 
         public Consulta_IdiomaVersion(int id_usu)
@@ -103,6 +105,9 @@ namespace CapaPresentacion2
 
         private void Aceptar_Click(object sender, EventArgs e)
         {
+            //limpiar campos
+            label6.Text = "";
+            L_capitulo.Text = "";
 
             EnlaceDB EDB_ConsultarDGV = new EnlaceDB();
 
@@ -213,12 +218,20 @@ namespace CapaPresentacion2
 
         private void DGV_consulta_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            label6.Text = DGV_consulta.CurrentRow.Cells[5].Value.ToString();
+            //limpiar campos
+            label6.Text = "";
+            L_capitulo.Text = "";
+
+            L_capitulo.Text = DGV_consulta.CurrentRow.Cells[4].Value.ToString();
+            label6.Text = DGV_consulta.CurrentRow.Cells[6].Value.ToString();
             STR_Idioma = DGV_consulta.CurrentRow.Cells[0].Value.ToString();
             STR_Version = DGV_consulta.CurrentRow.Cells[1].Value.ToString();
             STR_Testamento = DGV_consulta.CurrentRow.Cells[2].Value.ToString();
             STR_Libro = DGV_consulta.CurrentRow.Cells[3].Value.ToString();
-            INT_Versiculo = int.Parse(DGV_consulta.CurrentRow.Cells[4].Value.ToString()); ;
+            INT_Versiculo = int.Parse(DGV_consulta.CurrentRow.Cells[5].Value.ToString()); ;
+
+            
+            INT_Capitulo = int.Parse(DGV_consulta.CurrentRow.Cells[4].Value.ToString());
 
         }
 
@@ -227,8 +240,10 @@ namespace CapaPresentacion2
             EnlaceDB EDB_AgregarFavorito = new EnlaceDB();
 
             bool B_favorito = false;
-            bool B_referencia = false;
+            
             int INT_id_referencia;
+
+            string NombreFav = Convert.ToString(CIV_favorito.Text);
 
             id_idioma = EDB_AgregarFavorito.Buscar_Idioma(STR_Idioma);
 
@@ -240,13 +255,29 @@ namespace CapaPresentacion2
 
             id_versiculo = INT_Versiculo;
 
-            B_referencia = EDB_AgregarFavorito.Agregar_referencia(id_idioma, id_version, id_testamento, id_libro, id_versiculo);
+            id_capitulo = INT_Capitulo;
+            
+            if (RB_capitulo.Checked)
+            {
+                EDB_AgregarFavorito.Agregar_referencia(id_idioma, id_version, id_testamento, id_libro, id_capitulo, 0);
 
-            INT_id_referencia = EDB_AgregarFavorito.Buscar_referencia(id_idioma, id_version, id_testamento, id_libro, id_versiculo);
+                INT_id_referencia = EDB_AgregarFavorito.Buscar_referencia(id_idioma, id_version, id_testamento, id_libro, id_capitulo, 0);
 
-            B_favorito = EDB_AgregarFavorito.Agregar_fav(usuarioActualId, INT_id_referencia);
+                B_favorito = EDB_AgregarFavorito.Agregar_fav(usuarioActualId, INT_id_referencia, NombreFav);
 
-            if(B_favorito)
+            }
+
+            if (RB_versiculo.Checked)
+            {
+                EDB_AgregarFavorito.Agregar_referencia(id_idioma, id_version, id_testamento, id_libro, id_capitulo, id_versiculo);
+
+                INT_id_referencia = EDB_AgregarFavorito.Buscar_referencia(id_idioma, id_version, id_testamento, id_libro, id_capitulo, id_versiculo);
+
+                B_favorito = EDB_AgregarFavorito.Agregar_fav(usuarioActualId, INT_id_referencia, NombreFav);
+
+            }
+
+            if (B_favorito)
             {
                 MessageBox.Show("Se ha agregado a favoritos con exito", ":)", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
