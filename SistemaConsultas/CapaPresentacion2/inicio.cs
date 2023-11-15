@@ -97,7 +97,17 @@ namespace CapaPresentacion2
 
         private void menuAcercaDe_Click(object sender, EventArgs e)
         {
-            AbrirFormulario((IconMenuItem)sender, new AcercaDe());
+            DialogResult salienda = MessageBox.Show("¿Desea cerrar sesion?", "Adios", MessageBoxButtons.YesNoCancel);
+
+            if (salienda == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+
+        private void iconMenuItem4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

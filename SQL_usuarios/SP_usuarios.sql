@@ -11,7 +11,7 @@ USE DB_Usuarios
 --DROP PROCEDURE SP_SegundoCambioContraseña
 --DROP PROCEDURE Biblia.SP_GuardarRef
 --SELECT * FROM Usuario.UsuarioRegistros
-
+select * from Usuario.Contraseña
 
 GO
 --***********************************************Usuarios
@@ -394,7 +394,3 @@ SET NOCOUNT ON;
 			Id_usuario	= @Id_usuario;
 END
 GO
-
-
-EXEC Usuario.SP_BajaUsuario 11
-

@@ -189,4 +189,4 @@ INNER JOIN
 	
 GO
 
-SELECT * FROM Biblia.V_TextosBiblia
+SELECT * FROM Biblia.V_FavoritosBibliaCapitulos

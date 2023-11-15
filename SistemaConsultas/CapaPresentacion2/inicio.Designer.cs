@@ -41,6 +41,7 @@
             this.iconMenuItem1 = new FontAwesome.Sharp.IconMenuItem();
             this.label = new System.Windows.Forms.Label();
             this.labelUsuario = new System.Windows.Forms.Label();
+            this.iconMenuItem4 = new FontAwesome.Sharp.IconMenuItem();
             this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,6 +54,7 @@
             this.menuHistorial,
             this.menuConsulta,
             this.iconMenuItem2,
+            this.iconMenuItem4,
             this.menuAcercaDe});
             this.menu.Location = new System.Drawing.Point(0, 64);
             this.menu.Name = "menu";
@@ -139,14 +141,14 @@
             // 
             this.menuAcercaDe.AutoSize = false;
             this.menuAcercaDe.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.menuAcercaDe.IconChar = FontAwesome.Sharp.IconChar.Info;
+            this.menuAcercaDe.IconChar = FontAwesome.Sharp.IconChar.Cancel;
             this.menuAcercaDe.IconColor = System.Drawing.Color.RosyBrown;
             this.menuAcercaDe.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.menuAcercaDe.IconSize = 50;
             this.menuAcercaDe.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.menuAcercaDe.Name = "menuAcercaDe";
             this.menuAcercaDe.Size = new System.Drawing.Size(122, 69);
-            this.menuAcercaDe.Text = "Acerca de";
+            this.menuAcercaDe.Text = "Salir";
             this.menuAcercaDe.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.menuAcercaDe.Click += new System.EventHandler(this.menuAcercaDe_Click);
             // 
@@ -216,6 +218,21 @@
             this.labelUsuario.TabIndex = 5;
             this.labelUsuario.Text = "Nombre";
             // 
+            // iconMenuItem4
+            // 
+            this.iconMenuItem4.AutoSize = false;
+            this.iconMenuItem4.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.iconMenuItem4.IconChar = FontAwesome.Sharp.IconChar.Info;
+            this.iconMenuItem4.IconColor = System.Drawing.Color.RosyBrown;
+            this.iconMenuItem4.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconMenuItem4.IconSize = 50;
+            this.iconMenuItem4.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.iconMenuItem4.Name = "iconMenuItem4";
+            this.iconMenuItem4.Size = new System.Drawing.Size(122, 69);
+            this.iconMenuItem4.Text = "Acerca de";
+            this.iconMenuItem4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.iconMenuItem4.Click += new System.EventHandler(this.iconMenuItem4_Click);
+            // 
             // inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -254,6 +271,7 @@
         private FontAwesome.Sharp.IconMenuItem iconMenuItem1;
         private System.Windows.Forms.Label label;
         private System.Windows.Forms.Label labelUsuario;
+        private FontAwesome.Sharp.IconMenuItem iconMenuItem4;
     }
 }
 
