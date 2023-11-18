@@ -9,7 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using CapaEntidad;
 
 
 namespace CapaPresentacion2
@@ -81,7 +80,7 @@ namespace CapaPresentacion2
 
         private void menuHistorial_Click(object sender, EventArgs e)
         {
-            AbrirFormulario((IconMenuItem)sender, new Historial());
+            AbrirFormulario((IconMenuItem)sender, new Historial(usuarioActualId));
         }
 
         private void menuConsulta_Click(object sender, EventArgs e)

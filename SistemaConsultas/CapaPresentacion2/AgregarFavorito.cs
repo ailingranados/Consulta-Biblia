@@ -84,6 +84,9 @@ namespace CapaPresentacion2
 
         private void F_agregar_Click(object sender, EventArgs e)
         {
+            //limpiar campos
+            Limpiar_campos();
+
             EnlaceDB EDB_AgregarFavorito = new EnlaceDB();
 
             bool B_favorito = false;

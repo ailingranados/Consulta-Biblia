@@ -1,8 +1,7 @@
 --Ailin E. Granados Cantu
 --12/11/2023
 --Vistas del proyecto
-
-SELECT * FROM Biblia.V_TextosBibliaGOCREATE VIEW Biblia.V_TextosBiblia
+CREATE VIEW Biblia.V_TextosBiblia
 AS
 		SELECT 
     I.Id_Idioma,
@@ -64,7 +63,7 @@ LEFT JOIN
 	
 GO
 
-CREATE VIEW Biblia.V_FavoritosBiblia
+ALTER VIEW Biblia.V_FavoritosBiblia
 AS
 		SELECT 
     I.Id_Idioma,
@@ -79,6 +78,7 @@ AS
     VE.NumeroVers, 
     VE.Texto AS VERSICULO,
 	B.Id_referencia,
+	F.NombreFav,
 	F.Id_usuario,
 	F.FechaFav,
 	F.Id_favorito
@@ -189,4 +189,28 @@ INNER JOIN
 	
 GO
 
-SELECT * FROM Biblia.V_FavoritosBibliaCapitulos
+CREATE VIEW Consultas.V_Historial
+AS
+	SELECT
+	H.Id_historial,
+	H.Texto,
+	H.FechaBus,
+	C.Id_usuario,
+	C.Id_referencia,
+	R.Id_Idioma,
+	R.Id_Version,
+	R.Id_Testamento,
+	R.Id_Libro,
+	R.Id_Capitulo,
+	R.Id_Versiculo
+
+
+	FROM
+	Consultas.Historial H
+	JOIN Consultas.Consulta C ON C.Id_consulta = H.Consulta
+
+	JOIN Biblia.ReferenciaBiblia R ON R.Id_referencia = C.Id_referencia 
+	
+
+
+

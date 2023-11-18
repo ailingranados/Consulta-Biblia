@@ -117,13 +117,54 @@ AS
 BEGIN
 SET NOCOUNT ON
 	SELECT 
-		NombreFav, FechaFav, IDIOMA, VERSIONES, TESTAMENTOS, 
-		LIBRO, CAPITULO, VERSICULO, id_favorito
-		
-		FROM 
-		Biblia.V_FavoritosBibliaCapitulos
+	NombreFav,
+	FechaFav, 
+	IDIOMA,
+	VERSIONES,
+	TESTAMENTOS, 
+	LIBRO,
+	CAPITULO, 
+	COUNT(*) AS NUM_VERSICULOS,
+	Id_favorito,
+
+	Id_Idioma, 
+	Id_Version, 
+	Id_Testamento, 
+	Id_Libro, 
+	
+	Id_referencia, 
+	Id_usuario
+	
+		FROM Biblia.V_FavoritosBibliaCapitulos
 			WHERE 
-			Id_usuario = @Id_usuario
+				Id_usuario = @Id_usuario
+			GROUP BY 
+			NombreFav,
+			FechaFav, 
+			IDIOMA,
+			VERSIONES,
+			TESTAMENTOS, 
+			LIBRO,
+			CAPITULO, 
+			Id_favorito,
+
+			Id_Idioma, 
+			Id_Version, 
+			Id_Testamento, 
+			Id_Libro, 
+	
+			Id_referencia, 
+			Id_usuario
+
+			HAVING COUNT(*) > 1 ;
+
+	--SELECT 
+	--	NombreFav, FechaFav, IDIOMA, VERSIONES, TESTAMENTOS, 
+	--	LIBRO, CAPITULO, VERSICULO, id_favorito
+		
+	--	FROM 
+	--	Biblia.V_FavoritosBibliaCapitulos
+		
 END
 GO
 
@@ -168,6 +209,19 @@ SET NOCOUNT ON;
 END
 GO
 
+CREATE PROCEDURE Biblia.SP_VersiculosEnCapitulo
+@Id_capitulo	SMALLINT
+AS
+BEGIN
+SET NOCOUNT ON;
+	SELECT VERSICULO
+		FROM Biblia.V_TextosBiblia
+			WHERE NumeroCap = @Id_capitulo
+
+END
+GO
+
+
 
 
 
@@ -181,10 +235,8 @@ SELECT * FROM Relaciones.UsuarioEstatus
 EXEC Consultas.SP_BuscarFavUsuarioCap 3
 SELECT * FROM Biblia.V_FavoritosBibliaCapitulos
 
---SELECT Id_Idioma, IDIOMA, Id_Version, VERSIONES, Id_Testamento, TESTAMENTOS, Id_Libro, LIBRO, CAPITULO, Id_referencia, Id_usuario, FechaFav, Id_favorito, NombreFav, COUNT(*)
---FROM Biblia.V_FavoritosBibliaCapitulos
---GROUP BY Id_Idioma, IDIOMA, Id_Version, VERSIONES, Id_Testamento, TESTAMENTOS, Id_Libro, LIBRO, CAPITULO, Id_referencia, Id_usuario, FechaFav, Id_favorito, NombreFav
---HAVING COUNT(*) > 1;
+
+
 
 
 

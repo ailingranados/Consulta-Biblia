@@ -48,7 +48,7 @@ GO
 
 
 --activa el usuario
-CREATE PROCEDURE SP_ActivarUsuario
+ALTER PROCEDURE SP_ActivarUsuario
 @clave		VARCHAR(10),
 @ID			SMALLINT
 
@@ -71,11 +71,11 @@ SET NOCOUNT ON;
 		VALUES
 		(GETDATE(),'1', @ID)
 
-	UPDATE Usuario.UsuarioRegistros
-		SET
-			Contraseñas = (select max(Id_contraseña) as id from Usuario.Contraseña)
-		WHERE
-			Id_usuario = @ID
+	--UPDATE Usuario.UsuarioRegistros
+	--	SET
+	--		Contraseñas = (select max(Id_contraseña) as id from Usuario.Contraseña)
+	--	WHERE
+	--		Id_usuario = @ID
 			
 END
 GO

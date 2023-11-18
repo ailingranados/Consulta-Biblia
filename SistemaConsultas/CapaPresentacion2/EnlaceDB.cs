@@ -856,7 +856,7 @@ namespace CapaPresentacion2
             return id_test;
         }
 
-        public DataTable Consultar_Versiculos(int id_version, int id_libro)
+        public DataTable Consultar_Versiculos(int id_version, int id_libro, int id_capitulo)
         {
             var msg = "";
             DataTable tabla = new DataTable();
@@ -866,6 +866,49 @@ namespace CapaPresentacion2
 
                 conectar();
                 string qry = "Biblia.SP_VersiculosBiblia";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@Id_version", SqlDbType.Int);
+                parametro1.Value = id_version;
+
+                var parametro2 = _comandosql.Parameters.Add("@Id_libro", SqlDbType.Int);
+                parametro2.Value = id_libro;
+
+                var parametro3 = _comandosql.Parameters.Add("@Id_capitulo", SqlDbType.Int);
+                parametro3.Value = id_capitulo;
+
+                _adaptador.SelectCommand = _comandosql;
+                _adaptador.Fill(tabla);
+                // la ejecución del SP espera que regrese datos en formato tabla
+
+
+            }
+            catch (SqlException e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+            return tabla;
+        }
+
+        public DataTable Consultar_Capitulos(int id_version, int id_libro)
+        {
+            var msg = "";
+            DataTable tabla = new DataTable();
+
+            try
+            {
+
+                conectar();
+                string qry = "Biblia.SP_CapitulosBiblia";
                 _comandosql = new SqlCommand(qry, _conexion);
                 _comandosql.CommandType = CommandType.StoredProcedure;
                 _comandosql.CommandTimeout = 1200;
@@ -896,7 +939,7 @@ namespace CapaPresentacion2
             return tabla;
         }
 
-        public int Buscar_Ver(string NumVer)
+        public int Buscar_Ver(int idioma, int version, int testamento, int libros, int NumVer)
         {
             var msg = "";
             int id_test = 0;
@@ -910,8 +953,20 @@ namespace CapaPresentacion2
                 _comandosql.CommandType = CommandType.StoredProcedure;
                 _comandosql.CommandTimeout = 1200;
 
-                var parametro1 = _comandosql.Parameters.Add("@NumVer", SqlDbType.VarChar, 20);
-                parametro1.Value = NumVer;
+                var parametro1 = _comandosql.Parameters.Add("@IDIOMA", SqlDbType.Int);
+                parametro1.Value = idioma;
+
+                var parametro2 = _comandosql.Parameters.Add("@VERSION", SqlDbType.Int);
+                parametro2.Value = version;
+
+                var parametro3 = _comandosql.Parameters.Add("@TESTAMENTO", SqlDbType.Int);
+                parametro3.Value = testamento;
+
+                var parametro4 = _comandosql.Parameters.Add("@LIBRO", SqlDbType.Int);
+                parametro4.Value = NumVer;
+
+                var parametro5 = _comandosql.Parameters.Add("@NumVer", SqlDbType.Int);
+                parametro5.Value = NumVer;
 
 
                 _adaptador.SelectCommand = _comandosql;
@@ -934,6 +989,208 @@ namespace CapaPresentacion2
 
             return id_test;
         }
+
+        public string IdiomaPorId(int idioma)   
+        {
+            var msg = "";
+            string texto = null;
+
+            try
+            {
+
+                conectar();
+                string qry = "Biblia.SP_BuscarIdiomaPorId";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@id", SqlDbType.VarChar, 20);
+                parametro1.Value = idioma;
+                
+
+
+                _adaptador.SelectCommand = _comandosql;
+                object result = _comandosql.ExecuteScalar();
+                texto = result.ToString();
+
+
+
+            }
+            catch (SqlException e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+            return texto;
+        }
+
+        public string VersionPorId(int version)
+        {
+            var msg = "";
+            string texto = null;
+
+            try
+            {
+
+                conectar();
+                string qry = "Biblia.SP_BuscarVersionPorId";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@id", SqlDbType.VarChar, 20);
+                parametro1.Value = version;
+
+
+
+                _adaptador.SelectCommand = _comandosql;
+                object result = _comandosql.ExecuteScalar();
+                texto = result.ToString();
+
+
+
+            }
+            catch (SqlException e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+            return texto;
+        }
+
+        public string TestamentoPorId(int testamento)
+        {
+            var msg = "";
+            string texto = null;
+
+            try
+            {
+
+                conectar();
+                string qry = "Biblia.SP_BuscarTestamentoPorId";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@id", SqlDbType.VarChar, 20);
+                parametro1.Value = testamento;
+
+
+
+                _adaptador.SelectCommand = _comandosql;
+                object result = _comandosql.ExecuteScalar();
+                texto = result.ToString();
+
+
+
+            }
+            catch (SqlException e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+            return texto;
+        }
+
+        public string LibroPorId(int libro)
+        {
+            var msg = "";
+            string texto = null;
+
+            try
+            {
+
+                conectar();
+                string qry = "Biblia.SP_BuscarLibroPorId";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@id", SqlDbType.VarChar, 20);
+                parametro1.Value = libro;
+
+
+
+                _adaptador.SelectCommand = _comandosql;
+                object result = _comandosql.ExecuteScalar();
+                texto = result.ToString();
+
+
+
+            }
+            catch (SqlException e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+            return texto;
+        }
+
+      
+        public string VersiculoPorId(int versiculo)
+        {
+            var msg = "";
+            string texto = null;
+
+            try
+            {
+
+                conectar();
+                string qry = "Biblia.SP_BuscarVersiculoPorId";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@id", SqlDbType.VarChar, 20);
+                parametro1.Value = versiculo;
+
+
+
+                _adaptador.SelectCommand = _comandosql;
+                object result = _comandosql.ExecuteScalar();
+                texto = result.ToString();
+
+
+
+            }
+            catch (SqlException e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+            return texto;
+        }
+
 
         //************************************************************************CONSULTA DEPENDIENDO DE LA SELECCION DEL COMBOBOX
         public DataTable Consultar_IV(int Id_idioma, int id_version)
@@ -1069,7 +1326,7 @@ namespace CapaPresentacion2
             return tabla;
         }
 
-        public DataTable Consultar_IVTLVE(int Id_idioma, int id_version, int id_testamento, int id_libro, int id_versiculo)
+        public DataTable Consultar_IVTLVE(int Id_idioma, int id_version, int id_testamento, int id_libro, int id_capitulo, int id_versiculo)
         {
             var msg = "";
             DataTable tabla = new DataTable();
@@ -1098,6 +1355,59 @@ namespace CapaPresentacion2
 
                 var parametro5 = _comandosql.Parameters.Add("@Id_versiculo", SqlDbType.Int);
                 parametro5.Value = id_versiculo;
+
+                var parametro6 = _comandosql.Parameters.Add("@Id_capitulo", SqlDbType.Int);
+                parametro6.Value = id_capitulo;
+
+                _adaptador.SelectCommand = _comandosql;
+                _adaptador.Fill(tabla);
+                // la ejecución del SP espera que regrese datos en formato tabla
+
+
+            }
+            catch (SqlException e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+            return tabla;
+        }
+
+        public DataTable Consultar_IVTLC(int Id_idioma, int id_version, int id_testamento, int id_libro, int id_capitulo)
+        {
+            var msg = "";
+            DataTable tabla = new DataTable();
+
+            try
+            {
+
+                conectar();
+                string qry = "Biblia.SP_Consulta_IVTLC";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+                //cambie el varchar de 20 por int
+
+                var parametro1 = _comandosql.Parameters.Add("@Id_idioma", SqlDbType.Int);
+                parametro1.Value = Id_idioma;
+
+                var parametro2 = _comandosql.Parameters.Add("@Id_version", SqlDbType.Int);
+                parametro2.Value = id_version;
+
+                var parametro3 = _comandosql.Parameters.Add("@Id_testamento", SqlDbType.Int);
+                parametro3.Value = id_testamento;
+
+                var parametro4 = _comandosql.Parameters.Add("@Id_libro", SqlDbType.Int);
+                parametro4.Value = id_libro;
+
+                var parametro5 = _comandosql.Parameters.Add("@Id_capitulo", SqlDbType.Int);
+                parametro5.Value = id_capitulo;
 
                 _adaptador.SelectCommand = _comandosql;
                 _adaptador.Fill(tabla);
@@ -1499,6 +1809,127 @@ namespace CapaPresentacion2
             }
 
             return add;
+        }
+
+        public DataTable VersiculosEnCapitulo(int id_capitulo)
+        {
+            var msg = "";
+            DataTable tabla = new DataTable();
+
+            try
+            {
+
+                conectar();
+                string qry = "Biblia.SP_VersiculosEnCapitulo";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@Id_capitulo", SqlDbType.Int);
+                parametro1.Value = id_capitulo;
+
+
+                _adaptador.SelectCommand = _comandosql;
+                _adaptador.Fill(tabla);
+                // la ejecución del SP espera que regrese datos en formato tabla
+
+
+            }
+            catch (SqlException e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+            return tabla;
+        }
+
+        //***********************************************************************CONSULTA Y BUSQUEDA
+
+        public bool Insertar_consulta(int id_referencia, int id_usuario)
+        {
+            var msg = "";
+            var add = true;
+            try
+            {
+                conectar();
+                string qry = "Consultas.SP_InsertarConsulta";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@Id_referencia", SqlDbType.Int);
+                parametro1.Value = id_referencia;
+
+                var parametro2 = _comandosql.Parameters.Add("@Id_usuario", SqlDbType.Int);
+                parametro2.Value = id_usuario;
+
+
+                _adaptador.InsertCommand = _comandosql;
+                // También se tienen las propiedades del adaptador: UpdateCommand  y DeleteCommand
+
+                _comandosql.ExecuteNonQuery();
+
+            }
+            catch (SqlException e)
+            {
+                add = false;
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+            return add;
+        }
+
+
+        //***********************************************************************HISTORIAL
+
+        public DataTable Consultar_historial(int id_usuario)
+        {
+            var msg = "";
+            DataTable tabla = new DataTable();
+
+            try
+            {
+
+                conectar();
+                string qry = "Consultas.SP_BuscarHistorial";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@Id_usuario", SqlDbType.Int);
+                parametro1.Value = id_usuario;
+
+
+                _adaptador.SelectCommand = _comandosql;
+                _adaptador.Fill(tabla);
+                // la ejecución del SP espera que regrese datos en formato tabla
+
+
+            }
+            catch (SqlException e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+            return tabla;
         }
 
 

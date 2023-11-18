@@ -36,6 +36,22 @@ SET NOCOUNT ON;
 END
 GO
 
+CREATE PROCEDURE Biblia.SP_BuscarIdiomaPorId
+@id		SMALLINT
+AS
+BEGIN
+SET NOCOUNT ON;
+
+	SELECT 
+	Nombre
+		FROM 
+		DB_Bible.dbo.Idiomas
+			WHERE 
+			Id_Idioma = @id
+
+END
+GO
+
 CREATE PROCEDURE Biblia.SP_VersionBiblia
 @Id_idioma	SMALLINT
 AS
@@ -62,6 +78,22 @@ SET NOCOUNT ON;
 		DB_Bible.dbo.Versiones
 			WHERE 
 			NombreVersion = @Nombre
+
+END
+GO
+
+CREATE PROCEDURE Biblia.SP_BuscarVersionPorId
+@id		SMALLINT
+AS
+BEGIN
+SET NOCOUNT ON;
+
+	SELECT 
+	NombreVersion
+		FROM 
+		DB_Bible.dbo.Versiones
+			WHERE 
+			Id_Version = @id
 
 END
 GO
@@ -97,6 +129,21 @@ SET NOCOUNT ON;
 END
 GO
 
+CREATE PROCEDURE Biblia.SP_BuscarTestamentoPorId
+@id		SMALLINT
+AS
+BEGIN
+SET NOCOUNT ON;
+
+	SELECT 
+	Nombre
+		FROM 
+		DB_Bible.dbo.Testamentos
+			WHERE 
+			Id_Testamento = @id
+
+END
+GO
 
 CREATE PROCEDURE Biblia.SP_LibrosBiblia
 @Id_idioma		SMALLINT,
@@ -131,10 +178,48 @@ SET NOCOUNT ON;
 END
 GO
 
-CREATE PROCEDURE Biblia.SP_VersiculosBiblia
+CREATE PROCEDURE Biblia.SP_BuscarLibroPorId
+@id		SMALLINT
+AS
+BEGIN
+SET NOCOUNT ON;
+
+	SELECT 
+	Nombre
+		FROM 
+		DB_Bible.dbo.Libros
+			WHERE 
+			Id_Libro = @id
+
+END
+GO
+
+ALTER PROCEDURE Biblia.SP_CapitulosBiblia
 
 @Id_version		SMALLINT,
 @Id_libro		SMALLINT
+AS
+BEGIN
+SET NOCOUNT ON;
+
+	SELECT 
+    Id_Version, Id_Libro, NumeroCap, MIN(NumeroVers) AS MinVersiculo, MAX(NumeroVers) AS MaxVersiculo
+	FROM 
+		DB_Bible.dbo.Versiculos
+	WHERE
+			Id_Version	=	@Id_version AND
+			Id_Libro	=	@Id_libro
+	GROUP BY
+		Id_Version, Id_Libro, NumeroCap;		
+END
+GO
+
+
+CREATE PROCEDURE Biblia.SP_VersiculosBiblia
+
+@Id_version		SMALLINT,
+@Id_libro		SMALLINT,
+@Id_capitulo	SMALLINT
 AS
 BEGIN
 SET NOCOUNT ON;
@@ -145,51 +230,78 @@ SET NOCOUNT ON;
 		DB_Bible.dbo.Versiculos
 			WHERE
 			Id_Version	=	@Id_version AND
-			Id_Libro	=	@Id_libro
+			Id_Libro	=	@Id_libro	AND
+			NumeroCap	=	@Id_capitulo
 			
 END
 GO
 
-CREATE PROCEDURE Biblia.SP_BuscarVersiculo
+ALTER PROCEDURE Biblia.SP_BuscarVersiculo
+@IDIOMA		SMALLINT,
+@VERSION	SMALLINT,
+@TESTAMENTO	SMALLINT,
+@LIBRO		SMALLINT,
 @NumVer		SMALLINT
 AS
 BEGIN
 SET NOCOUNT ON;
 
 	SELECT 
-	Id_Version
+	NumeroVers
 		FROM 
-		DB_Bible.dbo.Versiculos
+		Biblia.V_TextosBiblia
 			WHERE 
+			
+			Id_Idioma = @IDIOMA AND
+			Id_Version = @VERSION AND
+			Id_Testamento = @TESTAMENTO AND
+			Id_Libro = @LIBRO AND
 			NumeroVers = @NumVer
 
 END
 GO
 
-CREATE PROCEDURE Biblia.SP_Consulta_IV
+CREATE PROCEDURE Biblia.SP_BuscarVersiculoPorId
+@id		SMALLINT
+AS
+BEGIN
+SET NOCOUNT ON;
+
+	SELECT 
+	Texto
+		FROM 
+		DB_Bible.dbo.Versiculos
+			WHERE 
+			Id_Vers = @id
+
+END
+GO
+
+ALTER PROCEDURE Biblia.SP_Consulta_IV
 @Id_idioma		SMALLINT,
 @Id_version		SMALLINT
 AS
 BEGIN
 SET NOCOUNT ON;
 
-	SELECT I.Nombre, V.NombreVersion, T.Nombre, L.Nombre, VE.NumeroVers, VE.Texto
-		FROM
-			DB_Bible.dbo.Idiomas I
-			INNER JOIN DB_Bible.dbo.Versiones V		ON	V.Id_Idioma = @Id_idioma
-			INNER JOIN DB_Bible.dbo.Testamentos T	ON	T.Id_Idioma = @Id_idioma
-			INNER JOIN DB_Bible.dbo.Libros L		ON	L.Id_Idioma = @Id_idioma
-			INNER JOIN DB_Bible.dbo.Versiculos VE	ON	VE.Id_Version = @Id_version
-
+	--SELECT I.Nombre, V.NombreVersion, T.Nombre, L.Nombre, VE.NumeroVers, VE.Texto
+	--	FROM
+	--		DB_Bible.dbo.Idiomas I
+	--		INNER JOIN DB_Bible.dbo.Versiones V		ON	V.Id_Idioma = @Id_idioma
+	--		INNER JOIN DB_Bible.dbo.Testamentos T	ON	T.Id_Idioma = @Id_idioma
+	--		INNER JOIN DB_Bible.dbo.Libros L		ON	L.Id_Idioma = @Id_idioma
+	--		INNER JOIN DB_Bible.dbo.Versiculos VE	ON	VE.Id_Version = @Id_version
+	SELECT IDIOMA, VERSIONES, TESTAMENTOS, LIBRO,NumeroCap AS CAPITULO, NumeroVers AS NUMERO, VERSICULO
+	FROM Biblia.V_TextosBiblia
 		WHERE 
-		I.Id_Idioma		=	@Id_idioma	AND
-		V.Id_Version	=	@Id_version;
+		Id_Idioma		=	@Id_idioma	AND
+		Id_Version	=	@Id_version;
 
 END
 GO
 
 
-CREATE PROCEDURE Biblia.SP_Consulta_IVT
+ALTER PROCEDURE Biblia.SP_Consulta_IVT
 @Id_idioma		SMALLINT,
 @Id_version		SMALLINT,
 @Id_testamento	SMALLINT
@@ -197,23 +309,18 @@ AS
 BEGIN
 SET NOCOUNT ON;
 
-	SELECT I.Nombre, V.NombreVersion, T.Nombre, L.Nombre, VE.NumeroVers, VE.Texto
-		FROM
-			DB_Bible.dbo.Idiomas I
-			INNER JOIN DB_Bible.dbo.Versiones V		ON	V.Id_Idioma = @Id_idioma
-			INNER JOIN DB_Bible.dbo.Testamentos T	ON	T.Id_Idioma = @Id_idioma
-			INNER JOIN DB_Bible.dbo.Libros L		ON	L.Id_Idioma = @Id_idioma
-			INNER JOIN DB_Bible.dbo.Versiculos VE	ON	VE.Id_Version = @Id_version
+	SELECT IDIOMA, VERSIONES, TESTAMENTOS, LIBRO,NumeroCap AS CAPITULO, NumeroVers AS NUMERO, VERSICULO
+	FROM Biblia.V_TextosBiblia
 
 		WHERE 
-		I.Id_Idioma		=	@Id_idioma	AND
-		V.Id_Version	=	@Id_version	AND
-		T.Id_Testamento	=	@Id_testamento;
+		Id_Idioma		=	@Id_idioma	AND
+		Id_Version	=	@Id_version	AND
+		Id_Testamento	=	@Id_testamento;
 
 END
 GO
 
-CREATE PROCEDURE Biblia.SP_Consulta_IVTL
+ALTER PROCEDURE Biblia.SP_Consulta_IVTL
 @Id_idioma		SMALLINT,
 @Id_version		SMALLINT,
 @Id_testamento	SMALLINT,
@@ -221,59 +328,69 @@ CREATE PROCEDURE Biblia.SP_Consulta_IVTL
 AS
 BEGIN
 SET NOCOUNT ON;
-
-	SELECT I.Nombre, V.NombreVersion, T.Nombre, L.Nombre, VE.NumeroVers, VE.Texto
-		FROM
-			DB_Bible.dbo.Idiomas I
-			INNER JOIN DB_Bible.dbo.Versiones V		ON	V.Id_Idioma = @Id_idioma
-			INNER JOIN DB_Bible.dbo.Testamentos T	ON	T.Id_Idioma = @Id_idioma
-			INNER JOIN DB_Bible.dbo.Libros L		ON	L.Id_Idioma = @Id_idioma
-			INNER JOIN DB_Bible.dbo.Versiculos VE	ON	VE.Id_Version = @Id_version
+	SELECT IDIOMA, VERSIONES, TESTAMENTOS, LIBRO,NumeroCap AS CAPITULO, NumeroVers AS NUMERO, VERSICULO
+	FROM Biblia.V_TextosBiblia
 
 		WHERE 
-		I.Id_Idioma		=	@Id_idioma	AND
-		V.Id_Version	=	@Id_version	AND
-		T.Id_Testamento	=	@Id_testamento	AND
-		L.Id_Libro		=	@Id_libro;
+		Id_Idioma		=	@Id_idioma	AND
+		Id_Version	=	@Id_version	AND
+		Id_Testamento	=	@Id_testamento	AND
+		Id_Libro		=	@Id_libro;
 
 END
 GO
 
-CREATE PROCEDURE Biblia.SP_Consulta_IVTLVE
+ALTER PROCEDURE Biblia.SP_Consulta_IVTLVE
 @Id_idioma		SMALLINT,
 @Id_version		SMALLINT,
 @Id_testamento	SMALLINT,
 @Id_libro		SMALLINT,
+@Id_capitulo	SMALLINT,
 @Id_versiculo	SMALLINT
 AS
 BEGIN
 SET NOCOUNT ON;
 
 --PONERLE I.NOMBRE AS IDIOMA
-	SELECT 
-	I.Nombre AS IDIOMA, 
-	V.NombreVersion AS VERSIONES, 
-	T.Nombre AS TESTAMENTO, 
-	L.Nombre AS LIBRO, 
-	VE.NumeroVers, 
-	VE.Texto AS VERSICULO
-		FROM
-			DB_Bible.dbo.Idiomas I
-			INNER JOIN DB_Bible.dbo.Versiones V		ON	V.Id_Idioma = @Id_idioma
-			INNER JOIN DB_Bible.dbo.Testamentos T	ON	T.Id_Idioma = @Id_idioma
-			INNER JOIN DB_Bible.dbo.Libros L		ON	L.Id_Idioma = @Id_idioma
-			INNER JOIN DB_Bible.dbo.Versiculos VE	ON	VE.Id_Version = @Id_version
-
+SELECT IDIOMA, VERSIONES, TESTAMENTOS, LIBRO,NumeroCap AS CAPITULO, NumeroVers AS NUMERO, VERSICULO
+	FROM Biblia.V_TextosBiblia
 		WHERE 
-		I.Id_Idioma		=	@Id_idioma	AND
-		V.Id_Version	=	@Id_version	AND
-		T.Id_Testamento	=	@Id_testamento	AND
-		L.Id_Libro		=	@Id_libro		AND
-		VE.Id_Vers		=	@Id_versiculo;
+		Id_Idioma		=	@Id_idioma	AND
+		Id_Version	=	@Id_version	AND
+		Id_Testamento	=	@Id_testamento	AND
+		Id_Libro		=	@Id_libro		AND
+		NumeroCap		=	@Id_capitulo	AND
+		NumeroVers		=	@Id_versiculo;
+
+END
+GO
+
+CREATE PROCEDURE Biblia.SP_Consulta_IVTLC
+@Id_idioma		SMALLINT,
+@Id_version		SMALLINT,
+@Id_testamento	SMALLINT,
+@Id_libro		SMALLINT,
+
+@Id_capitulo	SMALLINT
+AS
+BEGIN
+SET NOCOUNT ON;
+
+--PONERLE I.NOMBRE AS IDIOMA
+SELECT IDIOMA, VERSIONES, TESTAMENTOS, LIBRO,NumeroCap AS CAPITULO, NumeroVers AS NUMERO, VERSICULO
+	FROM Biblia.V_TextosBiblia
+		WHERE 
+		Id_Idioma		=	@Id_idioma	AND
+		Id_Version	=	@Id_version	AND
+		Id_Testamento	=	@Id_testamento	AND
+		Id_Libro		=	@Id_libro		AND
+		NumeroCap		= @Id_capitulo
 
 END
 GO
 
 SELECT * FROM Consultas.Favorito
 SELECT * FROM Biblia.ReferenciaBiblia
+EXEC Biblia.SP_Consulta_IV 1, 2
 
+EXEC Biblia.SP_BuscarVersiculo 1, 2, 1, 1, 2

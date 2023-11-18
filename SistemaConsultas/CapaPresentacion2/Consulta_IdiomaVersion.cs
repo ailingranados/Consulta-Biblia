@@ -27,6 +27,7 @@ namespace CapaPresentacion2
         private static DataTable DT_Versiculo;
         private static int id_versiculo;
         private static int id_capitulo;
+        private static DataTable DT_Capitulo;
 
         private static DataTable DT_consulta;
 
@@ -37,9 +38,10 @@ namespace CapaPresentacion2
         private static string STR_Version;
         private static string STR_Testamento;
         private static string STR_Libro;
+     
         private static int INT_Capitulo;
         private static int INT_Versiculo;
-
+       
         public Consulta_IdiomaVersion(int id_usu)
         {
             usuarioActualId = id_usu;
@@ -67,6 +69,9 @@ namespace CapaPresentacion2
         {
             //limpiar items de version
             CB_version.Items.Clear();
+            CB_testamento.Items.Clear();
+            CB_versiculo.Items.Clear();
+            CB_libro.Items.Clear();
 
             int j = 0;
             EnlaceDB ConsultarVersion = new EnlaceDB();
@@ -84,9 +89,7 @@ namespace CapaPresentacion2
                 j++;
             }
 
-            //testamento
-            CB_testamento.Items.Clear();
-
+            
             int a = 0;
             EnlaceDB ConsultarTestamento = new EnlaceDB();
 
@@ -109,6 +112,18 @@ namespace CapaPresentacion2
             label6.Text = "";
             L_capitulo.Text = "";
 
+            if(CB_idioma.Text == "")
+            {
+                MessageBox.Show("Debe seleccionar un idioma", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (CB_version.Text == "")
+            {
+                MessageBox.Show("Debe seleccionar una version", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
             EnlaceDB EDB_ConsultarDGV = new EnlaceDB();
 
             string STR_idioma = CB_idioma.Text;
@@ -119,7 +134,32 @@ namespace CapaPresentacion2
 
             string STR_libro = CB_libro.Text;
 
+            string STR_capitulo = CB_capitulo.Text;
+
             string STR_versiculo = CB_versiculo.Text;
+
+            int INT_versiculo;
+            if (STR_versiculo == "")
+            {
+                INT_versiculo = 0;
+                
+            }
+            else
+            {
+                
+                INT_versiculo = int.Parse(STR_versiculo);
+            }
+
+            int INT_capitulo;
+            if (STR_capitulo == "")
+            {
+                INT_capitulo = 0;
+            }
+            else
+            {
+                INT_capitulo = int.Parse(STR_capitulo);
+            }
+         
 
             int id_versionB = EDB_ConsultarDGV.Buscar_Version(STR_version);
 
@@ -129,31 +169,50 @@ namespace CapaPresentacion2
 
             int id_libroB = EDB_ConsultarDGV.Buscar_Libro(STR_libro);
 
+            EDB_ConsultarDGV.Agregar_referencia(id_idiomaB, id_versionB, id_testamentoB, id_libroB, INT_capitulo, INT_versiculo);
 
-            int id_versiculoB = EDB_ConsultarDGV.Buscar_Ver(STR_versiculo);
+            int id_referencia = EDB_ConsultarDGV.Buscar_referencia(id_idiomaB, id_versionB, id_testamentoB, id_libroB, INT_capitulo, INT_versiculo);
+            
 
-            if ((id_testamentoB == 0) & (id_libroB == 0) & (id_versiculoB == 0))
+
+
+            if ((id_testamentoB == 0) & (id_libroB == 0) & (INT_versiculo == 0) & (INT_capitulo == 0))
             {
                 DT_consulta = EDB_ConsultarDGV.Consultar_IV(id_idiomaB, id_versionB);
                 DGV_consulta.DataSource = DT_consulta;
             }
-            else if((id_libroB == 0) & (id_versiculoB == 0))
+            else if((id_libroB == 0) & (INT_versiculo == 0) & (INT_capitulo == 0))
             {
                 DT_consulta = EDB_ConsultarDGV.Consultar_IVT(id_idiomaB, id_versionB, id_testamentoB);
                 DGV_consulta.DataSource = DT_consulta;
             }
-            else if (id_versiculoB == 0)
+            else if (INT_versiculo == 0 & (INT_capitulo == 0))
             {
                 DT_consulta = EDB_ConsultarDGV.Consultar_IVTL(id_idiomaB, id_versionB, id_testamentoB, id_libroB);
                 DGV_consulta.DataSource = DT_consulta;
             }
+            else if (INT_versiculo == 0)
+            {
+                DT_consulta = EDB_ConsultarDGV.Consultar_IVTLC(id_idiomaB, id_versionB, id_testamentoB, id_libroB, INT_capitulo);
+                DGV_consulta.DataSource = DT_consulta;
+            }
             else
             {
-                DT_consulta = EDB_ConsultarDGV.Consultar_IVTLVE(id_idiomaB, id_versionB, id_testamentoB, id_libroB, id_versiculoB);
+                DT_consulta = EDB_ConsultarDGV.Consultar_IVTLVE(id_idiomaB, id_versionB, id_testamentoB, id_libroB, INT_capitulo, INT_versiculo);
                 DGV_consulta.DataSource = DT_consulta;
             }
             
+            //bool B_consulta = 
+             EDB_ConsultarDGV.Insertar_consulta(id_referencia, usuarioActualId);
 
+            //if (B_consulta)
+            //{
+            //    MessageBox.Show("Busqueda Realizada", ":)", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
+            //else
+            //{
+            //    MessageBox.Show("No se ha podido agregar :(", "FATAL ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
 
         private void label14_Click(object sender, EventArgs e)
@@ -164,6 +223,7 @@ namespace CapaPresentacion2
         public void CB_testamento_SelectedIndexChanged(object sender, EventArgs e)
         {
             CB_libro.Items.Clear();
+            CB_versiculo.Items.Clear();
 
             int b = 0;
 
@@ -195,6 +255,8 @@ namespace CapaPresentacion2
         private void CB_libro_SelectedIndexChanged(object sender, EventArgs e)
         {
             CB_versiculo.Items.Clear();
+            CB_capitulo.Items.Clear();
+
             int c = 0;
 
             EnlaceDB EDB_ConsultarVersiculo = new EnlaceDB();
@@ -207,13 +269,14 @@ namespace CapaPresentacion2
 
             id_libro = EDB_ConsultarVersiculo.Buscar_Libro(STR_libro);
 
-            DT_Versiculo = EDB_ConsultarVersiculo.Consultar_Versiculos(id_version, id_libro);
+            DT_Capitulo = EDB_ConsultarVersiculo.Consultar_Capitulos(id_version, id_libro);
 
-            while (c < DT_Versiculo.Rows.Count)
+            while (c < DT_Capitulo.Rows.Count)
             {
-                CB_versiculo.Items.Add(DT_Versiculo.Rows[c]["NumeroVers"].ToString());
+                CB_capitulo.Items.Add(DT_Capitulo.Rows[c]["NumeroCap"].ToString());
                 c++;
             }
+
         }
 
         private void DGV_consulta_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -228,10 +291,30 @@ namespace CapaPresentacion2
             STR_Version = DGV_consulta.CurrentRow.Cells[1].Value.ToString();
             STR_Testamento = DGV_consulta.CurrentRow.Cells[2].Value.ToString();
             STR_Libro = DGV_consulta.CurrentRow.Cells[3].Value.ToString();
-            INT_Versiculo = int.Parse(DGV_consulta.CurrentRow.Cells[5].Value.ToString()); ;
+            //STR_Versiculo = DGV_consulta.CurrentRow.Cells[5].Value.ToString();
+            //INT_Versiculo = int.Parse(DGV_consulta.CurrentRow.Cells[5].Value.ToString());
+           
+            if (int.TryParse(DGV_consulta.CurrentRow.Cells[5].Value.ToString(), out INT_Versiculo))
+            {
+                INT_Versiculo = int.Parse(DGV_consulta.CurrentRow.Cells[5].Value.ToString());
+            }
+            else
+            {
+                // Handle the case where CB_versiculo.Text is not a valid integer
+                INT_Versiculo = 0;
+            }
 
             
-            INT_Capitulo = int.Parse(DGV_consulta.CurrentRow.Cells[4].Value.ToString());
+            
+            if (int.TryParse(DGV_consulta.CurrentRow.Cells[4].Value.ToString(), out INT_Capitulo))
+            {
+                INT_Capitulo = int.Parse(DGV_consulta.CurrentRow.Cells[4].Value.ToString());
+            }
+            else
+            {
+                // Handle the case where CB_versiculo.Text is not a valid integer
+                INT_Capitulo = 0;
+            }
 
         }
 
@@ -284,6 +367,56 @@ namespace CapaPresentacion2
             else
             {
                 MessageBox.Show("No se ha podido agregar :(", "FATAL ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void CB_version_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            //CB_versiculo.Items.Clear();
+            
+        }
+
+        private void Limpiar_CB_Click(object sender, EventArgs e)
+        {
+            //CB_idioma.Items.Clear();
+            CB_version.Items.Clear();
+            CB_testamento.Items.Clear();
+            CB_versiculo.Items.Clear();
+            CB_libro.Items.Clear();
+            CB_capitulo.Items.Clear();
+
+            DGV_consulta.DataSource = null;
+        }
+
+        private void CB_capitulo_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            CB_versiculo.Items.Clear();
+           
+
+            int D = 0;
+
+            EnlaceDB EDB_ConsultarVersiculo = new EnlaceDB();
+
+            string STR_libro = CB_libro.Text;
+
+            string STR_version = CB_version.Text;
+
+            string STR_capitulo = CB_capitulo.Text;
+
+            id_version = EDB_ConsultarVersiculo.Buscar_Version(STR_version);
+
+            id_libro = EDB_ConsultarVersiculo.Buscar_Libro(STR_libro);
+
+            id_capitulo = int.Parse(STR_capitulo);
+ 
+
+            DT_Versiculo = EDB_ConsultarVersiculo.Consultar_Versiculos(id_version, id_libro, id_capitulo);
+
+            while (D < DT_Versiculo.Rows.Count)
+            {
+                CB_versiculo.Items.Add(DT_Versiculo.Rows[D]["NumeroVers"].ToString());
+                D++;
             }
         }
     }

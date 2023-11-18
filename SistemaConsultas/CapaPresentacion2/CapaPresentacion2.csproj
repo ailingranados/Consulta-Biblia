@@ -197,15 +197,5 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CapaBiblia\CapaBiblia.csproj">
-      <Project>{6dc2c6b7-2afe-4058-8f6a-75fd497e4125}</Project>
-      <Name>CapaBiblia</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CapaEntidad\CapaEntidad.csproj">
-      <Project>{a5af13a2-4527-4a9f-a7c9-c77fc5a61e37}</Project>
-      <Name>CapaEntidad</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -47,15 +47,9 @@ D:\Escuela\5 Semestre\MAD\SistemaConsultas\CapaPresentacion2\obj\Debug\CapaPrese
 C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\bin\Debug\CapaPresentacion2.exe.config
 C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\bin\Debug\CapaPresentacion2.exe
 C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\bin\Debug\CapaPresentacion2.pdb
-C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\bin\Debug\CapaBiblia.dll
-C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\bin\Debug\CapaEntidad.dll
 C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\bin\Debug\FontAwesome.Sharp.dll
 C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\bin\Debug\FontAwesome.Sharp.Material.dll
 C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\bin\Debug\FontAwesome.Sharp.Pro.dll
-C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\bin\Debug\CapaDatos.dll
-C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\bin\Debug\CapaBiblia.pdb
-C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\bin\Debug\CapaEntidad.pdb
-C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\bin\Debug\CapaDatos.pdb
 C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\obj\Debug\CapaPresentacion2.csproj.AssemblyReference.cache
 C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\obj\Debug\CapaPresentacion2.AcercaDe.resources
 C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\obj\Debug\CapaPresentacion2.Busqueda.resources

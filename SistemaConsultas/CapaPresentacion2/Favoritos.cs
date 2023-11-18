@@ -15,6 +15,8 @@ namespace CapaPresentacion2
     {
         private static int usuarioActualId;
         private static DataTable DT_favoritos;
+        private static DataTable DT_versiculos;
+        StringBuilder sb = new StringBuilder();
 
         public Favoritos(int id_usu)
         {
@@ -40,6 +42,8 @@ namespace CapaPresentacion2
             DT_favoritos = EDB_Favoritos.tabla_favoritos(usuarioActualId);
 
             DGV_Favoritos.DataSource = DT_favoritos;
+
+            DT_versiculos = null;
         }
 
         private void iconButton3_Click(object sender, EventArgs e)
@@ -53,6 +57,20 @@ namespace CapaPresentacion2
             DT_favoritos = EDB_Favoritos.tabla_favoritosCapitulos(usuarioActualId);
 
             DGV_Favoritos.DataSource = DT_favoritos;
+
+            DGV_Favoritos.Columns[8].Visible = false;
+            DGV_Favoritos.Columns[9].Visible = false;
+            DGV_Favoritos.Columns[10].Visible = false;
+            DGV_Favoritos.Columns[11].Visible = false;
+            DGV_Favoritos.Columns[12].Visible = false;
+            DGV_Favoritos.Columns[13].Visible = false;
+            DGV_Favoritos.Columns[14].Visible = false;
+
+            int capitulo = int.Parse(DGV_Favoritos.CurrentRow.Cells[6].Value.ToString());
+
+            DT_versiculos = EDB_Favoritos.VersiculosEnCapitulo(capitulo);
+
+
         }
 
         private void DGV_Favoritos_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -67,6 +85,23 @@ namespace CapaPresentacion2
             L_capitulo.Text = DGV_Favoritos.CurrentRow.Cells[6].Value.ToString();
             L_versiculo.Text = DGV_Favoritos.CurrentRow.Cells[7].Value.ToString();
 
+            if (DT_versiculos != null)
+            {
+                L_versiculo.Text = "";
+                int lineNumber = 1; 
+
+                foreach (DataRow row in DT_versiculos.Rows)
+                {
+                    sb.AppendLine($"{lineNumber}. {row[0].ToString()}"); // Agrega el número de línea seguido del valor
+                    lineNumber++;
+                }
+
+                L_versiculo.Multiline = true;
+                L_versiculo.Text = sb.ToString();
+            }
+         
+
+          
 
         }
 
@@ -78,6 +113,7 @@ namespace CapaPresentacion2
             L_libro.Text = "";
             L_capitulo.Text = "";
             L_versiculo.Text = "";
+            sb.Clear();
         }
 
         private void F_usuario_Click(object sender, EventArgs e)

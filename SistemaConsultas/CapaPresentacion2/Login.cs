@@ -8,9 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using CapaBiblia;
-using CapaEntidad;
-
 namespace CapaPresentacion2
 {
     public partial class Login : Form
