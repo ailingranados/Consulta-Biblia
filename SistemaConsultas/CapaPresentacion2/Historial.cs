@@ -13,6 +13,7 @@ namespace CapaPresentacion2
     public partial class Historial : Form
     {
         private static int usuarioActualId;
+        private static DataTable DT_Historial_referencias;
         public Historial(int id_usu)
         {
             usuarioActualId = id_usu;
@@ -27,7 +28,7 @@ namespace CapaPresentacion2
         private void Historial_Load(object sender, EventArgs e)
         {
             EnlaceDB conexion = new EnlaceDB();
-            DataTable DT_Historial_referencias = conexion.Consultar_historial(usuarioActualId);
+            DT_Historial_referencias = conexion.Consultar_historial(usuarioActualId);
 
             DT_Historial_referencias.Columns.Add("IDIOMA", typeof(string));
             DT_Historial_referencias.Columns.Add("VERSION", typeof(string));
@@ -113,6 +114,53 @@ namespace CapaPresentacion2
             DGV_historial.Columns[10].Visible = false;
 
 
+        }
+
+        private void BTN_eliminar_Click(object sender, EventArgs e)
+        {
+            EnlaceDB conexion = new EnlaceDB();
+
+            if(rb_todo.Checked)
+            {
+
+                foreach (DataRow row in DT_Historial_referencias.Rows)
+                {
+                    int historial = Convert.ToInt32(row["Id_historial"]);
+
+                    conexion.Eliminar_historial(historial);
+                }    
+                MessageBox.Show("Se ha borrado el historial", ":)", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+            }
+            else
+            {
+                string STR_historial = DGV_historial.CurrentRow.Cells[0].Value.ToString();
+                int historial;
+                if (STR_historial == "")
+                {
+                    historial = 0;
+
+                }
+                else
+                {
+
+                    historial = int.Parse(STR_historial);
+                }
+
+                if (historial == 0)
+                {
+                    MessageBox.Show("No se ha seleccionado algo para borrar", "FATAL ERROR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    conexion.Eliminar_historial(historial);
+                    MessageBox.Show("Se ha borrado el historial", ":)", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+
+                }
+
+
+            }
         }
     }
 }

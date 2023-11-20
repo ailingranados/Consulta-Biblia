@@ -91,7 +91,7 @@ namespace CapaPresentacion2
 
         private void iconMenuItem2_Click(object sender, EventArgs e)
         {
-            AbrirFormulario((IconMenuItem)sender, new Busqueda());
+            AbrirFormulario((IconMenuItem)sender, new Busqueda(usuarioActualId));
         }
 
         private void menuAcercaDe_Click(object sender, EventArgs e)

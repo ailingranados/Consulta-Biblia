@@ -140,3 +140,19 @@ CONSTRAINT		FK_consultaH
 FOREIGN KEY		(Consulta) 
 REFERENCES		Consultas.Consulta(Id_consulta)
 GO
+
+
+ALTER TABLE Consultas.Busqueda
+DROP COLUMN Fecha
+
+ALTER TABLE Consultas.Busqueda
+DROP Constraint FK_historialB
+
+ALTER TABLE Consultas.Busqueda
+DROP COLUMN Historial
+
+ALTER TABLE Consultas.Busqueda
+DROP Constraint FK_referenciaB
+
+ALTER TABLE Consultas.Busqueda
+DROP COLUMN Id_referencia

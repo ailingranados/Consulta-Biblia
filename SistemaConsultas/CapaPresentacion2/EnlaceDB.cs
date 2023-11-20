@@ -1891,6 +1891,96 @@ namespace CapaPresentacion2
             return add;
         }
 
+        public bool Insertar_busqueda( int id_usuario, string palabras)
+        {
+            var msg = "";
+            var add = true;
+            try
+            {
+                conectar();
+                string qry = "Consultas.SP_InsertarBusqueda";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@palabras", SqlDbType.VarChar, 30);
+                parametro1.Value = palabras;
+
+                var parametro2 = _comandosql.Parameters.Add("@Id_usuario", SqlDbType.Int);
+                parametro2.Value = id_usuario;
+
+
+                _adaptador.InsertCommand = _comandosql;
+                // También se tienen las propiedades del adaptador: UpdateCommand  y DeleteCommand
+
+                _comandosql.ExecuteNonQuery();
+
+            }
+            catch (SqlException e)
+            {
+                add = false;
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+            return add;
+        }
+
+        public DataTable BusquedaPorPalabra( int Id_idioma, int Id_version, int Id_testamento, int Id_Libro,string palabras )
+        {
+            var msg = "";
+            DataTable tabla = new DataTable();
+
+            try
+            {
+
+                conectar();
+                string qry = "Consultas.SP_BusquedaPorPalabra";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@Id_idioma", SqlDbType.Int);
+                parametro1.Value = Id_idioma;
+
+                var parametro2 = _comandosql.Parameters.Add("@Id_version", SqlDbType.Int);
+                parametro2.Value = Id_version;
+
+                var parametro3 = _comandosql.Parameters.Add("@Id_testamento", SqlDbType.Int);
+                parametro3.Value = Id_testamento;
+
+                var parametro4 = _comandosql.Parameters.Add("@Id_Libro", SqlDbType.Int);
+                parametro4.Value = Id_Libro;
+
+                var parametro5 = _comandosql.Parameters.Add("@palabras", SqlDbType.VarChar, 30);
+                parametro5.Value = palabras;
+
+
+                _adaptador.SelectCommand = _comandosql;
+                _adaptador.Fill(tabla);
+                // la ejecución del SP espera que regrese datos en formato tabla
+
+
+            }
+            catch (SqlException e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+            return tabla;
+        }
+
 
         //***********************************************************************HISTORIAL
 
@@ -1932,6 +2022,42 @@ namespace CapaPresentacion2
             return tabla;
         }
 
+        public bool Eliminar_historial(int id_historial)
+        {
+            var msg = "";
+            var add = true;
+            try
+            {
+                conectar();
+                string qry = "Consultas.SP_EliminarHistorial";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@Id_historial", SqlDbType.Int);
+                parametro1.Value = id_historial;
+
+
+                _adaptador.InsertCommand = _comandosql;
+                // También se tienen las propiedades del adaptador: UpdateCommand  y DeleteCommand
+
+                _comandosql.ExecuteNonQuery();
+
+            }
+            catch (SqlException e)
+            {
+                add = false;
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+            return add;
+        }
 
 
 

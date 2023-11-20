@@ -204,12 +204,28 @@ AS
 	R.Id_Capitulo,
 	R.Id_Versiculo
 
+	FROM
+	Consultas.Historial H
+	JOIN Consultas.Consulta C ON H.Consulta = C.Id_consulta
+	JOIN Biblia.ReferenciaBiblia R ON R.Id_referencia = C.Id_referencia 
+
+GO
+
+CREATE VIEW Consultas.V_HistorialBusqueda
+AS
+	SELECT
+	H.Id_historial,
+	H.Texto AS BUSQUEDA,
+	H.FechaBus,
+	B.Id_busqueda,
+	B.Id_usuario,
+	B.Texto
 
 	FROM
 	Consultas.Historial H
-	JOIN Consultas.Consulta C ON C.Id_consulta = H.Consulta
+	JOIN Consultas.Busqueda B ON H.Busqueda = B.Id_busqueda 
+GO
 
-	JOIN Biblia.ReferenciaBiblia R ON R.Id_referencia = C.Id_referencia 
 	
 
 

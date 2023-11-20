@@ -365,7 +365,7 @@ SELECT IDIOMA, VERSIONES, TESTAMENTOS, LIBRO,NumeroCap AS CAPITULO, NumeroVers A
 END
 GO
 
-CREATE PROCEDURE Biblia.SP_Consulta_IVTLC
+ALTER PROCEDURE Biblia.SP_Consulta_IVTLC
 @Id_idioma		SMALLINT,
 @Id_version		SMALLINT,
 @Id_testamento	SMALLINT,
@@ -389,8 +389,3 @@ SELECT IDIOMA, VERSIONES, TESTAMENTOS, LIBRO,NumeroCap AS CAPITULO, NumeroVers A
 END
 GO
 
-SELECT * FROM Consultas.Favorito
-SELECT * FROM Biblia.ReferenciaBiblia
-EXEC Biblia.SP_Consulta_IV 1, 2
-
-EXEC Biblia.SP_BuscarVersiculo 1, 2, 1, 1, 2
