@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Speech.Synthesis;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -316,11 +317,31 @@ namespace CapaPresentacion2
                 INT_Capitulo = 0;
             }
 
+            label6.ScrollBars = ScrollBars.Vertical;
+
         }
 
         private void CI_favorito_Click(object sender, EventArgs e)
         {
             EnlaceDB EDB_AgregarFavorito = new EnlaceDB();
+
+            if(DGV_consulta.CurrentRow == null)
+            {
+                MessageBox.Show("No se ha seleccionado algo para agregar a favoritos", "FATAL ERROR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (CIV_favorito.Text == "")
+            {
+                MessageBox.Show("Debe ingresar un nombre para el favorito", "FATAL ERROR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if(RB_capitulo.Checked == false & RB_versiculo.Checked == false)
+            {
+                MessageBox.Show("Debe seleccionar si agregar capitulo o versiculo", "FATAL ERROR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
 
             bool B_favorito = false;
             
@@ -417,6 +438,21 @@ namespace CapaPresentacion2
             {
                 CB_versiculo.Items.Add(DT_Versiculo.Rows[D]["NumeroVers"].ToString());
                 D++;
+            }
+        }
+
+        private void Leer_Click(object sender, EventArgs e)
+        {
+            // Crear una instancia de SpeechSynthesizer
+            using (SpeechSynthesizer synth = new SpeechSynthesizer())
+            {
+                // Configurar la voz y otros parámetros si es necesario
+                synth.SelectVoiceByHints(VoiceGender.Female, VoiceAge.Adult);
+
+                // Narrar el texto
+                synth.Speak(label6.Text);
+            
+
             }
         }
     }

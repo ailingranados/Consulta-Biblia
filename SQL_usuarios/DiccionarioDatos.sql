@@ -40,10 +40,10 @@ EXEC sp_addextendedproperty
 GO
 
 EXEC sp_addextendedproperty
-@name = N'MS_Description', @value = 'Fecha en la que se realizo la consulta',
+@name = N'MS_Description', @value = 'Usuario que realizo la consulta',
 @level0type = N'Schema', @level0name = 'Consultas',
 @level1type = N'Table', @level1name = 'Busqueda',
-@level2type = N'Column', @level2name = 'Fecha';
+@level2type = N'Column', @level2name = 'Id_usuario';
 GO
 
 EXEC sp_addextendedproperty
@@ -61,10 +61,10 @@ EXEC sp_addextendedproperty
 GO
 
 EXEC sp_addextendedproperty
-@name = N'MS_Description', @value = 'El texto que el usuario esta buscando',
+@name = N'MS_Description', @value = 'Usuario que realiza la busqueda',
 @level0type = N'Schema', @level0name = 'Consultas',
 @level1type = N'Table', @level1name = 'Consulta',
-@level2type = N'Column', @level2name = 'Consulta';
+@level2type = N'Column', @level2name = 'Id_usuario';
 GO
 
 EXEC sp_addextendedproperty
@@ -78,7 +78,7 @@ EXEC sp_addextendedproperty
 @name = N'MS_Description', @value = 'La contraseña actual del usuario',
 @level0type = N'Schema', @level0name = 'Usuario',
 @level1type = N'Table', @level1name = 'Contraseña',
-@level2type = N'Column', @level2name = 'ConPrincipal';
+@level2type = N'Column', @level2name = 'ConNueva';
 GO
 
 EXEC sp_addextendedproperty
@@ -138,25 +138,28 @@ EXEC sp_addextendedproperty
 GO
 
 EXEC sp_addextendedproperty
-@name = N'MS_Description', @value = 'llave primaria de la relacion',
-@level0type = N'Schema', @level0name = 'Relaciones',
-@level1type = N'Table', @level1name = 'FavoritoConsulta',
-@level2type = N'Column', @level2name = 'Id_favCon';
+@name = N'MS_Description', @value = 'Nombre que se le dio al favorito',
+@level0type = N'Schema', @level0name = 'Consultas',
+@level1type = N'Table', @level1name = 'Favorito',
+@level2type = N'Column', @level2name = 'NombreFav';
+GO
+
+
+EXEC sp_addextendedproperty
+@name = N'MS_Description', @value = 'Consulta del favorito',
+@level0type = N'Schema', @level0name = 'Consultas',
+@level1type = N'Table', @level1name = 'Favorito',
+@level2type = N'Column', @level2name = 'Consulta';
 GO
 
 EXEC sp_addextendedproperty
-@name = N'MS_Description', @value = 'id del favorito que se quiere consultar',
-@level0type = N'Schema', @level0name = 'Relaciones',
-@level1type = N'Table', @level1name = 'FavoritoConsulta',
-@level2type = N'Column', @level2name = 'Id_favorito';
+@name = N'MS_Description', @value = 'Referencia a la biblia',
+@level0type = N'Schema', @level0name = 'Consultas',
+@level1type = N'Table', @level1name = 'Favorito',
+@level2type = N'Column', @level2name = 'Id_referencia';
 GO
 
-EXEC sp_addextendedproperty
-@name = N'MS_Description', @value = 'id de la consulta que se relaciona con favorito',
-@level0type = N'Schema', @level0name = 'Relaciones',
-@level1type = N'Table', @level1name = 'FavoritoConsulta',
-@level2type = N'Column', @level2name = 'Id_consulta';
-GO
+
 
 EXEC sp_addextendedproperty
 @name = N'MS_Description', @value = 'llave primaria de genero',
@@ -190,7 +193,14 @@ EXEC sp_addextendedproperty
 @name = N'MS_Description', @value = 'Id de la busqeuda que se realizo',
 @level0type = N'Schema', @level0name = 'Consultas',
 @level1type = N'Table', @level1name = 'Historial',
-@level2type = N'Column', @level2name = 'id_busqueda';
+@level2type = N'Column', @level2name = 'Busqueda';
+GO
+
+EXEC sp_addextendedproperty
+@name = N'MS_Description', @value = 'Id de la consulta que se realizo',
+@level0type = N'Schema', @level0name = 'Consultas',
+@level1type = N'Table', @level1name = 'Historial',
+@level2type = N'Column', @level2name = 'Consulta';
 GO
 
 EXEC sp_addextendedproperty
@@ -200,26 +210,7 @@ EXEC sp_addextendedproperty
 @level2type = N'Column', @level2name = 'FechaBus';
 GO
 
-EXEC sp_addextendedproperty
-@name = N'MS_Description', @value = 'llave primaria de la relacion historial con consulta',
-@level0type = N'Schema', @level0name = 'Relaciones',
-@level1type = N'Table', @level1name = 'HistorialConsulta',
-@level2type = N'Column', @level2name = 'id_hisCon';
-GO
 
-EXEC sp_addextendedproperty
-@name = N'MS_Description', @value = 'Id del historial a consultar',
-@level0type = N'Schema', @level0name = 'Relaciones',
-@level1type = N'Table', @level1name = 'HistorialConsulta',
-@level2type = N'Column', @level2name = 'id_historial';
-GO
-
-EXEC sp_addextendedproperty
-@name = N'MS_Description', @value = 'Id de la consulta al historial',
-@level0type = N'Schema', @level0name = 'Relaciones',
-@level1type = N'Table', @level1name = 'HistorialConsulta',
-@level2type = N'Column', @level2name = 'id_consulta';
-GO
 
 EXEC sp_addextendedproperty
 @name = N'MS_Description', @value = 'llave primaria del usuario',
@@ -268,6 +259,20 @@ EXEC sp_addextendedproperty
 @level0type = N'Schema', @level0name = 'Usuario',
 @level1type = N'Table', @level1name = 'UsuarioRegistros',
 @level2type = N'Column', @level2name = 'ApellidoP';
+GO
+
+EXEC sp_addextendedproperty
+@name = N'MS_Description', @value = 'Clave actual del usuario',
+@level0type = N'Schema', @level0name = 'Usuario',
+@level1type = N'Table', @level1name = 'UsuarioRegistros',
+@level2type = N'Column', @level2name = 'Clave';
+GO
+
+EXEC sp_addextendedproperty
+@name = N'MS_Description', @value = 'Intentos de inicio de sesion',
+@level0type = N'Schema', @level0name = 'Usuario',
+@level1type = N'Table', @level1name = 'UsuarioRegistros',
+@level2type = N'Column', @level2name = 'Intentos';
 GO
 
 EXEC sp_addextendedproperty
@@ -338,6 +343,13 @@ EXEC sp_addextendedproperty
 @level0type = N'Schema', @level0name = 'Biblia',
 @level1type = N'Table', @level1name = 'ReferenciaBiblia',
 @level2type = N'Column', @level2name = 'Id_Libro';
+GO
+
+EXEC sp_addextendedproperty
+@name = N'MS_Description', @value = 'Id del capitulo para buscar en la biblia',
+@level0type = N'Schema', @level0name = 'Biblia',
+@level1type = N'Table', @level1name = 'ReferenciaBiblia',
+@level2type = N'Column', @level2name = 'Id_Capitulo';
 GO
 
 EXEC sp_addextendedproperty

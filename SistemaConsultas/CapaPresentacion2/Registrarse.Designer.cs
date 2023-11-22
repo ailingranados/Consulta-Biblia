@@ -78,6 +78,7 @@
             this.R_correo.Size = new System.Drawing.Size(248, 26);
             this.R_correo.TabIndex = 1;
             this.R_correo.Tag = "R_CorreoElectronico";
+            this.R_correo.TextChanged += new System.EventHandler(this.R_correo_TextChanged);
             // 
             // label2
             // 
@@ -256,7 +257,7 @@
             this.iconButton1.IconColor = System.Drawing.Color.LightPink;
             this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton1.IconSize = 15;
-            this.iconButton1.Location = new System.Drawing.Point(312, 406);
+            this.iconButton1.Location = new System.Drawing.Point(312, 397);
             this.iconButton1.Name = "iconButton1";
             this.iconButton1.Size = new System.Drawing.Size(269, 32);
             this.iconButton1.TabIndex = 46;
@@ -272,12 +273,12 @@
             this.NACIMIENTO.CustomFormat = "yyyy.MM.dd";
             this.NACIMIENTO.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.NACIMIENTO.Location = new System.Drawing.Point(29, 262);
-            this.NACIMIENTO.MaxDate = new System.DateTime(2023, 1, 1, 0, 0, 0, 0);
+            this.NACIMIENTO.MaxDate = new System.DateTime(2022, 12, 30, 0, 0, 0, 0);
             this.NACIMIENTO.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.NACIMIENTO.Name = "NACIMIENTO";
             this.NACIMIENTO.Size = new System.Drawing.Size(248, 20);
             this.NACIMIENTO.TabIndex = 47;
-            this.NACIMIENTO.Value = new System.DateTime(2023, 1, 1, 0, 0, 0, 0);
+            this.NACIMIENTO.Value = new System.DateTime(2022, 12, 30, 0, 0, 0, 0);
             this.NACIMIENTO.ValueChanged += new System.EventHandler(this.NACIMIENTO_ValueChanged);
             this.NACIMIENTO.Validating += new System.ComponentModel.CancelEventHandler(this.NACIMIENTO_Validating);
             // 

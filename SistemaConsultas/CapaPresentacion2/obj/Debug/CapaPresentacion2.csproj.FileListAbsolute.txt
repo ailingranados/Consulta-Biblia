@@ -69,3 +69,5 @@ C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion
 C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\obj\Debug\CapaPresentacion2.pdb
 C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\obj\Debug\CapaPresentacion2.CambioContrasena.resources
 C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\obj\Debug\CapaPresentacion2.AgregarFavorito.resources
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\obj\Debug\CapaPresentacion2.Pregunta_secreta.resources
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\obj\Debug\CapaPresentacion2.CambioConActivacion.resources

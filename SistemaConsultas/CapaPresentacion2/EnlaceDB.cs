@@ -173,8 +173,6 @@ namespace CapaPresentacion2
             return tabla;
         }
 
-        // Ejemplo de método para ejecutar un SP que no se espera que regrese información, 
-        // solo que ejecute ya sea un INSERT, UPDATE o DELETE
         //***********************************************************************************USUARIOS
         public bool Add_Deptos(string opc, string depto)
         {
@@ -533,6 +531,321 @@ namespace CapaPresentacion2
                 // También se tienen las propiedades del adaptador: UpdateCommand  y DeleteCommand
 
                 _comandosql.ExecuteNonQuery();
+
+            }
+            catch (SqlException e)
+            {
+                add = false;
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+            return add;
+        }
+
+        public int Estado_usuario(int id_usuario)
+        {
+            var msg = "";
+            int id = 0;
+
+            try
+            {
+
+                conectar();
+                string qry = "Usuario.SP_UsuarioActivo";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@Id_usuario", SqlDbType.Int);
+                parametro1.Value = id_usuario;
+
+
+                _adaptador.SelectCommand = _comandosql;
+                object result = _comandosql.ExecuteScalar();
+                id = Convert.ToInt32(result);
+
+
+
+            }
+            catch (SqlException e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+            return id;
+        }
+
+        public DataTable Buscar_Correo()
+        {
+            var msg = "";
+            DataTable tabla = new DataTable();
+
+            try
+            {
+
+                conectar();
+                string qry = "Usuario.SP_ChecarCorreo";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+              
+
+
+                _adaptador.SelectCommand = _comandosql;
+                _adaptador.Fill(tabla);
+                // la ejecución del SP espera que regrese datos en formato tabla
+
+
+            }
+            catch (SqlException e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+            return tabla;
+        }
+
+        public bool Intento_inicioSesion(int Id_usuario)
+        {
+            var msg = "";
+            var add = true;
+            try
+            {
+                conectar();
+                string qry = "Usuario.SP_Intentos";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro4 = _comandosql.Parameters.Add("@Id_usuario", SqlDbType.Int);
+                parametro4.Value = Id_usuario;
+
+
+                _adaptador.InsertCommand = _comandosql;
+                // También se tienen las propiedades del adaptador: UpdateCommand  y DeleteCommand
+
+                _comandosql.ExecuteNonQuery();
+
+            }
+            catch (SqlException e)
+            {
+                add = false;
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+            return add;
+        }
+
+        public bool Intento_inicioSesionReiniciar(int Id_usuario)
+        {
+            var msg = "";
+            var add = true;
+            try
+            {
+                conectar();
+                string qry = "Usuario.SP_IntentosReiniciar";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro4 = _comandosql.Parameters.Add("@Id_usuario", SqlDbType.Int);
+                parametro4.Value = Id_usuario;
+
+
+                _adaptador.InsertCommand = _comandosql;
+                // También se tienen las propiedades del adaptador: UpdateCommand  y DeleteCommand
+
+                _comandosql.ExecuteNonQuery();
+
+            }
+            catch (SqlException e)
+            {
+                add = false;
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+            return add;
+        }
+
+        public int BuscarId_porCorreo(string correo)
+        {
+            var msg = "";
+            int id = 0;
+
+            try
+            {
+
+                conectar();
+                string qry = "Usuario.BuscarUsuarioPorCorreo";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@Correo", SqlDbType.VarChar, 20);
+                parametro1.Value = correo;
+
+
+                _adaptador.SelectCommand = _comandosql;
+                object result = _comandosql.ExecuteScalar();
+                id = Convert.ToInt32(result);
+
+
+
+            }
+            catch (SqlException e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+            return id;
+        }
+
+        public int Checar_intentos(int id_usuario)
+        {
+            var msg = "";
+            int id = 0;
+
+            try
+            {
+
+                conectar();
+                string qry = "Usuario.ChecarIntentos";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@Id_usuario", SqlDbType.Int);
+                parametro1.Value = id_usuario;
+
+
+                _adaptador.SelectCommand = _comandosql;
+                object result = _comandosql.ExecuteScalar();
+                if(result != null && result != DBNull.Value)
+                {
+                    id = Convert.ToInt32(result);
+                }
+                else 
+                { 
+                    id = 0; 
+                }    
+
+
+
+            }
+            catch (SqlException e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+            return id;
+        }
+
+        public object FechaNacimientoPregunta(int id_usuario)
+        {
+            var msg = "";
+            DateTime dateTime = new DateTime();
+
+            try
+            {
+
+                conectar();
+                string qry = "Usuario.SP_PreguntaSecreta";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@Id_usuario", SqlDbType.Int);
+                parametro1.Value = id_usuario;
+
+
+
+                _adaptador.SelectCommand = _comandosql;
+                object result = _comandosql.ExecuteScalar();
+                dateTime = result != null && result != DBNull.Value ? Convert.ToDateTime(result) : DateTime.MinValue;
+
+
+
+            }
+            catch (SqlException e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+            return dateTime ;
+        }
+
+        public bool ActivarUsuarioViejo(int id_usuario)
+        {
+            var msg = "";
+            var add = true;
+
+            try
+            {
+
+                conectar();
+                string qry = "Usuario.SP_ActivarUsuarioViejo";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@Id_usuario", SqlDbType.Int);
+                parametro1.Value = id_usuario;
+
+
+                _adaptador.SelectCommand = _comandosql;
+                _comandosql.ExecuteNonQuery();
+
+
+
 
             }
             catch (SqlException e)
@@ -1811,7 +2124,7 @@ namespace CapaPresentacion2
             return add;
         }
 
-        public DataTable VersiculosEnCapitulo(int id_capitulo)
+        public DataTable VersiculosEnCapitulo(int id_capitulo, int idioma, int version, int testamento, int libro)
         {
             var msg = "";
             DataTable tabla = new DataTable();
@@ -1828,6 +2141,17 @@ namespace CapaPresentacion2
                 var parametro1 = _comandosql.Parameters.Add("@Id_capitulo", SqlDbType.Int);
                 parametro1.Value = id_capitulo;
 
+                var parametro2 = _comandosql.Parameters.Add("@Id_idioma", SqlDbType.Int);
+                parametro2.Value = idioma;
+
+                var parametro5 = _comandosql.Parameters.Add("@Id_version", SqlDbType.Int);
+                parametro5.Value = version;
+
+                var parametro3 = _comandosql.Parameters.Add("@Id_testamento", SqlDbType.Int);
+                parametro3.Value = testamento;
+
+                var parametro4 = _comandosql.Parameters.Add("@Id_libro", SqlDbType.Int);
+                parametro4.Value = libro;
 
                 _adaptador.SelectCommand = _comandosql;
                 _adaptador.Fill(tabla);
@@ -2057,6 +2381,44 @@ namespace CapaPresentacion2
             }
 
             return add;
+        }
+
+        public DataTable Consultar_historialBusqueda(int id_usuario)
+        {
+            var msg = "";
+            DataTable tabla = new DataTable();
+
+            try
+            {
+
+                conectar();
+                string qry = "Consultas.SP_BuscarHistorialBusqueda";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@Id_usuario", SqlDbType.Int);
+                parametro1.Value = id_usuario;
+
+
+                _adaptador.SelectCommand = _comandosql;
+                _adaptador.Fill(tabla);
+                // la ejecución del SP espera que regrese datos en formato tabla
+
+
+            }
+            catch (SqlException e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+            return tabla;
         }
 
 

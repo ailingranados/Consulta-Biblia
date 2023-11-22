@@ -209,31 +209,24 @@ SET NOCOUNT ON;
 END
 GO
 
-CREATE PROCEDURE Biblia.SP_VersiculosEnCapitulo
+ALTER PROCEDURE Biblia.SP_VersiculosEnCapitulo
+@Id_idioma		SMALLINT,
+@Id_version		SMALLINT,
+@Id_testamento	SMALLINT,
+@Id_libro		SMALLINT,
 @Id_capitulo	SMALLINT
 AS
 BEGIN
 SET NOCOUNT ON;
 	SELECT VERSICULO
 		FROM Biblia.V_TextosBiblia
-			WHERE NumeroCap = @Id_capitulo
-
+			WHERE NumeroCap = @Id_capitulo AND
+			Id_Idioma	=	@Id_idioma	AND
+			Id_Version	=	@Id_version	AND
+			Id_Testamento	=	@Id_testamento	AND
+			Id_Libro	=	@Id_libro
 END
 GO
-
-
-
-
-
-SELECT * FROM Consultas.Favorito
-SELECT * FROM Biblia.ReferenciaBiblia
-SELECT * FROM Usuario.UsuarioRegistros
-SELECT * FROM Biblia.V_FavoritosBiblia
-
-SELECT * FROM Relaciones.UsuarioEstatus
-
-EXEC Consultas.SP_BuscarFavUsuarioCap 3
-SELECT * FROM Biblia.V_FavoritosBibliaCapitulos
 
 
 

@@ -55,7 +55,6 @@
             this.label16 = new System.Windows.Forms.Label();
             this.CI_favorito = new FontAwesome.Sharp.IconButton();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
@@ -67,7 +66,6 @@
             this.RB_capitulo = new System.Windows.Forms.RadioButton();
             this.RB_versiculo = new System.Windows.Forms.RadioButton();
             this.label19 = new System.Windows.Forms.Label();
-            this.L_capitulo = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.Limpiar_CB = new FontAwesome.Sharp.IconButton();
             this.label20 = new System.Windows.Forms.Label();
@@ -75,6 +73,9 @@
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.label27 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.TextBox();
+            this.L_capitulo = new System.Windows.Forms.TextBox();
+            this.Leer = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_consulta)).BeginInit();
@@ -372,9 +373,9 @@
             this.CI_favorito.IconColor = System.Drawing.SystemColors.ButtonHighlight;
             this.CI_favorito.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.CI_favorito.IconSize = 30;
-            this.CI_favorito.Location = new System.Drawing.Point(726, 662);
+            this.CI_favorito.Location = new System.Drawing.Point(723, 673);
             this.CI_favorito.Name = "CI_favorito";
-            this.CI_favorito.Size = new System.Drawing.Size(195, 45);
+            this.CI_favorito.Size = new System.Drawing.Size(198, 37);
             this.CI_favorito.TabIndex = 84;
             this.CI_favorito.Text = "Agregar favorito";
             this.CI_favorito.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -385,32 +386,23 @@
             // label5
             // 
             this.label5.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.label5.Location = new System.Drawing.Point(713, 640);
+            this.label5.Location = new System.Drawing.Point(713, 662);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(224, 80);
+            this.label5.Size = new System.Drawing.Size(224, 58);
             this.label5.TabIndex = 85;
-            // 
-            // label6
-            // 
-            this.label6.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label6.Location = new System.Drawing.Point(723, 381);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(198, 74);
-            this.label6.TabIndex = 86;
-            this.label6.Text = "versiculo";
             // 
             // label17
             // 
             this.label17.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.label17.Location = new System.Drawing.Point(713, 343);
+            this.label17.Location = new System.Drawing.Point(713, 344);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(224, 121);
+            this.label17.Size = new System.Drawing.Size(224, 145);
             this.label17.TabIndex = 87;
             // 
             // label18
             // 
             this.label18.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.label18.Location = new System.Drawing.Point(713, 597);
+            this.label18.Location = new System.Drawing.Point(713, 619);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(224, 37);
             this.label18.TabIndex = 88;
@@ -431,7 +423,7 @@
             this.label23.AutoSize = true;
             this.label23.BackColor = System.Drawing.Color.White;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(723, 536);
+            this.label23.Location = new System.Drawing.Point(723, 560);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(59, 17);
             this.label23.TabIndex = 93;
@@ -440,7 +432,7 @@
             // label24
             // 
             this.label24.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.label24.Location = new System.Drawing.Point(713, 525);
+            this.label24.Location = new System.Drawing.Point(713, 549);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(224, 64);
             this.label24.TabIndex = 92;
@@ -448,7 +440,7 @@
             // label25
             // 
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(720, 482);
+            this.label25.Location = new System.Drawing.Point(720, 507);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(200, 28);
             this.label25.TabIndex = 96;
@@ -458,14 +450,14 @@
             // label26
             // 
             this.label26.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.label26.Location = new System.Drawing.Point(713, 472);
+            this.label26.Location = new System.Drawing.Point(713, 497);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(224, 45);
             this.label26.TabIndex = 95;
             // 
             // CIV_favorito
             // 
-            this.CIV_favorito.Location = new System.Drawing.Point(723, 556);
+            this.CIV_favorito.Location = new System.Drawing.Point(723, 580);
             this.CIV_favorito.Name = "CIV_favorito";
             this.CIV_favorito.Size = new System.Drawing.Size(198, 20);
             this.CIV_favorito.TabIndex = 97;
@@ -473,7 +465,7 @@
             // RB_capitulo
             // 
             this.RB_capitulo.AutoSize = true;
-            this.RB_capitulo.Location = new System.Drawing.Point(835, 609);
+            this.RB_capitulo.Location = new System.Drawing.Point(835, 631);
             this.RB_capitulo.Name = "RB_capitulo";
             this.RB_capitulo.Size = new System.Drawing.Size(86, 17);
             this.RB_capitulo.TabIndex = 98;
@@ -484,7 +476,7 @@
             // RB_versiculo
             // 
             this.RB_versiculo.AutoSize = true;
-            this.RB_versiculo.Location = new System.Drawing.Point(726, 609);
+            this.RB_versiculo.Location = new System.Drawing.Point(726, 631);
             this.RB_versiculo.Name = "RB_versiculo";
             this.RB_versiculo.Size = new System.Drawing.Size(68, 17);
             this.RB_versiculo.TabIndex = 99;
@@ -502,15 +494,6 @@
             this.label19.Size = new System.Drawing.Size(59, 17);
             this.label19.TabIndex = 102;
             this.label19.Text = "Capitulo";
-            // 
-            // L_capitulo
-            // 
-            this.L_capitulo.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.L_capitulo.Location = new System.Drawing.Point(723, 309);
-            this.L_capitulo.Name = "L_capitulo";
-            this.L_capitulo.Size = new System.Drawing.Size(198, 20);
-            this.L_capitulo.TabIndex = 100;
-            this.L_capitulo.Text = "versiculo";
             // 
             // label22
             // 
@@ -590,19 +573,57 @@
             this.label28.Size = new System.Drawing.Size(224, 80);
             this.label28.TabIndex = 108;
             // 
+            // label6
+            // 
+            this.label6.Location = new System.Drawing.Point(721, 373);
+            this.label6.Multiline = true;
+            this.label6.Name = "label6";
+            this.label6.ReadOnly = true;
+            this.label6.Size = new System.Drawing.Size(200, 77);
+            this.label6.TabIndex = 109;
+            // 
+            // L_capitulo
+            // 
+            this.L_capitulo.Location = new System.Drawing.Point(726, 303);
+            this.L_capitulo.Multiline = true;
+            this.L_capitulo.Name = "L_capitulo";
+            this.L_capitulo.ReadOnly = true;
+            this.L_capitulo.Size = new System.Drawing.Size(194, 24);
+            this.L_capitulo.TabIndex = 110;
+            // 
+            // Leer
+            // 
+            this.Leer.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.Leer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Leer.IconChar = FontAwesome.Sharp.IconChar.Readme;
+            this.Leer.IconColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Leer.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.Leer.IconSize = 30;
+            this.Leer.Location = new System.Drawing.Point(835, 453);
+            this.Leer.Name = "Leer";
+            this.Leer.Size = new System.Drawing.Size(85, 33);
+            this.Leer.TabIndex = 111;
+            this.Leer.Text = "Leer";
+            this.Leer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Leer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Leer.UseVisualStyleBackColor = false;
+            this.Leer.Click += new System.EventHandler(this.Leer_Click);
+            // 
             // Consulta_IdiomaVersion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.ClientSize = new System.Drawing.Size(972, 750);
+            this.Controls.Add(this.Leer);
+            this.Controls.Add(this.L_capitulo);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.CB_capitulo);
             this.Controls.Add(this.iconPictureBox1);
             this.Controls.Add(this.label27);
             this.Controls.Add(this.label28);
             this.Controls.Add(this.Limpiar_CB);
             this.Controls.Add(this.label19);
-            this.Controls.Add(this.L_capitulo);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.RB_versiculo);
             this.Controls.Add(this.RB_capitulo);
@@ -613,7 +634,6 @@
             this.Controls.Add(this.label24);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.label18);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.CI_favorito);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label16);
@@ -687,7 +707,6 @@
         private System.Windows.Forms.Label label16;
         private FontAwesome.Sharp.IconButton CI_favorito;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label21;
@@ -699,7 +718,6 @@
         private System.Windows.Forms.RadioButton RB_capitulo;
         private System.Windows.Forms.RadioButton RB_versiculo;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label L_capitulo;
         private System.Windows.Forms.Label label22;
         private FontAwesome.Sharp.IconButton Limpiar_CB;
         private System.Windows.Forms.Label label20;
@@ -707,5 +725,8 @@
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.TextBox label6;
+        private System.Windows.Forms.TextBox L_capitulo;
+        private FontAwesome.Sharp.IconButton Leer;
     }
 }

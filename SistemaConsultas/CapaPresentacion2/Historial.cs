@@ -27,6 +27,77 @@ namespace CapaPresentacion2
 
         private void Historial_Load(object sender, EventArgs e)
         {
+           
+
+        }
+
+        private void BTN_eliminar_Click(object sender, EventArgs e)
+        {
+            EnlaceDB conexion = new EnlaceDB();
+
+
+            if (rb_todo.Checked)
+            {
+                if (DGV_historial.Rows.Count == 0)
+                {
+                    MessageBox.Show("No se tiene algo para borrar", "FATAL ERROR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                DialogResult salienda = MessageBox.Show("¿Desea eliminar todo su historial?", ":o", MessageBoxButtons.YesNoCancel);
+                if (salienda == DialogResult.Yes)
+                {
+
+
+                    foreach (DataRow row in DT_Historial_referencias.Rows)
+                    {
+                        int historial = Convert.ToInt32(row["Id_historial"]);
+
+                        conexion.Eliminar_historial(historial);
+                    }
+                    MessageBox.Show("Se ha borrado el historial completo", ":)", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+            }
+            else
+            {
+                if(DGV_historial.CurrentRow == null)
+                {
+                    MessageBox.Show("No se ha seleccionado algo para borrar", "FATAL ERROR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }   
+
+                string STR_historial = DGV_historial.CurrentRow.Cells[0].Value.ToString();
+                int historial;
+                if (STR_historial == "")
+                {
+                    historial = 0;
+
+                }
+                else
+                {
+
+                    historial = int.Parse(STR_historial);
+                }
+
+                if (historial == 0)
+                {
+                    MessageBox.Show("No se ha seleccionado algo para borrar", "FATAL ERROR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    conexion.Eliminar_historial(historial);
+                    MessageBox.Show("Se ha borrado el historial seleccionado", ":)", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+
+                }
+
+
+            }
+        }
+
+        private void BTN_consultas_Click(object sender, EventArgs e)
+        {
             EnlaceDB conexion = new EnlaceDB();
             DT_Historial_referencias = conexion.Consultar_historial(usuarioActualId);
 
@@ -88,7 +159,7 @@ namespace CapaPresentacion2
                 {
                     versiculo = "N/C";
                 }
-                
+
 
                 row["IDIOMA"] = idioma;
                 row["VERSION"] = version;
@@ -96,14 +167,14 @@ namespace CapaPresentacion2
                 row["LIBRO"] = libro;
                 row["VERSICULO"] = versiculo;
                 row["CAPITULO"] = capitulo;
-                
+
             }
 
             DGV_historial.DataSource = DT_Historial_referencias;
 
             DGV_historial.Columns[0].Visible = false;
-            DGV_historial.Columns[1].HeaderText = "Tipo de busqueda";
-            DGV_historial.Columns[2].HeaderText = "Fecha";
+            DGV_historial.Columns[1].HeaderText = "BUSQUEDA";
+            DGV_historial.Columns[2].HeaderText = "FECHA";
             DGV_historial.Columns[3].Visible = false;
             DGV_historial.Columns[4].Visible = false;
             DGV_historial.Columns[5].Visible = false;
@@ -113,54 +184,24 @@ namespace CapaPresentacion2
             DGV_historial.Columns[9].Visible = false;
             DGV_historial.Columns[10].Visible = false;
 
-
         }
 
-        private void BTN_eliminar_Click(object sender, EventArgs e)
+        private void BTN_busquedas_Click(object sender, EventArgs e)
         {
             EnlaceDB conexion = new EnlaceDB();
+            DT_Historial_referencias = conexion.Consultar_historialBusqueda(usuarioActualId);
 
-            if(rb_todo.Checked)
-            {
+           
+            
+            DGV_historial.DataSource = DT_Historial_referencias;
 
-                foreach (DataRow row in DT_Historial_referencias.Rows)
-                {
-                    int historial = Convert.ToInt32(row["Id_historial"]);
+            DGV_historial.Columns[0].Visible = false;
+            DGV_historial.Columns[1].HeaderText = "Tipo de busqueda";
+            DGV_historial.Columns[2].HeaderText = "Fecha";
+            DGV_historial.Columns[3].Visible = false;
+            DGV_historial.Columns[4].Visible = false;
+            DGV_historial.Columns[5].HeaderText = "Busqueda";
 
-                    conexion.Eliminar_historial(historial);
-                }    
-                MessageBox.Show("Se ha borrado el historial", ":)", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
-            }
-            else
-            {
-                string STR_historial = DGV_historial.CurrentRow.Cells[0].Value.ToString();
-                int historial;
-                if (STR_historial == "")
-                {
-                    historial = 0;
-
-                }
-                else
-                {
-
-                    historial = int.Parse(STR_historial);
-                }
-
-                if (historial == 0)
-                {
-                    MessageBox.Show("No se ha seleccionado algo para borrar", "FATAL ERROR", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    conexion.Eliminar_historial(historial);
-                    MessageBox.Show("Se ha borrado el historial", ":)", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
-
-                }
-
-
-            }
         }
     }
 }

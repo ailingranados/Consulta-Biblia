@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.U_apellidoM = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -54,6 +55,9 @@
             this.label8 = new System.Windows.Forms.Label();
             this.iconButton2 = new FontAwesome.Sharp.IconButton();
             this.U_clave = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // U_apellidoM
@@ -64,6 +68,7 @@
             this.U_apellidoM.Name = "U_apellidoM";
             this.U_apellidoM.Size = new System.Drawing.Size(248, 26);
             this.U_apellidoM.TabIndex = 42;
+            this.U_apellidoM.Validating += new System.ComponentModel.CancelEventHandler(this.U_apellidoM_Validating);
             // 
             // label13
             // 
@@ -92,6 +97,7 @@
             this.U_apellidoP.Name = "U_apellidoP";
             this.U_apellidoP.Size = new System.Drawing.Size(248, 26);
             this.U_apellidoP.TabIndex = 39;
+            this.U_apellidoP.Validating += new System.ComponentModel.CancelEventHandler(this.U_apellidoP_Validating);
             // 
             // label9
             // 
@@ -120,6 +126,8 @@
             this.U_nombre.Name = "U_nombre";
             this.U_nombre.Size = new System.Drawing.Size(248, 26);
             this.U_nombre.TabIndex = 36;
+            this.U_nombre.TextChanged += new System.EventHandler(this.U_nombre_TextChanged);
+            this.U_nombre.Validating += new System.ComponentModel.CancelEventHandler(this.U_nombre_Validating);
             // 
             // label11
             // 
@@ -246,6 +254,7 @@
             // 
             // U_Genero
             // 
+            this.U_Genero.BackColor = System.Drawing.Color.MistyRose;
             this.U_Genero.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.U_Genero.Location = new System.Drawing.Point(61, 313);
             this.U_Genero.Name = "U_Genero";
@@ -256,6 +265,7 @@
             // 
             // U_correo
             // 
+            this.U_correo.BackColor = System.Drawing.Color.MistyRose;
             this.U_correo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.U_correo.Location = new System.Drawing.Point(62, 218);
             this.U_correo.Name = "U_correo";
@@ -266,6 +276,7 @@
             // 
             // U_FechaN
             // 
+            this.U_FechaN.BackColor = System.Drawing.Color.MistyRose;
             this.U_FechaN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.U_FechaN.Location = new System.Drawing.Point(62, 410);
             this.U_FechaN.Name = "U_FechaN";
@@ -322,6 +333,7 @@
             // 
             // U_clave
             // 
+            this.U_clave.BackColor = System.Drawing.Color.MistyRose;
             this.U_clave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.U_clave.Location = new System.Drawing.Point(637, 219);
             this.U_clave.Name = "U_clave";
@@ -330,12 +342,27 @@
             this.U_clave.Text = "label15";
             this.U_clave.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // label16
+            // 
+            this.label16.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.label16.Location = new System.Drawing.Point(52, 540);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(272, 33);
+            this.label16.TabIndex = 56;
+            this.label16.Text = "Solo se editaran los campos modificables de esta pantalla";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // Usuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.RosyBrown;
             this.ClientSize = new System.Drawing.Size(953, 622);
+            this.Controls.Add(this.label16);
             this.Controls.Add(this.U_clave);
             this.Controls.Add(this.iconButton2);
             this.Controls.Add(this.label8);
@@ -365,6 +392,7 @@
             this.Name = "Usuario";
             this.Text = "Usuario";
             this.Load += new System.EventHandler(this.Usuario_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -398,5 +426,7 @@
         private System.Windows.Forms.Label label8;
         private FontAwesome.Sharp.IconButton iconButton2;
         private System.Windows.Forms.Label U_clave;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

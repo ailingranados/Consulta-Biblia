@@ -36,23 +36,24 @@
             this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.L_capitulo = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.L_libro = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.L_testamento = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.L_version = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.L_idioma = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.L_versiculo = new System.Windows.Forms.TextBox();
+            this.L_idioma = new System.Windows.Forms.TextBox();
+            this.L_version = new System.Windows.Forms.TextBox();
+            this.L_testamento = new System.Windows.Forms.TextBox();
+            this.L_libro = new System.Windows.Forms.TextBox();
+            this.L_capitulo = new System.Windows.Forms.TextBox();
+            this.Leer = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Favoritos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,7 +63,10 @@
             this.DGV_Favoritos.AllowUserToDeleteRows = false;
             this.DGV_Favoritos.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.DGV_Favoritos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV_Favoritos.Cursor = System.Windows.Forms.Cursors.Default;
+            this.DGV_Favoritos.GridColor = System.Drawing.SystemColors.Control;
             this.DGV_Favoritos.Location = new System.Drawing.Point(23, 190);
+            this.DGV_Favoritos.MultiSelect = false;
             this.DGV_Favoritos.Name = "DGV_Favoritos";
             this.DGV_Favoritos.ReadOnly = true;
             this.DGV_Favoritos.Size = new System.Drawing.Size(455, 520);
@@ -170,15 +174,6 @@
             this.label19.TabIndex = 110;
             this.label19.Text = "Capitulo";
             // 
-            // L_capitulo
-            // 
-            this.L_capitulo.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.L_capitulo.Location = new System.Drawing.Point(494, 521);
-            this.L_capitulo.Name = "L_capitulo";
-            this.L_capitulo.Size = new System.Drawing.Size(198, 20);
-            this.L_capitulo.TabIndex = 108;
-            this.L_capitulo.Text = "versiculo";
-            // 
             // label22
             // 
             this.label22.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -217,15 +212,6 @@
             this.label3.TabIndex = 113;
             this.label3.Text = "Libro";
             // 
-            // L_libro
-            // 
-            this.L_libro.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.L_libro.Location = new System.Drawing.Point(494, 448);
-            this.L_libro.Name = "L_libro";
-            this.L_libro.Size = new System.Drawing.Size(198, 20);
-            this.L_libro.TabIndex = 111;
-            this.L_libro.Text = "versiculo";
-            // 
             // label5
             // 
             this.label5.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -244,15 +230,6 @@
             this.label7.Size = new System.Drawing.Size(83, 17);
             this.label7.TabIndex = 116;
             this.label7.Text = "Testamento";
-            // 
-            // L_testamento
-            // 
-            this.L_testamento.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.L_testamento.Location = new System.Drawing.Point(494, 375);
-            this.L_testamento.Name = "L_testamento";
-            this.L_testamento.Size = new System.Drawing.Size(198, 20);
-            this.L_testamento.TabIndex = 114;
-            this.L_testamento.Text = "versiculo";
             // 
             // label9
             // 
@@ -273,15 +250,6 @@
             this.label10.TabIndex = 119;
             this.label10.Text = "Version";
             // 
-            // L_version
-            // 
-            this.L_version.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.L_version.Location = new System.Drawing.Point(494, 301);
-            this.L_version.Name = "L_version";
-            this.L_version.Size = new System.Drawing.Size(198, 20);
-            this.L_version.TabIndex = 117;
-            this.L_version.Text = "versiculo";
-            // 
             // label12
             // 
             this.label12.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -301,15 +269,6 @@
             this.label13.TabIndex = 122;
             this.label13.Text = "Idioma";
             // 
-            // L_idioma
-            // 
-            this.L_idioma.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.L_idioma.Location = new System.Drawing.Point(494, 225);
-            this.L_idioma.Name = "L_idioma";
-            this.L_idioma.Size = new System.Drawing.Size(198, 20);
-            this.L_idioma.TabIndex = 120;
-            this.L_idioma.Text = "versiculo";
-            // 
             // label15
             // 
             this.label15.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -323,8 +282,73 @@
             this.L_versiculo.Location = new System.Drawing.Point(735, 220);
             this.L_versiculo.Multiline = true;
             this.L_versiculo.Name = "L_versiculo";
-            this.L_versiculo.Size = new System.Drawing.Size(200, 473);
+            this.L_versiculo.ReadOnly = true;
+            this.L_versiculo.Size = new System.Drawing.Size(200, 478);
             this.L_versiculo.TabIndex = 123;
+            this.L_versiculo.TextChanged += new System.EventHandler(this.L_versiculo_TextChanged);
+            // 
+            // L_idioma
+            // 
+            this.L_idioma.Location = new System.Drawing.Point(494, 220);
+            this.L_idioma.Multiline = true;
+            this.L_idioma.Name = "L_idioma";
+            this.L_idioma.ReadOnly = true;
+            this.L_idioma.Size = new System.Drawing.Size(204, 23);
+            this.L_idioma.TabIndex = 124;
+            // 
+            // L_version
+            // 
+            this.L_version.Location = new System.Drawing.Point(494, 295);
+            this.L_version.Multiline = true;
+            this.L_version.Name = "L_version";
+            this.L_version.ReadOnly = true;
+            this.L_version.Size = new System.Drawing.Size(204, 23);
+            this.L_version.TabIndex = 125;
+            // 
+            // L_testamento
+            // 
+            this.L_testamento.Location = new System.Drawing.Point(494, 370);
+            this.L_testamento.Multiline = true;
+            this.L_testamento.Name = "L_testamento";
+            this.L_testamento.ReadOnly = true;
+            this.L_testamento.Size = new System.Drawing.Size(204, 23);
+            this.L_testamento.TabIndex = 126;
+            // 
+            // L_libro
+            // 
+            this.L_libro.Location = new System.Drawing.Point(494, 442);
+            this.L_libro.Multiline = true;
+            this.L_libro.Name = "L_libro";
+            this.L_libro.ReadOnly = true;
+            this.L_libro.Size = new System.Drawing.Size(204, 23);
+            this.L_libro.TabIndex = 127;
+            // 
+            // L_capitulo
+            // 
+            this.L_capitulo.Location = new System.Drawing.Point(494, 514);
+            this.L_capitulo.Multiline = true;
+            this.L_capitulo.Name = "L_capitulo";
+            this.L_capitulo.ReadOnly = true;
+            this.L_capitulo.Size = new System.Drawing.Size(204, 23);
+            this.L_capitulo.TabIndex = 128;
+            // 
+            // Leer
+            // 
+            this.Leer.BackColor = System.Drawing.Color.MediumAquamarine;
+            this.Leer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Leer.IconChar = FontAwesome.Sharp.IconChar.Readme;
+            this.Leer.IconColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Leer.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.Leer.IconSize = 30;
+            this.Leer.Location = new System.Drawing.Point(487, 619);
+            this.Leer.Name = "Leer";
+            this.Leer.Size = new System.Drawing.Size(221, 33);
+            this.Leer.TabIndex = 129;
+            this.Leer.Text = "Leer versiculo";
+            this.Leer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Leer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Leer.UseVisualStyleBackColor = false;
+            this.Leer.Click += new System.EventHandler(this.Leer_Click);
             // 
             // Favoritos
             // 
@@ -332,21 +356,22 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.ClientSize = new System.Drawing.Size(958, 787);
+            this.Controls.Add(this.Leer);
+            this.Controls.Add(this.L_capitulo);
+            this.Controls.Add(this.L_libro);
+            this.Controls.Add(this.L_testamento);
+            this.Controls.Add(this.L_version);
+            this.Controls.Add(this.L_idioma);
             this.Controls.Add(this.L_versiculo);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.L_idioma);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.L_version);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.L_testamento);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.L_libro);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label19);
-            this.Controls.Add(this.L_capitulo);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.label17);
@@ -376,22 +401,23 @@
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label L_capitulo;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label L_libro;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label L_testamento;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label L_version;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label L_idioma;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox L_versiculo;
+        private System.Windows.Forms.TextBox L_idioma;
+        private System.Windows.Forms.TextBox L_version;
+        private System.Windows.Forms.TextBox L_testamento;
+        private System.Windows.Forms.TextBox L_libro;
+        private System.Windows.Forms.TextBox L_capitulo;
+        private FontAwesome.Sharp.IconButton Leer;
     }
 }

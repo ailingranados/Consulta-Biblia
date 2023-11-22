@@ -42,10 +42,34 @@ SET NOCOUNT ON;
 DECLARE @ID SMALLINT
 SET @ID = (select max(Id_usuario) as id from Usuario.UsuarioRegistros)
 
-	EXEC SP_ActivarUsuario @Clave, @ID
+	--EXEC SP_ActivarUsuario @Clave, @ID
 END
 GO
 
+CREATE TRIGGER Usuario.T_ActivarUsuario
+ON Usuario.UsuarioRegistros
+AFTER INSERT
+AS
+BEGIN
+	DECLARE @Id AS INT = (SELECT Id_usuario FROM inserted)
+	DECLARE @clave AS VARCHAR(10) = (SELECT Clave FROM inserted)
+
+	INSERT INTO Usuario.Contraseña
+	(ConNueva, Id_usuario)
+
+		VALUES
+		(@clave, @ID)
+
+	INSERT INTO Relaciones.UsuarioEstatus
+		(FechaReg, 
+		Id_estatus, 
+		Id_usuario)
+
+		VALUES
+		(GETDATE(),'1', @ID)
+
+END
+GO
 
 --activa el usuario
 ALTER PROCEDURE SP_ActivarUsuario
@@ -71,11 +95,6 @@ SET NOCOUNT ON;
 		VALUES
 		(GETDATE(),'1', @ID)
 
-	--UPDATE Usuario.UsuarioRegistros
-	--	SET
-	--		Contraseñas = (select max(Id_contraseña) as id from Usuario.Contraseña)
-	--	WHERE
-	--		Id_usuario = @ID
 			
 END
 GO

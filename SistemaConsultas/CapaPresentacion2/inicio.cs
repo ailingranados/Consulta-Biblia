@@ -57,6 +57,7 @@ namespace CapaPresentacion2
         {
 
             AbrirFormulario((IconMenuItem)sender, new Usuario(usuarioActualId));
+
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -106,7 +107,7 @@ namespace CapaPresentacion2
 
         private void iconMenuItem4_Click(object sender, EventArgs e)
         {
-
+            AbrirFormulario((IconMenuItem)sender, new AcercaDe());
         }
     }
 }

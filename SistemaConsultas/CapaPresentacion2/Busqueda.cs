@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Speech.Synthesis;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -167,6 +168,21 @@ namespace CapaPresentacion2
 
             TB_busqueda.Text = DGV_busqueda.CurrentRow.Cells[6].Value.ToString();
             
+        }
+
+        private void Leer_Click(object sender, EventArgs e)
+        {
+            // Crear una instancia de SpeechSynthesizer
+            using (SpeechSynthesizer synth = new SpeechSynthesizer())
+            {
+                // Configurar la voz y otros parámetros si es necesario
+                synth.SelectVoiceByHints(VoiceGender.Female, VoiceAge.Adult);
+
+                // Narrar el texto
+                synth.Speak(TB_busqueda.Text);
+
+
+            }
         }
     }
 }

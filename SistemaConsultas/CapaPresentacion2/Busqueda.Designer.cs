@@ -49,6 +49,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.TB_busqueda = new System.Windows.Forms.TextBox();
+            this.Leer = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_busqueda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
@@ -267,15 +268,15 @@
             // label4
             // 
             this.label4.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.label4.Location = new System.Drawing.Point(319, 553);
+            this.label4.Location = new System.Drawing.Point(319, 542);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(568, 111);
+            this.label4.Size = new System.Drawing.Size(568, 145);
             this.label4.TabIndex = 136;
             // 
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(331, 566);
+            this.label5.Location = new System.Drawing.Point(331, 555);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(102, 22);
             this.label5.TabIndex = 137;
@@ -283,11 +284,30 @@
             // 
             // TB_busqueda
             // 
-            this.TB_busqueda.Location = new System.Drawing.Point(332, 591);
+            this.TB_busqueda.Location = new System.Drawing.Point(332, 580);
             this.TB_busqueda.Multiline = true;
             this.TB_busqueda.Name = "TB_busqueda";
+            this.TB_busqueda.ReadOnly = true;
             this.TB_busqueda.Size = new System.Drawing.Size(536, 64);
             this.TB_busqueda.TabIndex = 139;
+            // 
+            // Leer
+            // 
+            this.Leer.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.Leer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Leer.IconChar = FontAwesome.Sharp.IconChar.Readme;
+            this.Leer.IconColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Leer.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.Leer.IconSize = 30;
+            this.Leer.Location = new System.Drawing.Point(783, 650);
+            this.Leer.Name = "Leer";
+            this.Leer.Size = new System.Drawing.Size(85, 33);
+            this.Leer.TabIndex = 140;
+            this.Leer.Text = "Leer";
+            this.Leer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Leer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Leer.UseVisualStyleBackColor = false;
+            this.Leer.Click += new System.EventHandler(this.Leer_Click);
             // 
             // Busqueda
             // 
@@ -295,6 +315,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.ClientSize = new System.Drawing.Size(919, 707);
+            this.Controls.Add(this.Leer);
             this.Controls.Add(this.TB_busqueda);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -353,5 +374,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox TB_busqueda;
+        private FontAwesome.Sharp.IconButton Leer;
     }
 }

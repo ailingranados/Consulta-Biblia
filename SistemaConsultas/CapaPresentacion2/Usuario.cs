@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -15,6 +16,10 @@ namespace CapaPresentacion2
     {
         private static DataTable usuarioActual;
         private static int usuarioActualId;
+        
+        private static bool correcto1 = true;
+        private static bool correcto2 = true;
+        private static bool correcto3 = true;
         public Usuario(int id_usu)
         {
             usuarioActualId = id_usu;
@@ -63,30 +68,41 @@ namespace CapaPresentacion2
 
         private void EditarUsuario_Click(object sender, EventArgs e)
         {
-            EnlaceDB EditarUsuario = new EnlaceDB();
-
-            usuarioActual = EditarUsuario.Buscar_usu(usuarioActualId);
-
-            bool UsuarioEditado = false;
-
-            int id_usu;
-            int.TryParse(usuarioActual.Rows[0]["Id_usuario"].ToString(), out id_usu);
-                
-
-            UsuarioEditado = EditarUsuario.Editar_usuario(id_usu, U_nombre.Text, U_apellidoM.Text, U_apellidoP.Text);
-
-            if (UsuarioEditado)
+            if (correcto1 == false | correcto2 == false | correcto3 == false)
             {
-                MessageBox.Show("El usuario ha sido editado con exito", ":)", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            }
-            else
-            {
-                MessageBox.Show("No se pudo editar el usuario", "FATAL ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                MessageBox.Show("No se pudo registrar el usuario, cheque los campos con error", "FATAL ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
-            this.Close();
+            
+                EnlaceDB EditarUsuario = new EnlaceDB();
+
+                usuarioActual = EditarUsuario.Buscar_usu(usuarioActualId);
+
+                bool UsuarioEditado = false;
+
+                int id_usu;
+                int.TryParse(usuarioActual.Rows[0]["Id_usuario"].ToString(), out id_usu);
+
+
+                UsuarioEditado = EditarUsuario.Editar_usuario(id_usu, U_nombre.Text, U_apellidoM.Text, U_apellidoP.Text);
+
+                if (UsuarioEditado)
+                {
+                    MessageBox.Show("El usuario ha sido editado con exito", ":)", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo editar el usuario", "FATAL ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+
+                this.Close();
+
+
+            
+            
 
         }
 
@@ -116,6 +132,9 @@ namespace CapaPresentacion2
                     MessageBox.Show("El usuario ha sido dado de baja con exito", ":)", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
 
+                    Form inicioForm = Application.OpenForms.OfType<inicio>().FirstOrDefault();
+                    inicioForm?.Close();
+
                 }
                 else
                 {
@@ -127,6 +146,62 @@ namespace CapaPresentacion2
 
           
 
+        }
+
+        private void U_nombre_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void U_nombre_Validating(object sender, CancelEventArgs e)
+        {
+            string apellidoM = U_nombre.Text;
+            Regex regex = new Regex("^[\\p{L}]+$");
+
+            if (!regex.IsMatch(apellidoM))
+            {
+                errorProvider1.SetError(U_nombre, "El nombre solo debe contener letras.");
+                correcto1  = false;
+            }
+            else
+            {
+                errorProvider1.SetError(U_nombre, "");
+                correcto1 = true;
+            }
+        }
+
+        private void U_apellidoP_Validating(object sender, CancelEventArgs e)
+        {
+            string apellidoM = U_apellidoP.Text;
+            Regex regex = new Regex("^[\\p{L}]+$");
+
+            if (!regex.IsMatch(apellidoM))
+            {
+                errorProvider1.SetError(U_apellidoP, "El nombre solo debe contener letras.");
+                correcto2 = false;
+            }
+            else
+            {
+                errorProvider1.SetError(U_apellidoP, "");
+                correcto2 = true;
+            }
+        }
+
+        private void U_apellidoM_Validating(object sender, CancelEventArgs e)
+        {
+            string apellidoM = U_apellidoM.Text;
+            Regex regex = new Regex("^[\\p{L}]+$");
+
+            if (!regex.IsMatch(apellidoM))
+            {
+                errorProvider1.SetError(U_apellidoM, "El nombre solo debe contener letras.");
+                correcto3 = false;
+            }
+            else
+            {
+                errorProvider1.SetError(U_apellidoM, "");
+                correcto3 = true;
+            }
         }
     }
 }

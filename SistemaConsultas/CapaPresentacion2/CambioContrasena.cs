@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -28,6 +29,7 @@ namespace CapaPresentacion2
            
             
         }
+
 
         private void Aceptar_Click(object sender, EventArgs e)
         {//cambiar contraseña
@@ -99,7 +101,8 @@ namespace CapaPresentacion2
             else
             {
                 MessageBox.Show("No se pudo cambiar la contraseña, cheque los campos", "FATAL ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                CC_con1.Text = "";
+                CC_con2.Text = "";
             }
 
             
@@ -127,11 +130,42 @@ namespace CapaPresentacion2
                 errorProvider1.SetError(CC_con1, "Ingresar una contraseña que coincida");
                 errorProvider1.SetError(CC_con2, "Ingresar una contraseña que coincida");
             }
+            if(CC_con1.Text.Length < 8)
+            {
+                ok = false;
+                errorProvider1.SetError(CC_con1, "La contraseña debe tener al menos 8 caracteres");
+            }   
 
+            if (CC_con2.Text.Length < 8)
+            {
+                ok = false;
+                errorProvider1.SetError(CC_con2, "La contraseña debe tener al menos 8 caracteres");
+            }
+
+            if (!ValidarPassword(CC_con1.Text))
+            {
+                ok = false;
+                errorProvider1.SetError(CC_con1, "La contraseña debe tener al menos una mayúscula, una minúscula y un carácter especial");
+            }
+
+            if (!ValidarPassword(CC_con2.Text))
+            {
+                ok = false;
+                errorProvider1.SetError(CC_con2, "La contraseña debe tener al menos una mayúscula, una minúscula y un carácter especial");
+            }
 
             return ok;
         }
 
+        private bool ValidarPassword(string password)
+        {
+            // La expresión regular verifica que haya al menos una mayúscula, una minúscula y un carácter especial.
+            string pattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).*$";
+
+            Regex regex = new Regex(pattern);
+
+            return regex.IsMatch(password);
+        }
         private void cancelar_Click(object sender, EventArgs e)
         {
             this.Close();
