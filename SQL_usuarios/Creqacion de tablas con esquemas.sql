@@ -38,16 +38,11 @@ PRIMARY KEY		(Id_referencia),
 SELECT * FROM Biblia.ReferenciaBiblia
 
 --********************************************************GENERO********************************************************
-
 CREATE TABLE Usuario.Genero (
 
 Id_genero		TINYINT			NOT NULL		IDENTITY(1,1),
-Descripcion		VARCHAR(10) 
+Descripcion		VARCHAR(20) 
 				DEFAULT			 'Sin Especificar',
-
-CHECK			(Descripcion =	 'Masculino'
-				OR Descripcion = 'Femenino' 
-				OR Descripcion = 'Sin Especificar'),
 
 CONSTRAINT		PK_genero 
 PRIMARY KEY		(Id_genero)
@@ -55,6 +50,8 @@ PRIMARY KEY		(Id_genero)
 )
 
 SELECT * FROM Usuario.Genero
+
+
 
 --*******************************************************ESTATUS********************************************************
 
@@ -98,25 +95,22 @@ REFERENCES		Usuario.Genero(Id_genero)
 
 SELECT * FROM Usuario.UsuarioRegistros
 
+
 --*******************************************************Contraseña********************************************************
 
 CREATE TABLE Usuario.Contraseña(
 
 Id_contraseña	SMALLINT		NOT NULL		IDENTITY(1,1),
-ConPrincipal	VARCHAR(20)		NOT NULL,
 ConVieja1		VARCHAR(20),
 ConVieja2		VARCHAR(20),
-Id_usuario		SMALLINT		NOT NULL,
 
 CONSTRAINT		PK_contraseña 
 PRIMARY KEY		(Id_contraseña),
 
-CONSTRAINT		FK_usuario 
-FOREIGN KEY		(Id_usuario) 
-REFERENCES		Usuario.UsuarioRegistros(Id_usuario)
 )
 
 SELECT * FROM Usuario.Contraseña
+
 
 --*******************************************************Busqueda********************************************************
 

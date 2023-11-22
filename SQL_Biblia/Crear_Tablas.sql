@@ -57,6 +57,11 @@ BEGIN
 DROP TABLE Versiones;
 PRINT 'Tabla eliminada'
 END
+SELECT * FROM Idiomas
+
+select * from Versiones
+
+SELECT * FROM Testamentos
 
 CREATE TABLE Versiones
 (
@@ -109,6 +114,7 @@ BEGIN
 PRINT 'tabla no existía'
 END
 
+SELECT * FROM Libros
 
 CREATE TABLE Libros(
 Id_Libro SMALLINT NOT NULL IDENTITY(1,1),
@@ -162,3 +168,5 @@ FOREIGN KEY (Id_Version) --en esta tabla
 REFERENCES Versiones(Id_Version) -- tabla en la cual está la PK
 );
 PRINT 'Tabla Versiculos Creada';
+
+SELECT * FROM Versiculos

@@ -56,7 +56,7 @@
             // 
             this.comboBox1.AllowDrop = true;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(80, 56);
+            this.comboBox1.Location = new System.Drawing.Point(72, 126);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(152, 21);
             this.comboBox1.TabIndex = 38;
@@ -69,7 +69,7 @@
             this.iconPictureBox2.IconColor = System.Drawing.Color.DarkSeaGreen;
             this.iconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconPictureBox2.IconSize = 42;
-            this.iconPictureBox2.Location = new System.Drawing.Point(32, 32);
+            this.iconPictureBox2.Location = new System.Drawing.Point(24, 102);
             this.iconPictureBox2.Name = "iconPictureBox2";
             this.iconPictureBox2.Size = new System.Drawing.Size(42, 43);
             this.iconPictureBox2.TabIndex = 37;
@@ -80,7 +80,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.White;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(80, 32);
+            this.label3.Location = new System.Drawing.Point(72, 102);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(83, 17);
             this.label3.TabIndex = 36;
@@ -89,7 +89,7 @@
             // label2
             // 
             this.label2.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.label2.Location = new System.Drawing.Point(24, 16);
+            this.label2.Location = new System.Drawing.Point(16, 86);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(224, 80);
             this.label2.TabIndex = 39;
@@ -98,7 +98,7 @@
             // 
             this.comboBox2.AllowDrop = true;
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(312, 56);
+            this.comboBox2.Location = new System.Drawing.Point(304, 126);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(152, 21);
             this.comboBox2.TabIndex = 42;
@@ -111,7 +111,7 @@
             this.iconPictureBox1.IconColor = System.Drawing.Color.DarkSeaGreen;
             this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconPictureBox1.IconSize = 42;
-            this.iconPictureBox1.Location = new System.Drawing.Point(264, 32);
+            this.iconPictureBox1.Location = new System.Drawing.Point(256, 102);
             this.iconPictureBox1.Name = "iconPictureBox1";
             this.iconPictureBox1.Size = new System.Drawing.Size(42, 43);
             this.iconPictureBox1.TabIndex = 41;
@@ -122,7 +122,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(312, 32);
+            this.label1.Location = new System.Drawing.Point(304, 102);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 17);
             this.label1.TabIndex = 40;
@@ -131,7 +131,7 @@
             // label4
             // 
             this.label4.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.label4.Location = new System.Drawing.Point(256, 16);
+            this.label4.Location = new System.Drawing.Point(248, 86);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(224, 80);
             this.label4.TabIndex = 43;
@@ -140,7 +140,7 @@
             // 
             this.comboBox3.AllowDrop = true;
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(544, 56);
+            this.comboBox3.Location = new System.Drawing.Point(536, 126);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(152, 21);
             this.comboBox3.TabIndex = 46;
@@ -153,7 +153,7 @@
             this.iconPictureBox3.IconColor = System.Drawing.Color.DarkSeaGreen;
             this.iconPictureBox3.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconPictureBox3.IconSize = 42;
-            this.iconPictureBox3.Location = new System.Drawing.Point(496, 32);
+            this.iconPictureBox3.Location = new System.Drawing.Point(488, 102);
             this.iconPictureBox3.Name = "iconPictureBox3";
             this.iconPictureBox3.Size = new System.Drawing.Size(42, 43);
             this.iconPictureBox3.TabIndex = 45;
@@ -164,7 +164,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.White;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(544, 32);
+            this.label5.Location = new System.Drawing.Point(536, 102);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(59, 17);
             this.label5.TabIndex = 44;
@@ -173,7 +173,7 @@
             // label6
             // 
             this.label6.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.label6.Location = new System.Drawing.Point(488, 16);
+            this.label6.Location = new System.Drawing.Point(480, 86);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(224, 80);
             this.label6.TabIndex = 47;
@@ -182,7 +182,7 @@
             // 
             this.comboBox4.AllowDrop = true;
             this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(776, 56);
+            this.comboBox4.Location = new System.Drawing.Point(768, 126);
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(152, 21);
             this.comboBox4.TabIndex = 50;
@@ -195,7 +195,7 @@
             this.iconPictureBox4.IconColor = System.Drawing.Color.DarkSeaGreen;
             this.iconPictureBox4.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconPictureBox4.IconSize = 42;
-            this.iconPictureBox4.Location = new System.Drawing.Point(728, 32);
+            this.iconPictureBox4.Location = new System.Drawing.Point(720, 102);
             this.iconPictureBox4.Name = "iconPictureBox4";
             this.iconPictureBox4.Size = new System.Drawing.Size(42, 43);
             this.iconPictureBox4.TabIndex = 49;
@@ -206,7 +206,7 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.White;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(776, 32);
+            this.label7.Location = new System.Drawing.Point(768, 102);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(66, 17);
             this.label7.TabIndex = 48;
@@ -215,7 +215,7 @@
             // label8
             // 
             this.label8.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.label8.Location = new System.Drawing.Point(720, 16);
+            this.label8.Location = new System.Drawing.Point(712, 86);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(224, 80);
             this.label8.TabIndex = 51;
@@ -224,9 +224,9 @@
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(24, 112);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 188);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(920, 304);
+            this.dataGridView1.Size = new System.Drawing.Size(924, 395);
             this.dataGridView1.TabIndex = 52;
             // 
             // Consulta
@@ -234,7 +234,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.ClientSize = new System.Drawing.Size(964, 450);
+            this.ClientSize = new System.Drawing.Size(953, 651);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.comboBox4);
             this.Controls.Add(this.iconPictureBox4);

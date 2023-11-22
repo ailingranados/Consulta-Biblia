@@ -28,200 +28,163 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.DGV_historial = new System.Windows.Forms.DataGridView();
+            this.rb_todo = new System.Windows.Forms.RadioButton();
+            this.label1 = new System.Windows.Forms.Label();
+            this.BTN_eliminar = new FontAwesome.Sharp.IconButton();
+            this.label3 = new System.Windows.Forms.Label();
+            this.BTN_consultas = new FontAwesome.Sharp.IconButton();
+            this.BTN_busquedas = new FontAwesome.Sharp.IconButton();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
-            this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
+            this.label4 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_historial)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // DGV_historial
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(320, 24);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(616, 384);
-            this.dataGridView1.TabIndex = 85;
+            this.DGV_historial.AllowUserToAddRows = false;
+            this.DGV_historial.AllowUserToDeleteRows = false;
+            this.DGV_historial.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.DGV_historial.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV_historial.Location = new System.Drawing.Point(36, 222);
+            this.DGV_historial.Name = "DGV_historial";
+            this.DGV_historial.ReadOnly = true;
+            this.DGV_historial.Size = new System.Drawing.Size(890, 393);
+            this.DGV_historial.TabIndex = 85;
+            // 
+            // rb_todo
+            // 
+            this.rb_todo.Location = new System.Drawing.Point(47, 161);
+            this.rb_todo.Name = "rb_todo";
+            this.rb_todo.Size = new System.Drawing.Size(159, 38);
+            this.rb_todo.TabIndex = 108;
+            this.rb_todo.TabStop = true;
+            this.rb_todo.Text = "Seleccionar todo";
+            this.rb_todo.UseVisualStyleBackColor = true;
+            this.rb_todo.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.label1.Location = new System.Drawing.Point(36, 97);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(363, 111);
+            this.label1.TabIndex = 110;
+            // 
+            // BTN_eliminar
+            // 
+            this.BTN_eliminar.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.BTN_eliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTN_eliminar.IconChar = FontAwesome.Sharp.IconChar.Eraser;
+            this.BTN_eliminar.IconColor = System.Drawing.Color.White;
+            this.BTN_eliminar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.BTN_eliminar.IconSize = 30;
+            this.BTN_eliminar.Location = new System.Drawing.Point(225, 161);
+            this.BTN_eliminar.Name = "BTN_eliminar";
+            this.BTN_eliminar.Size = new System.Drawing.Size(159, 38);
+            this.BTN_eliminar.TabIndex = 111;
+            this.BTN_eliminar.Text = "Eliminar ";
+            this.BTN_eliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BTN_eliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BTN_eliminar.UseVisualStyleBackColor = false;
+            this.BTN_eliminar.Click += new System.EventHandler(this.BTN_eliminar_Click);
+            // 
+            // label3
+            // 
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(44, 108);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(340, 34);
+            this.label3.TabIndex = 116;
+            this.label3.Text = "Para eliminar un registro seleccionelo o si desea eliminar todos los registros pu" +
+    "lse el checkbox ";
+            // 
+            // BTN_consultas
+            // 
+            this.BTN_consultas.BackColor = System.Drawing.Color.SeaGreen;
+            this.BTN_consultas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTN_consultas.IconChar = FontAwesome.Sharp.IconChar.Comments;
+            this.BTN_consultas.IconColor = System.Drawing.Color.Honeydew;
+            this.BTN_consultas.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.BTN_consultas.IconSize = 30;
+            this.BTN_consultas.Location = new System.Drawing.Point(448, 161);
+            this.BTN_consultas.Name = "BTN_consultas";
+            this.BTN_consultas.Size = new System.Drawing.Size(221, 40);
+            this.BTN_consultas.TabIndex = 118;
+            this.BTN_consultas.Text = "Consultas";
+            this.BTN_consultas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BTN_consultas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BTN_consultas.UseVisualStyleBackColor = false;
+            this.BTN_consultas.Click += new System.EventHandler(this.BTN_consultas_Click);
+            // 
+            // BTN_busquedas
+            // 
+            this.BTN_busquedas.BackColor = System.Drawing.Color.Honeydew;
+            this.BTN_busquedas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTN_busquedas.IconChar = FontAwesome.Sharp.IconChar.Comments;
+            this.BTN_busquedas.IconColor = System.Drawing.Color.SeaGreen;
+            this.BTN_busquedas.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.BTN_busquedas.IconSize = 30;
+            this.BTN_busquedas.Location = new System.Drawing.Point(682, 161);
+            this.BTN_busquedas.Name = "BTN_busquedas";
+            this.BTN_busquedas.Size = new System.Drawing.Size(221, 40);
+            this.BTN_busquedas.TabIndex = 117;
+            this.BTN_busquedas.Text = "Busquedas";
+            this.BTN_busquedas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BTN_busquedas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BTN_busquedas.UseVisualStyleBackColor = false;
+            this.BTN_busquedas.Click += new System.EventHandler(this.BTN_busquedas_Click);
             // 
             // label2
             // 
-            this.label2.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.label2.Location = new System.Drawing.Point(24, 24);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(444, 108);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(280, 144);
-            this.label2.TabIndex = 84;
+            this.label2.Size = new System.Drawing.Size(459, 34);
+            this.label2.TabIndex = 120;
+            this.label2.Text = "Elegir el tipo de historial a consultar";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // comboBox2
+            // label4
             // 
-            this.comboBox2.AllowDrop = true;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(64, 120);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(208, 21);
-            this.comboBox2.TabIndex = 103;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.AllowDrop = true;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(64, 56);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(208, 21);
-            this.comboBox1.TabIndex = 102;
-            // 
-            // iconPictureBox3
-            // 
-            this.iconPictureBox3.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.iconPictureBox3.ForeColor = System.Drawing.Color.DarkSeaGreen;
-            this.iconPictureBox3.IconChar = FontAwesome.Sharp.IconChar.LinesLeaning;
-            this.iconPictureBox3.IconColor = System.Drawing.Color.DarkSeaGreen;
-            this.iconPictureBox3.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox3.IconSize = 24;
-            this.iconPictureBox3.Location = new System.Drawing.Point(32, 99);
-            this.iconPictureBox3.Name = "iconPictureBox3";
-            this.iconPictureBox3.Size = new System.Drawing.Size(24, 24);
-            this.iconPictureBox3.TabIndex = 101;
-            this.iconPictureBox3.TabStop = false;
-            // 
-            // iconPictureBox1
-            // 
-            this.iconPictureBox1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.iconPictureBox1.ForeColor = System.Drawing.Color.DarkSeaGreen;
-            this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.Language;
-            this.iconPictureBox1.IconColor = System.Drawing.Color.DarkSeaGreen;
-            this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox1.IconSize = 24;
-            this.iconPictureBox1.Location = new System.Drawing.Point(32, 32);
-            this.iconPictureBox1.Name = "iconPictureBox1";
-            this.iconPictureBox1.Size = new System.Drawing.Size(24, 24);
-            this.iconPictureBox1.TabIndex = 100;
-            this.iconPictureBox1.TabStop = false;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(65, 104);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(42, 13);
-            this.label7.TabIndex = 99;
-            this.label7.Text = "Version";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(65, 37);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(38, 13);
-            this.label8.TabIndex = 98;
-            this.label8.Text = "Idioma";
-            // 
-            // monthCalendar1
-            // 
-            this.monthCalendar1.Location = new System.Drawing.Point(40, 224);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 106;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(96, 200);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(130, 20);
-            this.label5.TabIndex = 104;
-            this.label5.Text = "Buscar por fecha";
-            // 
-            // label6
-            // 
-            this.label6.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.label6.Location = new System.Drawing.Point(24, 184);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(280, 224);
-            this.label6.TabIndex = 105;
-            // 
-            // iconButton1
-            // 
-            this.iconButton1.BackColor = System.Drawing.Color.SeaShell;
-            this.iconButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Eraser;
-            this.iconButton1.IconColor = System.Drawing.Color.LightPink;
-            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton1.IconSize = 30;
-            this.iconButton1.Location = new System.Drawing.Point(24, 424);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Size = new System.Drawing.Size(280, 40);
-            this.iconButton1.TabIndex = 107;
-            this.iconButton1.Text = "Eliminar ";
-            this.iconButton1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton1.UseVisualStyleBackColor = false;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(328, 384);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(105, 17);
-            this.radioButton1.TabIndex = 108;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Seleccionar todo";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.label4.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.label4.Location = new System.Drawing.Point(420, 97);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(506, 111);
+            this.label4.TabIndex = 119;
             // 
             // Historial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.ClientSize = new System.Drawing.Size(960, 473);
-            this.Controls.Add(this.radioButton1);
-            this.Controls.Add(this.iconButton1);
-            this.Controls.Add(this.monthCalendar1);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.iconPictureBox3);
-            this.Controls.Add(this.iconPictureBox1);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.dataGridView1);
+            this.ClientSize = new System.Drawing.Size(960, 718);
+            this.Controls.Add(this.BTN_consultas);
+            this.Controls.Add(this.BTN_busquedas);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.BTN_eliminar);
+            this.Controls.Add(this.rb_todo);
+            this.Controls.Add(this.DGV_historial);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.label4);
             this.Name = "Historial";
             this.Text = "Historial";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
+            this.Load += new System.EventHandler(this.Historial_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_historial)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView DGV_historial;
+        private System.Windows.Forms.RadioButton rb_todo;
+        private System.Windows.Forms.Label label1;
+        private FontAwesome.Sharp.IconButton BTN_eliminar;
+        private System.Windows.Forms.Label label3;
+        private FontAwesome.Sharp.IconButton BTN_consultas;
+        private FontAwesome.Sharp.IconButton BTN_busquedas;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox3;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.MonthCalendar monthCalendar1;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private FontAwesome.Sharp.IconButton iconButton1;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.Label label4;
     }
 }

@@ -4,3 +4,9 @@ C:\Users\Elisa\Documents\Escuela\5 semestre\MAD\SistemaConsultas\CapaEntidad\obj
 C:\Users\Elisa\Documents\Escuela\5 semestre\MAD\SistemaConsultas\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
 C:\Users\Elisa\Documents\Escuela\5 semestre\MAD\SistemaConsultas\CapaEntidad\obj\Debug\CapaEntidad.dll
 C:\Users\Elisa\Documents\Escuela\5 semestre\MAD\SistemaConsultas\CapaEntidad\obj\Debug\CapaEntidad.pdb
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaEntidad\bin\Debug\CapaEntidad.dll
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaEntidad\bin\Debug\CapaEntidad.pdb
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaEntidad\obj\Debug\CapaEntidad.csproj.AssemblyReference.cache
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaEntidad\obj\Debug\CapaEntidad.dll
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaEntidad\obj\Debug\CapaEntidad.pdb

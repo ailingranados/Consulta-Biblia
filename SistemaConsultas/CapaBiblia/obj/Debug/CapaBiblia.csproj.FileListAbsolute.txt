@@ -1,0 +1,11 @@
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaBiblia\bin\Debug\CapaBiblia.dll
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaBiblia\bin\Debug\CapaBiblia.pdb
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaBiblia\bin\Debug\CapaDatos.dll
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaBiblia\bin\Debug\CapaEntidad.dll
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaBiblia\bin\Debug\CapaDatos.pdb
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaBiblia\bin\Debug\CapaEntidad.pdb
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaBiblia\obj\Debug\CapaBiblia.csproj.AssemblyReference.cache
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaBiblia\obj\Debug\CapaBiblia.csproj.CoreCompileInputs.cache
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaBiblia\obj\Debug\CapaBiblia.csproj.CopyComplete
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaBiblia\obj\Debug\CapaBiblia.dll
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaBiblia\obj\Debug\CapaBiblia.pdb

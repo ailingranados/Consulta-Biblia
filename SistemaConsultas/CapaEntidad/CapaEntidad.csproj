@@ -56,5 +56,10 @@
     <Compile Include="Usuario_genero.cs" />
     <Compile Include="Usuario_registros.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -44,3 +44,30 @@ D:\Escuela\5 Semestre\MAD\SistemaConsultas\CapaPresentacion2\obj\Debug\CapaPrese
 D:\Escuela\5 Semestre\MAD\SistemaConsultas\CapaPresentacion2\obj\Debug\CapaPresentacion2.csproj.CopyComplete
 D:\Escuela\5 Semestre\MAD\SistemaConsultas\CapaPresentacion2\obj\Debug\CapaPresentacion2.exe
 D:\Escuela\5 Semestre\MAD\SistemaConsultas\CapaPresentacion2\obj\Debug\CapaPresentacion2.pdb
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\bin\Debug\CapaPresentacion2.exe.config
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\bin\Debug\CapaPresentacion2.exe
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\bin\Debug\CapaPresentacion2.pdb
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\bin\Debug\FontAwesome.Sharp.dll
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\bin\Debug\FontAwesome.Sharp.Material.dll
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\bin\Debug\FontAwesome.Sharp.Pro.dll
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\obj\Debug\CapaPresentacion2.csproj.AssemblyReference.cache
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\obj\Debug\CapaPresentacion2.AcercaDe.resources
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\obj\Debug\CapaPresentacion2.Busqueda.resources
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\obj\Debug\CapaPresentacion2.Consulta.resources
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\obj\Debug\CapaPresentacion2.Consulta_IdiomaVersion.resources
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\obj\Debug\CapaPresentacion2.Favoritos.resources
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\obj\Debug\CapaPresentacion2.Historial.resources
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\obj\Debug\CapaPresentacion2.inicio.resources
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\obj\Debug\CapaPresentacion2.Login.resources
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\obj\Debug\CapaPresentacion2.Properties.Resources.resources
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\obj\Debug\CapaPresentacion2.Registrarse.resources
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\obj\Debug\CapaPresentacion2.Usuario.resources
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\obj\Debug\CapaPresentacion2.csproj.GenerateResource.cache
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\obj\Debug\CapaPresentacion2.csproj.CoreCompileInputs.cache
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\obj\Debug\CapaPresentacion2.csproj.CopyComplete
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\obj\Debug\CapaPresentacion2.exe
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\obj\Debug\CapaPresentacion2.pdb
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\obj\Debug\CapaPresentacion2.CambioContrasena.resources
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\obj\Debug\CapaPresentacion2.AgregarFavorito.resources
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\obj\Debug\CapaPresentacion2.Pregunta_secreta.resources
+C:\Users\USER\Documents\GitHub\Consulta-Biblia\SistemaConsultas\CapaPresentacion2\obj\Debug\CapaPresentacion2.CambioConActivacion.resources

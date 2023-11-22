@@ -13,7 +13,50 @@ namespace CapaDatos
     public class CD_Usuarios_registros
     {
 
-        public List<Usuario_registros>
+        public List<Usuario_registros> Listar()
+        {
+            List<Usuario_registros> lista = new List<Usuario_registros>();
+
+            using (SqlConnection oConexion = new SqlConnection(Conexion.cadena))
+            {
+
+                try
+                {
+                    string query = "SP_LeerUsRegistrados";
+
+                    SqlCommand cmd = new SqlCommand(query, oConexion);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    oConexion.Open();
+
+                    using(SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            lista.Add(new Usuario_registros()
+                            {
+                                Id_usuario = Convert.ToInt32(dr["Id_usuario"]),
+                                Correo = dr["Correo"].ToString(),
+                                Fecha_nac = dr["Fecha_nac"].ToString(),
+                                Nombre = dr["Nombre"].ToString(),
+                                ApellidoM = dr["ApellidoM"].ToString(),
+                                ApellidoP = dr["ApellidoP"].ToString(),
+                                Clave = dr["Clave"].ToString(),
+
+                             
+
+                            }) ;
+                        }
+                    }
+
+                }catch (Exception ex)
+                {
+                    lista = new List<Usuario_registros>();
+                }
+            }
+
+            return lista;
+        }
     }
 }
 

@@ -28,60 +28,69 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.DGV_busqueda = new System.Windows.Forms.DataGridView();
+            this.CB_version = new System.Windows.Forms.ComboBox();
+            this.CB_idioma = new System.Windows.Forms.ComboBox();
             this.iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
-            this.radioButton7 = new System.Windows.Forms.RadioButton();
-            this.radioButton8 = new System.Windows.Forms.RadioButton();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TB_palabras = new System.Windows.Forms.TextBox();
             this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.BTN_buscar = new FontAwesome.Sharp.IconButton();
+            this.CB_libro = new System.Windows.Forms.ComboBox();
+            this.iconPictureBox5 = new FontAwesome.Sharp.IconPictureBox();
+            this.CB_testamento = new System.Windows.Forms.ComboBox();
+            this.iconPictureBox6 = new FontAwesome.Sharp.IconPictureBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.TB_busqueda = new System.Windows.Forms.TextBox();
+            this.Leer = new FontAwesome.Sharp.IconButton();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_busqueda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox6)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // DGV_busqueda
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(328, 24);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(608, 408);
-            this.dataGridView1.TabIndex = 69;
+            this.DGV_busqueda.AllowUserToAddRows = false;
+            this.DGV_busqueda.AllowUserToDeleteRows = false;
+            this.DGV_busqueda.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.DGV_busqueda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV_busqueda.Location = new System.Drawing.Point(322, 107);
+            this.DGV_busqueda.Name = "DGV_busqueda";
+            this.DGV_busqueda.ReadOnly = true;
+            this.DGV_busqueda.Size = new System.Drawing.Size(565, 424);
+            this.DGV_busqueda.TabIndex = 69;
+            this.DGV_busqueda.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_busqueda_CellContentClick);
             // 
-            // comboBox2
+            // CB_version
             // 
-            this.comboBox2.AllowDrop = true;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(64, 120);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(208, 21);
-            this.comboBox2.TabIndex = 124;
+            this.CB_version.AllowDrop = true;
+            this.CB_version.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_version.FormattingEnabled = true;
+            this.CB_version.Location = new System.Drawing.Point(63, 203);
+            this.CB_version.Name = "CB_version";
+            this.CB_version.Size = new System.Drawing.Size(216, 21);
+            this.CB_version.TabIndex = 124;
             // 
-            // comboBox1
+            // CB_idioma
             // 
-            this.comboBox1.AllowDrop = true;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(64, 56);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(208, 21);
-            this.comboBox1.TabIndex = 123;
+            this.CB_idioma.AllowDrop = true;
+            this.CB_idioma.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_idioma.FormattingEnabled = true;
+            this.CB_idioma.Location = new System.Drawing.Point(63, 139);
+            this.CB_idioma.Name = "CB_idioma";
+            this.CB_idioma.Size = new System.Drawing.Size(216, 21);
+            this.CB_idioma.TabIndex = 123;
+            this.CB_idioma.SelectedIndexChanged += new System.EventHandler(this.CB_idioma_SelectedIndexChanged);
             // 
             // iconPictureBox3
             // 
@@ -91,7 +100,7 @@
             this.iconPictureBox3.IconColor = System.Drawing.Color.DarkSeaGreen;
             this.iconPictureBox3.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconPictureBox3.IconSize = 24;
-            this.iconPictureBox3.Location = new System.Drawing.Point(32, 99);
+            this.iconPictureBox3.Location = new System.Drawing.Point(31, 182);
             this.iconPictureBox3.Name = "iconPictureBox3";
             this.iconPictureBox3.Size = new System.Drawing.Size(24, 24);
             this.iconPictureBox3.TabIndex = 122;
@@ -105,7 +114,7 @@
             this.iconPictureBox1.IconColor = System.Drawing.Color.DarkSeaGreen;
             this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconPictureBox1.IconSize = 24;
-            this.iconPictureBox1.Location = new System.Drawing.Point(32, 32);
+            this.iconPictureBox1.Location = new System.Drawing.Point(31, 115);
             this.iconPictureBox1.Name = "iconPictureBox1";
             this.iconPictureBox1.Size = new System.Drawing.Size(24, 24);
             this.iconPictureBox1.TabIndex = 121;
@@ -114,7 +123,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(65, 104);
+            this.label7.Location = new System.Drawing.Point(64, 187);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(42, 13);
             this.label7.TabIndex = 120;
@@ -123,138 +132,20 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(65, 37);
+            this.label8.Location = new System.Drawing.Point(64, 120);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(38, 13);
             this.label8.TabIndex = 119;
             this.label8.Text = "Idioma";
             // 
-            // radioButton6
+            // TB_palabras
             // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton6.Location = new System.Drawing.Point(192, 392);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(90, 17);
-            this.radioButton6.TabIndex = 118;
-            this.radioButton6.TabStop = true;
-            this.radioButton6.Text = "Testamento 2";
-            this.radioButton6.UseVisualStyleBackColor = false;
-            // 
-            // radioButton7
-            // 
-            this.radioButton7.AutoSize = true;
-            this.radioButton7.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton7.Location = new System.Drawing.Point(96, 392);
-            this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(87, 17);
-            this.radioButton7.TabIndex = 117;
-            this.radioButton7.TabStop = true;
-            this.radioButton7.Text = "Testamento1";
-            this.radioButton7.UseVisualStyleBackColor = false;
-            // 
-            // radioButton8
-            // 
-            this.radioButton8.AutoSize = true;
-            this.radioButton8.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton8.Location = new System.Drawing.Point(32, 392);
-            this.radioButton8.Name = "radioButton8";
-            this.radioButton8.Size = new System.Drawing.Size(55, 17);
-            this.radioButton8.TabIndex = 116;
-            this.radioButton8.TabStop = true;
-            this.radioButton8.Text = "Todos";
-            this.radioButton8.UseVisualStyleBackColor = false;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.White;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(32, 368);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(90, 17);
-            this.label5.TabIndex = 115;
-            this.label5.Text = "Testamentos";
-            // 
-            // label6
-            // 
-            this.label6.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.label6.Location = new System.Drawing.Point(24, 352);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(280, 80);
-            this.label6.TabIndex = 114;
-            // 
-            // radioButton4
-            // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(224, 296);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(54, 17);
-            this.radioButton4.TabIndex = 113;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "Libro3";
-            this.radioButton4.UseVisualStyleBackColor = true;
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(160, 296);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(54, 17);
-            this.radioButton3.TabIndex = 112;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Libro2";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(96, 296);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(54, 17);
-            this.radioButton2.TabIndex = 111;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Libro1";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(32, 296);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(55, 17);
-            this.radioButton1.TabIndex = 110;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Todos";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.White;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(32, 272);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(47, 17);
-            this.label4.TabIndex = 109;
-            this.label4.Text = "Libros";
-            // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.label1.Location = new System.Drawing.Point(24, 256);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(280, 80);
-            this.label1.TabIndex = 108;
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.Color.White;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(64, 192);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(216, 26);
-            this.textBox1.TabIndex = 107;
+            this.TB_palabras.BackColor = System.Drawing.Color.White;
+            this.TB_palabras.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_palabras.Location = new System.Drawing.Point(63, 414);
+            this.TB_palabras.Name = "TB_palabras";
+            this.TB_palabras.Size = new System.Drawing.Size(216, 26);
+            this.TB_palabras.TabIndex = 107;
             // 
             // iconPictureBox2
             // 
@@ -264,7 +155,7 @@
             this.iconPictureBox2.IconColor = System.Drawing.Color.DarkSeaGreen;
             this.iconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconPictureBox2.IconSize = 24;
-            this.iconPictureBox2.Location = new System.Drawing.Point(32, 168);
+            this.iconPictureBox2.Location = new System.Drawing.Point(31, 394);
             this.iconPictureBox2.Name = "iconPictureBox2";
             this.iconPictureBox2.Size = new System.Drawing.Size(24, 24);
             this.iconPictureBox2.TabIndex = 105;
@@ -275,54 +166,186 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.White;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(64, 168);
+            this.label3.Location = new System.Drawing.Point(64, 394);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(72, 17);
+            this.label3.Size = new System.Drawing.Size(123, 17);
             this.label3.TabIndex = 104;
-            this.label3.Text = "Busqueda";
+            this.label3.Text = "Palabras a buscar";
             // 
             // label2
             // 
             this.label2.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.label2.Location = new System.Drawing.Point(24, 24);
+            this.label2.Location = new System.Drawing.Point(23, 107);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(280, 216);
+            this.label2.Size = new System.Drawing.Size(280, 424);
             this.label2.TabIndex = 106;
+            // 
+            // BTN_buscar
+            // 
+            this.BTN_buscar.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.BTN_buscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTN_buscar.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
+            this.BTN_buscar.IconColor = System.Drawing.Color.White;
+            this.BTN_buscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.BTN_buscar.IconSize = 30;
+            this.BTN_buscar.Location = new System.Drawing.Point(160, 481);
+            this.BTN_buscar.Name = "BTN_buscar";
+            this.BTN_buscar.Size = new System.Drawing.Size(119, 34);
+            this.BTN_buscar.TabIndex = 125;
+            this.BTN_buscar.Text = "Buscar";
+            this.BTN_buscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BTN_buscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BTN_buscar.UseVisualStyleBackColor = false;
+            this.BTN_buscar.Click += new System.EventHandler(this.BTN_buscar_Click);
+            // 
+            // CB_libro
+            // 
+            this.CB_libro.AllowDrop = true;
+            this.CB_libro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_libro.FormattingEnabled = true;
+            this.CB_libro.Location = new System.Drawing.Point(63, 324);
+            this.CB_libro.Name = "CB_libro";
+            this.CB_libro.Size = new System.Drawing.Size(216, 21);
+            this.CB_libro.TabIndex = 132;
+            // 
+            // iconPictureBox5
+            // 
+            this.iconPictureBox5.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.iconPictureBox5.ForeColor = System.Drawing.Color.DarkSeaGreen;
+            this.iconPictureBox5.IconChar = FontAwesome.Sharp.IconChar.BookBookmark;
+            this.iconPictureBox5.IconColor = System.Drawing.Color.DarkSeaGreen;
+            this.iconPictureBox5.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPictureBox5.IconSize = 24;
+            this.iconPictureBox5.Location = new System.Drawing.Point(32, 308);
+            this.iconPictureBox5.Name = "iconPictureBox5";
+            this.iconPictureBox5.Size = new System.Drawing.Size(24, 26);
+            this.iconPictureBox5.TabIndex = 131;
+            this.iconPictureBox5.TabStop = false;
+            // 
+            // CB_testamento
+            // 
+            this.CB_testamento.AllowDrop = true;
+            this.CB_testamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_testamento.FormattingEnabled = true;
+            this.CB_testamento.Location = new System.Drawing.Point(63, 262);
+            this.CB_testamento.Name = "CB_testamento";
+            this.CB_testamento.Size = new System.Drawing.Size(216, 21);
+            this.CB_testamento.TabIndex = 128;
+            this.CB_testamento.SelectedIndexChanged += new System.EventHandler(this.CB_testamento_SelectedIndexChanged);
+            // 
+            // iconPictureBox6
+            // 
+            this.iconPictureBox6.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.iconPictureBox6.ForeColor = System.Drawing.Color.DarkSeaGreen;
+            this.iconPictureBox6.IconChar = FontAwesome.Sharp.IconChar.List;
+            this.iconPictureBox6.IconColor = System.Drawing.Color.DarkSeaGreen;
+            this.iconPictureBox6.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPictureBox6.IconSize = 23;
+            this.iconPictureBox6.Location = new System.Drawing.Point(32, 246);
+            this.iconPictureBox6.Name = "iconPictureBox6";
+            this.iconPictureBox6.Size = new System.Drawing.Size(23, 24);
+            this.iconPictureBox6.TabIndex = 127;
+            this.iconPictureBox6.TabStop = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(64, 246);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(63, 13);
+            this.label6.TabIndex = 134;
+            this.label6.Text = "Testamento";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(64, 308);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(30, 13);
+            this.label1.TabIndex = 135;
+            this.label1.Text = "Libro";
+            // 
+            // label4
+            // 
+            this.label4.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.label4.Location = new System.Drawing.Point(319, 542);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(568, 145);
+            this.label4.TabIndex = 136;
+            // 
+            // label5
+            // 
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(331, 555);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(102, 22);
+            this.label5.TabIndex = 137;
+            this.label5.Text = "Busqueda";
+            // 
+            // TB_busqueda
+            // 
+            this.TB_busqueda.Location = new System.Drawing.Point(332, 580);
+            this.TB_busqueda.Multiline = true;
+            this.TB_busqueda.Name = "TB_busqueda";
+            this.TB_busqueda.ReadOnly = true;
+            this.TB_busqueda.Size = new System.Drawing.Size(536, 64);
+            this.TB_busqueda.TabIndex = 139;
+            // 
+            // Leer
+            // 
+            this.Leer.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.Leer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Leer.IconChar = FontAwesome.Sharp.IconChar.Readme;
+            this.Leer.IconColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Leer.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.Leer.IconSize = 30;
+            this.Leer.Location = new System.Drawing.Point(783, 650);
+            this.Leer.Name = "Leer";
+            this.Leer.Size = new System.Drawing.Size(85, 33);
+            this.Leer.TabIndex = 140;
+            this.Leer.Text = "Leer";
+            this.Leer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Leer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Leer.UseVisualStyleBackColor = false;
+            this.Leer.Click += new System.EventHandler(this.Leer_Click);
             // 
             // Busqueda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.ClientSize = new System.Drawing.Size(966, 450);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.ClientSize = new System.Drawing.Size(919, 707);
+            this.Controls.Add(this.Leer);
+            this.Controls.Add(this.TB_busqueda);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.CB_libro);
+            this.Controls.Add(this.iconPictureBox5);
+            this.Controls.Add(this.CB_testamento);
+            this.Controls.Add(this.iconPictureBox6);
+            this.Controls.Add(this.BTN_buscar);
+            this.Controls.Add(this.CB_version);
+            this.Controls.Add(this.CB_idioma);
             this.Controls.Add(this.iconPictureBox3);
             this.Controls.Add(this.iconPictureBox1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.radioButton6);
-            this.Controls.Add(this.radioButton7);
-            this.Controls.Add(this.radioButton8);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.radioButton4);
-            this.Controls.Add(this.radioButton3);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton1);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.TB_palabras);
             this.Controls.Add(this.iconPictureBox2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.DGV_busqueda);
             this.Name = "Busqueda";
             this.Text = "Busqueda";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.Busqueda_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_busqueda)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox6)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -330,27 +353,27 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.DataGridView DGV_busqueda;
+        private System.Windows.Forms.ComboBox CB_version;
+        private System.Windows.Forms.ComboBox CB_idioma;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox3;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.RadioButton radioButton6;
-        private System.Windows.Forms.RadioButton radioButton7;
-        private System.Windows.Forms.RadioButton radioButton8;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TB_palabras;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private FontAwesome.Sharp.IconButton BTN_buscar;
+        private System.Windows.Forms.ComboBox CB_libro;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox5;
+        private System.Windows.Forms.ComboBox CB_testamento;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox6;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox TB_busqueda;
+        private FontAwesome.Sharp.IconButton Leer;
     }
 }

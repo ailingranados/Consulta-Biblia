@@ -47,6 +47,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Speech" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -66,11 +67,29 @@
     <Compile Include="AcercaDe.Designer.cs">
       <DependentUpon>AcercaDe.cs</DependentUpon>
     </Compile>
+    <Compile Include="AgregarFavorito.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarFavorito.Designer.cs">
+      <DependentUpon>AgregarFavorito.cs</DependentUpon>
+    </Compile>
     <Compile Include="Busqueda.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Busqueda.Designer.cs">
       <DependentUpon>Busqueda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CambioConActivacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CambioConActivacion.Designer.cs">
+      <DependentUpon>CambioConActivacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CambioContrasena.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CambioContrasena.Designer.cs">
+      <DependentUpon>CambioContrasena.cs</DependentUpon>
     </Compile>
     <Compile Include="Consulta.cs">
       <SubType>Form</SubType>
@@ -109,6 +128,12 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pregunta_secreta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pregunta_secreta.Designer.cs">
+      <DependentUpon>Pregunta_secreta.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registrarse.cs">
@@ -126,8 +151,17 @@
     <EmbeddedResource Include="AcercaDe.resx">
       <DependentUpon>AcercaDe.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AgregarFavorito.resx">
+      <DependentUpon>AgregarFavorito.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Busqueda.resx">
       <DependentUpon>Busqueda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CambioConActivacion.resx">
+      <DependentUpon>CambioConActivacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CambioContrasena.resx">
+      <DependentUpon>CambioContrasena.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Consulta.resx">
       <DependentUpon>Consulta.cs</DependentUpon>
@@ -146,6 +180,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pregunta_secreta.resx">
+      <DependentUpon>Pregunta_secreta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -178,16 +215,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CapaBiblia\CapaBiblia.csproj">
-      <Project>{6dc2c6b7-2afe-4058-8f6a-75fd497e4125}</Project>
-      <Name>CapaBiblia</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CapaEntidad\CapaEntidad.csproj">
-      <Project>{a5af13a2-4527-4a9f-a7c9-c77fc5a61e37}</Project>
-      <Name>CapaEntidad</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
